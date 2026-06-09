@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "repository": "iac-oci-security-svc",
+    "stack_id": "30",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud Security admin",
+    "description": "Servicios de seguridad activos: Cloud Guard, Vulnerability Scanning Service (VSS), OCI Bastion gestionado, suscripciones Marketplace para imágenes endurecidas, WAF (cuando aplique exposición pública).",
+    "depends_on": [
+      "00-foundation",
+      "10-identity"
+    ],
+    "deploy_order": 4,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "Cloud Guard targets sobre todos los compartments de la LZ",
+      "Cloud Guard recipes (configuration + activity + threat detector)",
+      "VSS recipes y targets sobre compartments con compute",
+      "OCI Bastion service (sesiones administrativas a recursos privados)",
+      "Marketplace subscriptions: imágenes RHEL/OL endurecidas",
+      "WAF policies (futuro, cuando haya exposición pública)"
+    ],
+    "iam_dependencies": [
+      "PCY-SERVICES-ADMIN-KEY ya autoriza service principals cloudguard y vulnerability-scanning-service",
+      "PCY-MARKETPLACE-KEY autoriza al grupo 99GISS.Cloud_MarketplaceSuscriber"
+    ],
+    "notes": [
+      "output_path. Activarlo únicamente cuando sea necesario exportar outputs reutilizables para otros stacks dependientes."
+    ]
+  },
+  "output_path": "./dependencies"
+}

@@ -1,0 +1,177 @@
+{
+    "tags_configuration": {
+        "default_compartment_id": "TENANCY-ROOT",
+
+        "namespaces": {
+
+            "TAGNS-LZ-ROLE-KEY": {
+                "name"        : "o-p-om2-tagns-name-001",
+                "description" : "Tag namespace for Tag Based Access Controls of Landing Zone Roles.",
+                "is_retired"  : false,
+                "tags": {
+                    "TAG-LZ-ROLE-KEY": {
+                        "name"            : "o-p-om2-tag-role-001",
+                        "description"     : "Tag used to identify different administrative roles within the Landing Zone, across network and security compartments",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false
+                    }
+                }
+            },
+
+            "TAGNS-LZ-GOVERNANCE-KEY": {
+                "name"        : "o-p-om2-tagns-gov-001",
+                "description" : "Tag namespace for governance, cost management and operational tracking.",
+                "is_retired"  : false,
+
+                "tags": {
+
+                    "TAG-NAME-KEY": {
+                        "name"            : "name",
+                        "description"     : "Nombre del recurso. Usado para seguimiento de costes a nivel de recurso individual.",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-TECHNICAL-OWNER-KEY": {
+                        "name"            : "technical-owner",
+                        "description"     : "Correo del funcionario responsable tecnico de la aplicacion o recurso.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-OPERATIONAL-OWNER-KEY": {
+                        "name"            : "operational-owner",
+                        "description"     : "Correo de la empresa cliente o equipo que gestiona operativamente los recursos.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-DEPARTMENT-KEY": {
+                        "name"            : "department",
+                        "description"     : "Unidad de negocio propietaria del recurso.",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-COST-CENTER-KEY": {
+                        "name"            : "cost-center",
+                        "description"     : "Unidad de costes para imputacion de gasto (showback/chargeback).",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-APPLICATION-CODE-KEY": {
+                        "name"            : "application-code",
+                        "description"     : "Codigo de la aplicacion asociada al recurso.",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-APPLICATION-NAME-KEY": {
+                        "name"            : "application-name",
+                        "description"     : "Nombre de la aplicacion asociada al recurso.",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false
+                    },
+
+                    "TAG-ENVIRONMENT-KEY": {
+                        "name"            : "environment",
+                        "description"     : "Entorno al que pertenece el recurso.",
+                        "is_cost_tracking": true,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["dev", "pre", "pro", "int", "qa", "cer"]
+                        }
+                    },
+
+                    "TAG-IAC-KEY": {
+                        "name"            : "iac",
+                        "description"     : "Indica si el recurso fue provisionado mediante IaC o de forma manual.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["terraform", "manual"]
+                        }
+                    },
+
+                    "TAG-BUSINESS-CRITICALITY-KEY": {
+                        "name"            : "business-criticality",
+                        "description"     : "Criticidad de negocio del recurso. Determina politicas de parcheado, backup y actualizacion.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["critico", "alto", "medio", "bajo"]
+                        }
+                    }
+                }
+            },
+
+            "TAGNS-LZ-ENS-KEY": {
+                "name"        : "o-p-om2-tagns-ens-001",
+                "description" : "Tag namespace for ENS (Esquema Nacional de Seguridad) compliance dimensions. Ref: guia 887f / recomendacion 887A.",
+                "is_retired"  : false,
+
+                "tags": {
+
+                    "TAG-ENS-AUTHENTICITY-KEY": {
+                        "name"            : "ens-authenticity",
+                        "description"     : "Nivel ENS: verificacion de la identidad de sistemas y usuarios que acceden al recurso.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["alto", "medio", "bajo"]
+                        }
+                    },
+
+                    "TAG-ENS-INTEGRITY-KEY": {
+                        "name"            : "ens-integrity",
+                        "description"     : "Nivel ENS: garantia de que no se producen alteraciones no autorizadas en la informacion.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["alto", "medio", "bajo"]
+                        }
+                    },
+
+                    "TAG-ENS-AVAILABILITY-KEY": {
+                        "name"            : "ens-availability",
+                        "description"     : "Nivel ENS: garantia de acceso a los sistemas cuando se necesite.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["alto", "medio", "bajo"]
+                        }
+                    },
+
+                    "TAG-ENS-CONFIDENTIALITY-KEY": {
+                        "name"            : "ens-confidentiality",
+                        "description"     : "Nivel ENS: proteccion frente a accesos no autorizados a la informacion.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["alto", "medio", "bajo"]
+                        }
+                    },
+
+                    "TAG-ENS-TRACEABILITY-KEY": {
+                        "name"            : "ens-traceability",
+                        "description"     : "Nivel ENS: capacidad de registro y auditoria de las acciones realizadas sobre el recurso.",
+                        "is_cost_tracking": false,
+                        "is_retired"      : false,
+                        "validator": {
+                            "validator_type": "ENUM",
+                            "values"        : ["alto", "medio", "bajo"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

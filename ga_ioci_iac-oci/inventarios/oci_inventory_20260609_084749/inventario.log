@@ -1,0 +1,19 @@
+[2026-06-09 08:47:49] [INFO] Generando inventario OCI v2.2 (árbol jerárquico HTML).
+[2026-06-09 08:47:49] [INFO] Output dir: oci_inventory_20260609_084749
+[2026-06-09 08:48:08] [INFO] Total recursos encontrados (búsqueda global): 356
+[2026-06-09 08:48:08] [INFO] Fase suplemento: descubriendo tipos no indexados por Resource Search.
+[2026-06-09 08:48:13] [INFO] Suplemento: regiones a barrer = eu-madrid-2
+[2026-06-09 08:48:17] [INFO] Suplemento: 21 compartments activos.
+[2026-06-09 09:00:03] [INFO] Fase suplemento completada. Recursos añadidos: 0. Total tras suplemento: 356
+[2026-06-09 09:07:46] [INFO] Enrichment finalizado. ok=62 skip=294 fail=0
+[2026-06-09 09:07:48] [INFO] HTML árbol jerárquico generado: oci_inventory_20260609_084749\inventario.html
+[2026-06-09 09:07:48] [INFO] 
+[2026-06-09 09:07:48] [INFO] [OK] Inventario v2.2 generado:
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\resumen_por_tipo.txt
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario_ascii.txt
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario_full.json
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario_enriched.json
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario_resumen.csv
+[2026-06-09 09:07:49] [INFO]  - csv\<type>.csv  (un fichero por tipo, en oci_inventory_20260609_084749\csv)
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario.html  (árbol jerárquico interactivo)
+[2026-06-09 09:07:49] [INFO]  - oci_inventory_20260609_084749\inventario.log

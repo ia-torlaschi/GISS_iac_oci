@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "repository": "iac-oci-obs-logs",
+    "stack_id": "50",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud Security admin / SOC",
+    "description": "Logging centralizado e integración con QRadar on-prem. Log Groups en compartment o-p-om2-cmp-logg-001, captura de Audit + VCN flow logs + ExaCS logs, exportación vía Service Connector Hub a Streaming/ObjectStorage para consumo por QRadar.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity",
+      "20-network"
+    ],
+    "deploy_order": 5,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "oci_logging_log_group (uno por dominio funcional)",
+      "oci_logging_log (Audit, VCN flow logs por subnet, ExaCS, OKE si aplica)",
+      "oci_sch_service_connector (logs -> Streaming)",
+      "oci_streaming_stream (consumo por QRadar Kafka consumer on-prem)",
+      "oci_objectstorage_bucket para archivado de logs (lifecycle a Archive)",
+      "Configuración de retención por criticidad (alineada con tag business-criticality y ENS-trazabilidad)"
+    ],
+    "iam_dependencies": [],
+    "integration_notes": [
+      "QRadar consume el Stream vía red privada GISS (FastConnect/IPSec). NO exponer endpoints de Streaming a Internet.",
+      "El conector Kafka del QRadar requiere credenciales gestionadas vía OCI Vault (no en el código)."
+    ]
+  }
+}

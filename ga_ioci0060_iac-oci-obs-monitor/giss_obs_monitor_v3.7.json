@@ -1,0 +1,168 @@
+{
+  "_meta": {
+    "repository": "iac-oci-obs-monitor",
+    "stack_id": "60",
+    "version": "3.7",
+    "status": "READY_FOR_DEPLOYMENT",
+    "responsible_team": "Cloud Monitoring admin (99GISS.Cloud_Monitoring_admin)",
+    "description": "Notificacion y monitorizacion ENS. Despliega ONS, alarmas FastConnect y reglas de eventos IAM, red, budget y Cloud Guard con destino temporal por correo para pruebas.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity",
+      "20-network"
+    ],
+    "deploy_order": 6,
+    "source_v3_5": "Sin contenido en v3.5. Implementado en v3.7 a partir del gap ENS 889B.",
+    "implemented_resources": [
+      "oci_monitoring_alarm",
+      "oci_ons_notification_topic",
+      "oci_ons_subscription (EMAIL temporal de pruebas)",
+      "oci_events_rule"
+    ],
+    "integration_notes": [
+      "El correo jorge-eduardo.torlaschi@at.seg-social.es se usa temporalmente como destino de pruebas hasta definir el destinatario oficial.",
+      "Cuando exista endpoint corporativo definitivo, el protocolo EMAIL temporal debe sustituirse por el destino aprobado por Operaciones/SOC."
+    ],
+    "notes": [
+      "Las alarmas se centran en FastConnect por ser el recurso manual detectado en inventario con mayor impacto de disponibilidad.",
+      "Los eventos IAM/Cloud Guard se despliegan en home region para asegurar visibilidad sobre servicios globales."
+    ]
+  },
+  "output_path": "./dependencies",
+  "alarms_configuration": {
+    "default_compartment_id": "CMP-LZ-NETWORK-KEY",
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "alarms": {
+      "NETWORK-ALARM-FAST-CONNECT-STATUS-KEY": {
+        "compartment_id": "CMP-LZ-NETWORK-KEY",
+        "display_name": "o-p-om2-alm-fastconnect-001",
+        "is_enabled": true,
+        "preconfigured_alarm_type": "fast-connect-status-alarm",
+        "destination_topic_ids": [
+          "TOP-LZ-NETWORK-ALARM-KEY"
+        ]
+      }
+    },
+    "topics": {
+      "TOP-LZ-NETWORK-ALARM-KEY": {
+        "compartment_id": "CMP-LZ-NETWORK-KEY",
+        "name": "o-p-om2-top-network-alarm-001",
+        "description": "Topic para alarmas de red y FastConnect de la Landing Zone.",
+        "subscriptions": [
+          {
+            "protocol": "EMAIL",
+            "values": [
+              "jorge-eduardo.torlaschi@at.seg-social.es"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "events_configuration": {
+    "default_compartment_id": "CMP-LANDINGZONE-KEY",
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "event_rules": {
+      "EVT-LZ-NETWORK-CHANGES-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "is_enabled": true,
+        "event_display_name": "o-p-om2-evt-network-001",
+        "event_description": "Notifica cambios de red en la Landing Zone.",
+        "preconfigured_events_categories": [
+          "network"
+        ],
+        "destination_topic_ids": [
+          "TOP-LZ-EVENTS-KEY"
+        ]
+      },
+      "EVT-LZ-DATABASE-CRITICAL-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "is_enabled": true,
+        "event_display_name": "o-p-om2-evt-database-001",
+        "event_description": "Notifica eventos criticos de base de datos y Exadata.",
+        "preconfigured_events_categories": [
+          "database",
+          "exainfra"
+        ],
+        "destination_topic_ids": [
+          "TOP-LZ-EVENTS-KEY"
+        ]
+      }
+    },
+    "topics": {
+      "TOP-LZ-EVENTS-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "name": "o-p-om2-top-events-001",
+        "description": "Topic para eventos operativos de red y plataforma.",
+        "subscriptions": [
+          {
+            "protocol": "EMAIL",
+            "values": [
+              "jorge-eduardo.torlaschi@at.seg-social.es"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "home_region_events_configuration": {
+    "default_compartment_id": "CMP-LANDINGZONE-KEY",
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "event_rules": {
+      "EVT-HR-IAM-CHANGES-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "is_enabled": true,
+        "event_display_name": "o-p-om2-evt-iam-001",
+        "event_description": "Notifica cambios IAM en home region.",
+        "preconfigured_events_categories": [
+          "iam"
+        ],
+        "destination_topic_ids": [
+          "TOP-HR-SECURITY-EVENTS-KEY"
+        ]
+      },
+      "EVT-HR-CLOUDGUARD-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "is_enabled": true,
+        "event_display_name": "o-p-om2-evt-cloudguard-001",
+        "event_description": "Notifica hallazgos y remediaciones de Cloud Guard.",
+        "preconfigured_events_categories": [
+          "cloudguard"
+        ],
+        "destination_topic_ids": [
+          "TOP-HR-SECURITY-EVENTS-KEY"
+        ]
+      },
+      "EVT-HR-BUDGET-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "is_enabled": true,
+        "event_display_name": "o-p-om2-evt-budget-001",
+        "event_description": "Notifica cambios sobre presupuestos y reglas de alerta.",
+        "preconfigured_events_categories": [
+          "budget"
+        ],
+        "destination_topic_ids": [
+          "TOP-HR-SECURITY-EVENTS-KEY"
+        ]
+      }
+    },
+    "topics": {
+      "TOP-HR-SECURITY-EVENTS-KEY": {
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "name": "o-p-om2-top-security-events-001",
+        "description": "Topic para eventos IAM, Budget y Cloud Guard en home region.",
+        "subscriptions": [
+          {
+            "protocol": "EMAIL",
+            "values": [
+              "jorge-eduardo.torlaschi@at.seg-social.es"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

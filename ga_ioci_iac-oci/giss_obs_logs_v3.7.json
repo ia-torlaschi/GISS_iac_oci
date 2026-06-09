@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "repository": "iac-oci-obs-logs",
+    "stack_id": "50",
+    "version": "3.7",
+    "status": "READY_FOR_DEPLOYMENT",
+    "responsible_team": "Cloud Security admin / SOC",
+    "description": "Auditoria y trazabilidad ENS. Despliega Log Groups, VCN Flow Logs y Service Connector Hub para exportar Audit logs a un Stream privado consumible por el SIEM.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity",
+      "20-network"
+    ],
+    "deploy_order": 5,
+    "source_v3_5": "Sin contenido en v3.5. Implementado en v3.7 a partir del gap ENS 889B.",
+    "implemented_resources": [
+      "oci_logging_log_group",
+      "oci_logging_log (flow logs por subnet en compartment de red)",
+      "oci_sch_service_connector (audit logs -> streaming)",
+      "oci_streaming_stream (ingesta SIEM privada)"
+    ],
+    "deferred_resources": [
+      "Exportacion de non-audit logs via Service Connector una vez materializados los outputs de logging para reutilizar log_group_id como dependencia",
+      "Archivado adicional a Object Storage/Archive cuando se implemente el stack 70-storage"
+    ],
+    "iam_dependencies": [
+      "PCY-MONITORING-KEY y PCY-AUDITING-ADMIN-KEY ya contemplan logging, serviceconnectors y audit-events.",
+      "El despliegue operativo requiere privilegios suficientes del principal Terraform sobre CMP-LZ-LOGGING-KEY y CMP-LZ-NETWORK-KEY."
+    ],
+    "integration_notes": [
+      "El Stream se mantiene privado para consumo del SIEM sobre conectividad GISS. No se exponen endpoints publicos.",
+      "El conector Kafka del SIEM requerira credenciales gestionadas fuera de este codigo, preferiblemente via OCI Vault en el stack de seguridad."
+    ],
+    "notes": [
+      "output_path se deja habilitado para generar dependencias reutilizables en fases posteriores.",
+      "Este stack cubre la parte minima de trazabilidad ENS 889B en primera ola."
+    ]
+  },
+  "output_path": "./dependencies",
+  "logging_configuration": {
+    "enable_cis_checks": true,
+    "default_compartment_id": "CMP-LZ-LOGGING-KEY",
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "onboard_logging_analytics": false,
+    "log_groups": {
+      "LGG-LZ-NETWORK-KEY": {
+        "name": "o-p-om2-lgg-network-001",
+        "description": "Log Group para VCN Flow Logs de la Landing Zone."
+      }
+    },
+    "flow_logs": {
+      "FLOW-LZ-NETWORK-KEY": {
+        "name_prefix": "o-p-om2-flw-lz",
+        "log_group_id": "LGG-LZ-NETWORK-KEY",
+        "target_resource_type": "subnet",
+        "target_compartment_ids": [
+          "CMP-LZ-NETWORK-KEY"
+        ],
+        "is_enabled": true,
+        "retention_duration": 180
+      }
+    }
+  },
+  "service_connectors_configuration": {
+    "default_compartment_id": "CMP-LZ-LOGGING-KEY",
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "streams": {
+      "STM-LZ-SIEM-KEY": {
+        "name": "o-p-om2-stm-siem-001",
+        "compartment_id": "CMP-LZ-LOGGING-KEY",
+        "num_partitions": 1,
+        "log_retention_in_hours": 24
+      }
+    },
+    "service_connectors": {
+      "SCH-LZ-AUDIT-STREAM-KEY": {
+        "display_name": "o-p-om2-sch-audit-stream-001",
+        "compartment_id": "CMP-LZ-LOGGING-KEY",
+        "description": "Service Connector para exportar Audit logs del tenancy al stream privado del SIEM.",
+        "activate": true,
+        "source": {
+          "kind": "logging",
+          "audit_logs": [
+            {
+              "cmp_id": "ALL"
+            }
+          ]
+        },
+        "target": {
+          "kind": "streaming",
+          "stream_id": "STM-LZ-SIEM-KEY"
+        },
+        "policy": {
+          "compartment_id": "CMP-LZ-LOGGING-KEY",
+          "name": "o-p-om2-pcy-sch-audit-001",
+          "description": "Permite a Service Connector Hub publicar Audit logs en el stream privado del SIEM."
+        }
+      }
+    }
+  }
+}

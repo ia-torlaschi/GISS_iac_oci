@@ -1,0 +1,652 @@
+{
+  "_meta": {
+    "repository": "iac-oci-foundation",
+    "stack_id": "00",
+    "version": "3.6",
+    "responsible_team": "Cloud IAM admin + Cloud Governance",
+    "description": "Stack raíz de la Landing Zone GISS. Contiene los namespaces de tags (TBAC, GOV, ENS) y la jerarquía completa de compartments. Todos los demás stacks dependen de este.",
+    "depends_on": [],
+    "deploy_order": 1,
+    "source_v3_5": [
+      "giss_governance_v3.5.json (íntegro)",
+      "giss_iam_v3.5.json -> compartments_configuration"
+    ]
+  },
+  "output_path": "./dependencies",
+  "tags_configuration": {
+    "default_compartment_id": "TENANCY-ROOT",
+    "namespaces": {
+      "TAGNS-LZ-ROLE-KEY": {
+        "name": "o-p-om2-tagns-name-001",
+        "description": "Tag namespace for Tag Based Access Controls of Landing Zone Roles.",
+        "is_retired": false,
+        "tags": {
+          "TAG-LZ-ROLE-KEY": {
+            "name": "o-p-om2-tag-role-001",
+            "description": "Tag used to identify different administrative roles within the Landing Zone, across network and security compartments",
+            "is_cost_tracking": false,
+            "is_retired": false
+          }
+        }
+      },
+      "TAGNS-LZ-GOV-KEY": {
+        "name": "o-p-om2-tagns-gov-001",
+        "description": "Tag namespace for operational governance, cost tracking and resource classification of the Landing Zone.",
+        "is_retired": false,
+        "tags": {
+          "TAG-GOV-TECHNICAL-OWNER-KEY": {
+            "name": "technical-owner",
+            "description": "Funcionario responsable de la aplicacion. Valor: correo corporativo del responsable tecnico.",
+            "is_cost_tracking": false,
+            "is_retired": false
+          },
+          "TAG-GOV-OPERATIONAL-OWNER-KEY": {
+            "name": "operational-owner",
+            "description": "Empresa cliente o equipo que gestiona los recursos. Valor: correo corporativo del responsable operacional.",
+            "is_cost_tracking": false,
+            "is_retired": false
+          },
+          "TAG-GOV-DEPARTMENT-KEY": {
+            "name": "department",
+            "description": "Unidad de negocio propietaria del recurso. Habilitado para analisis de costes por departamento.",
+            "is_cost_tracking": true,
+            "is_retired": false
+          },
+          "TAG-GOV-COST-CENTER-KEY": {
+            "name": "cost-center",
+            "description": "Unidad de costes para imputacion y chargeback. Habilitado para analisis de costes.",
+            "is_cost_tracking": true,
+            "is_retired": false
+          },
+          "TAG-GOV-APPLICATION-CODE-KEY": {
+            "name": "application-code",
+            "description": "Codigo identificador de la aplicacion asociada al recurso. Habilitado para analisis de costes por aplicacion.",
+            "is_cost_tracking": true,
+            "is_retired": false
+          },
+          "TAG-GOV-APPLICATION-NAME-KEY": {
+            "name": "application-name",
+            "description": "Nombre legible de la aplicacion asociada al recurso.",
+            "is_cost_tracking": false,
+            "is_retired": false
+          },
+          "TAG-GOV-NAME-KEY": {
+            "name": "name",
+            "description": "Nombre del recurso. Debe coincidir con el display_name del recurso OCI. Habilitado para analisis de costes por recurso individual.",
+            "is_cost_tracking": true,
+            "is_retired": false
+          },
+          "TAG-GOV-ENVIRONMENT-KEY": {
+            "name": "environment",
+            "description": "Entorno del recurso. Se infiere del prefijo de nomenclatura: o-p- = pro, o-d- = dev. Habilitado para comparativa de costes entre entornos.",
+            "is_cost_tracking": true,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "dev",
+                "pre",
+                "pro",
+                "int",
+                "qa",
+                "cer"
+              ]
+            }
+          },
+          "TAG-GOV-IAC-KEY": {
+            "name": "iac",
+            "description": "Indica el mecanismo mediante el cual fue generado el recurso. Valor automatico: terraform para todos los recursos desplegados por este repositorio.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "terraform",
+                "manual",
+                "cli"
+              ]
+            }
+          },
+          "TAG-GOV-BUSINESS-CRITICALITY-KEY": {
+            "name": "business-criticality",
+            "description": "Criticidad de negocio del recurso. Determina la politica de parcheo, backup y actualizacion aplicable.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "critico",
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          }
+        }
+      },
+      "TAGNS-LZ-ENS-KEY": {
+        "name": "o-p-om2-tagns-ens-001",
+        "description": "Tag namespace for ENS (Esquema Nacional de Seguridad) security classification dimensions. Valores: alto, medio, bajo.",
+        "is_retired": false,
+        "tags": {
+          "TAG-ENS-AUTHENTICITY-KEY": {
+            "name": "ens-authenticity",
+            "description": "ENS - Autenticidad: nivel de verificacion de sistemas y usuarios que acceden al recurso.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          },
+          "TAG-ENS-INTEGRITY-KEY": {
+            "name": "ens-integrity",
+            "description": "ENS - Integridad: nivel de garantia frente a alteraciones no autorizadas en el recurso.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          },
+          "TAG-ENS-AVAILABILITY-KEY": {
+            "name": "ens-availability",
+            "description": "ENS - Disponibilidad: nivel de garantia de acceso al sistema cuando se necesite.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          },
+          "TAG-ENS-CONFIDENTIALITY-KEY": {
+            "name": "ens-confidentiality",
+            "description": "ENS - Confidencialidad: nivel de proteccion frente a accesos no autorizados al recurso.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          },
+          "TAG-ENS-TRACEABILITY-KEY": {
+            "name": "ens-traceability",
+            "description": "ENS - Trazabilidad: nivel de registro y auditoria de acciones realizadas sobre el recurso.",
+            "is_cost_tracking": false,
+            "is_retired": false,
+            "validator": {
+              "validator_type": "ENUM",
+              "values": [
+                "alto",
+                "medio",
+                "bajo"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "compartments_configuration": {
+    "enable_delete": "false",
+    "compartments": {
+      "CMP-LANDINGZONE-KEY": {
+        "name": "o-p-om2-cmp-land-001",
+        "description": "Enclosing Production Landing Zone Compartment",
+        "children": {
+          "CMP-LZ-NETWORK-KEY": {
+            "name": "o-p-om2-cmp-network-001",
+            "description": "Shared Network Compartment",
+            "defined_tags": {
+              "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-network-001",
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-network-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          },
+          "CMP-LZ-PLATFORM-KEY": {
+            "name": "o-p-om2-cmp-platform-001",
+            "description": "Shared Platform Compartment",
+            "children": {
+              "CMP-LZ-EXACS-KEY": {
+                "name": "o-p-om2-cmp-exacs-001",
+                "description": "Shared exacs Platform",
+                "defined_tags": {
+                  "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-exa-001",
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-exacs-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                },
+                "children": {
+                  "CMP-LZ-EXACS-DB-KEY": {
+                    "name": "o-p-om2-cmp-exacsdb-001",
+                    "description": "Shared exacs Platform, db compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-exadb-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-exacsdb-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-EXACS-INFRA-KEY": {
+                    "name": "o-p-om2-cmp-exacsinfra-001",
+                    "description": "Shared exacs Platform, infra compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-exainfra-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-exacsinfra-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  }
+                }
+              },
+              "CMP-LZ-LOGGING-KEY": {
+                "name": "o-p-om2-cmp-logg-001",
+                "description": "Shared Logging Platform",
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-logg-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "CMP-LZ-DEVOPS-KEY": {
+                "name": "o-p-om2-cmp-devop-001",
+                "description": "Shared devops Platform",
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-devop-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "defined_tags": {
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-platform-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          },
+          "CMP-LZ-CDINSS-KEY": {
+            "name": "o-p-om2-cmp-cdin-core-001",
+            "description": "Coretech Entity Environment Compartment",
+            "children": {
+              "CMP-LZ-CDINSS-PROD-KEY": {
+                "name": "o-p-om2-cmp-cdin-001",
+                "description": "Production Environment Compartment",
+                "children": {
+                  "CMP-LZ-CDINSS-PROD-NETWORK-KEY": {
+                    "name": "o-p-om2-cmp-cdin-network-001",
+                    "description": "Prod Workload Environment, Common Network Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-network-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-network-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-PROD-PLATFORM-KEY": {
+                    "name": "o-p-om2-cmp-cdin-platform-001",
+                    "description": "Production Workload Environment, Common Platform Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-platform-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-PROD-PROJECTS-KEY": {
+                    "name": "o-p-om2-cmp-cdin-projects-001",
+                    "description": "Production Workload Environment, Common Projects Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-projects-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-PROD-SECURITY-KEY": {
+                    "name": "o-p-om2-cmp-cdin-security-001",
+                    "description": "Production Workload Environment, Common Security Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-security-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-security-001",
+                      "o-p-om2-tagns-gov-001.environment": "pro",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "CMP-LZ-CDINSS-NPR-KEY": {
+                "name": "o-d-om2-cmp-cdin-001",
+                "description": "Non Production Environment Compartment",
+                "children": {
+                  "CMP-LZ-CDINSS-NPR-NETWORK-KEY": {
+                    "name": "o-d-om2-cmp-cdin-network-001",
+                    "description": "Non Production Workload Environment, Common Network Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-network-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-d-om2-cmp-cdin-network-001",
+                      "o-p-om2-tagns-gov-001.environment": "dev",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-NPR-PLATFORM-KEY": {
+                    "name": "o-d-om2-cmp-cdin-platform-001",
+                    "description": "Non Production Workload Environment, Common Platform Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-d-om2-cmp-cdin-platform-001",
+                      "o-p-om2-tagns-gov-001.environment": "dev",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-NPR-PROJECTS-KEY": {
+                    "name": "o-d-om2-cmp-cdin-projects-001",
+                    "description": "Non Production Workload Environment, Common Projects Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-d-om2-cmp-cdin-projects-001",
+                      "o-p-om2-tagns-gov-001.environment": "dev",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  },
+                  "CMP-LZ-CDINSS-NPR-SECURITY-KEY": {
+                    "name": "o-d-om2-cmp-cdin-security-001",
+                    "description": "Non Production Workload Environment, Common Security Compartment",
+                    "defined_tags": {
+                      "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-security-001",
+                      "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                      "o-p-om2-tagns-gov-001.department": "__FILL__",
+                      "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                      "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                      "o-p-om2-tagns-gov-001.name": "o-d-om2-cmp-cdin-security-001",
+                      "o-p-om2-tagns-gov-001.environment": "dev",
+                      "o-p-om2-tagns-gov-001.iac": "terraform",
+                      "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                      "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                    }
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-cmp-cdin-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "defined_tags": {
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-cdin-core-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          },
+          "CMP-LZ-SECURITY-KEY": {
+            "name": "o-p-om2-cmp-security-001",
+            "description": "Shared Security Compartment",
+            "defined_tags": {
+              "o-p-om2-tagns-name-001.o-p-om2-tag-role-001": "o-p-om2-tag-role-security-001",
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-security-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          }
+        },
+        "defined_tags": {
+          "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+          "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+          "o-p-om2-tagns-gov-001.department": "__FILL__",
+          "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+          "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+          "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+          "o-p-om2-tagns-gov-001.name": "o-p-om2-cmp-land-001",
+          "o-p-om2-tagns-gov-001.environment": "pro",
+          "o-p-om2-tagns-gov-001.iac": "terraform",
+          "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+          "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+          "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+          "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+          "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+          "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+        }
+      }
+    }
+  }
+}

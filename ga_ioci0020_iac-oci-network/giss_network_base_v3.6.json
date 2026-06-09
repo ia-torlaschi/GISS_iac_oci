@@ -1,0 +1,1239 @@
+{
+  "_meta": {
+    "repository": "iac-oci-network",
+    "stack_id": "20",
+    "version": "3.6",
+    "file_role": "BASE",
+    "responsible_team": "Cloud Networking admin",
+    "description": "Red base de la Landing Zone. VCN Hub + 2 spokes ExaCS (PRO 10.197.132.0/23 y NPR 10.197.134.0/23) interconectadas vía DRG. Topología completamente privada (sin Internet Gateway). Egress a Internet solo desde Hub vía NAT GW.",
+    "depends_on": [
+      "00-foundation"
+    ],
+    "deploy_order": 3,
+    "source_v3_5": [
+      "giss_network_hub_b_empty_v3.5.json (íntegro)"
+    ],
+    "notes": [
+      "output_path. Activarlo únicamente cuando sea necesario exportar outputs reutilizables para otros stacks dependientes."
+    ]
+  },
+  "output_path": "./dependencies",  
+  "network_configuration": {
+    "default_compartment_id": "CMP-LZ-NETWORK-KEY",
+    "default_enable_cis_checks": false,
+    "network_configuration_categories": {
+      "0-shared": {
+        "category_compartment_id": "CMP-LZ-NETWORK-KEY",
+        "vcns": {
+          "VCN-VLL-LZ-HUB-KEY": {
+            "display_name": "o-p-om2-vcn-hub-001",
+            "cidr_blocks": [
+              "10.197.128.0/23"
+            ],
+            "dns_label": "opom2vcnhub",
+            "block_nat_traffic": false,
+            "is_attach_drg": false,
+            "is_create_igw": false,
+            "is_ipv6enabled": false,
+            "is_oracle_gua_allocation_enabled": false,
+            "subnets": {
+              "SN-VLL-LZ-HUB-FW-KEY": {
+                "display_name": "o-p-om2-sub-hubfw-001",
+                "cidr_block": "10.197.128.0/27",
+                "dns_label": "opom2snhubfw",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-HUB-FW-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-HUB-FW-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-hubfw-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SN-VLL-LZ-HUB-MGMT-KEY": {
+                "display_name": "o-p-om2-sub-hubmgmt-001",
+                "cidr_block": "10.197.128.32/27",
+                "dns_label": "opom2snhubmgmt",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-HUB-MGMT-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-HUB-MGMT-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-hubmgmt-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SN-VLL-LZ-HUB-MON-KEY": {
+                "display_name": "o-p-om2-sub-hubmon-001",
+                "cidr_block": "10.197.128.64/27",
+                "dns_label": "opom2snhubmm",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-HUB-MGMT-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-HUB-MGMT-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-hubmon-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SN-VLL-LZ-HUB-DNS": {
+                "display_name": "o-p-om2-sub-hubdns-001",
+                "cidr_block": "10.197.128.96/27",
+                "dns_label": "opom2snhubdns",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-HUB-MGMT-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-HUB-MGMT-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-hubdns-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "route_tables": {
+              "RT-VLL-LZ-HUB-INGRESS-KEY": {
+                "display_name": "o-p-om2-rtb-hubingress-001",
+                "route_rules": {},
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-hubingress-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "RT-VLL-LZ-HUB-FW-KEY": {
+                "display_name": "o-p-om2-rtb-hubfw-001",
+                "route_rules": {
+                  "rt-natgw": {
+                    "description": "Route to Internet through NAT GW",
+                    "destination": "0.0.0.0/0",
+                    "destination_type": "CIDR_BLOCK",
+                    "network_entity_key": "NGW-VLL-LZ-HUB-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-hubfw-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "RT-VLL-LZ-HUB-NATGW-KEY": {
+                "display_name": "o-p-om2-rtb-hubnatgw-001",
+                "route_rules": {},
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-hubnatgw-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "RT-VLL-LZ-HUB-MGMT-KEY": {
+                "display_name": "o-p-om2-rtb-hubmgmt-001",
+                "route_rules": {
+                  "rt-sgw": {
+                    "description": "Route to Oracle Services Network through Service GW",
+                    "destination": "all-services",
+                    "destination_type": "SERVICE_CIDR_BLOCK",
+                    "network_entity_key": "SGW-VLL-LZ-HUB-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-hubmgmt-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "default_security_list": {
+              "egress_rules": [],
+              "ingress_rules": []
+            },
+            "security_lists": {
+              "SL-VLL-LZ-HUB-FW-KEY": {
+                "display_name": "o-p-om2-sl-hubfw-001",
+                "egress_rules": [],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sl-hubfw-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SL-VLL-LZ-HUB-MGMT-KEY": {
+                "display_name": "o-p-om2-sl-hubmgmt-001",
+                "egress_rules": [
+                  {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                ],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  },
+                  {
+                    "description": "EXAMPLE: Allow inbound traffic from the Bastion Service private endpoint IP address",
+                    "src": "10.197.128.32/27",
+                    "src_type": "CIDR_BLOCK",
+                    "dst_port_max": 22,
+                    "dst_port_min": 22,
+                    "protocol": "TCP",
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sl-hubmgmt-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "network_security_groups": {
+              "NSG-VLL-LZ-HUB-LB-KEY": {
+                "display_name": "o-p-om2-nsg-hublb-001",
+                "egress_rules": {
+                  "anywhere": {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "TCP",
+                    "stateless": false
+                  }
+                },
+                "ingress_rules": {
+                  "http_80": {
+                    "description": "Allow inbound traffic from 0.0.0.0/0 over HTTP",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "dst_port_max": 80,
+                    "dst_port_min": 80,
+                    "protocol": "TCP",
+                    "stateless": false
+                  },
+                  "http_443": {
+                    "description": "Allow inbound traffic from 0.0.0.0/0 over HTTPS",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "dst_port_max": 443,
+                    "dst_port_min": 443,
+                    "protocol": "TCP",
+                    "stateless": false
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-nsg-hublb-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "NSG-VLL-LZ-HUB-FW-KEY": {
+                "display_name": "o-p-om2-nsg-hubfw-001",
+                "egress_rules": {
+                  "to_lb": {
+                    "description": "Allow all outbound traffic to LB subnet over all protocols",
+                    "dst": "10.197.128.0/27",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": true
+                  },
+                  "anywhere": {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                },
+                "ingress_rules": {
+                  "from_lb": {
+                    "description": "Allow inbound traffic from Hub LB subnet over all protocols",
+                    "src": "10.197.128.0/27",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": true
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-nsg-hubfw-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "vcn_specific_gateways": {
+              "nat_gateways": {
+                "NGW-VLL-LZ-HUB-KEY": {
+                  "display_name": "o-p-om2-ngw-hub-001",
+                  "route_table_key": "RT-VLL-LZ-HUB-NATGW-KEY",
+                  "defined_tags": {
+                    "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.department": "__FILL__",
+                    "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                    "o-p-om2-tagns-gov-001.name": "o-p-om2-ngw-hub-001",
+                    "o-p-om2-tagns-gov-001.environment": "pro",
+                    "o-p-om2-tagns-gov-001.iac": "terraform",
+                    "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                  }
+                }
+              },
+              "service_gateways": {
+                "SGW-VLL-LZ-HUB-KEY": {
+                  "display_name": "o-p-om2-sgw-hub-001",
+                  "services": "all-services",
+                  "defined_tags": {
+                    "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.department": "__FILL__",
+                    "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                    "o-p-om2-tagns-gov-001.name": "o-p-om2-sgw-hub-001",
+                    "o-p-om2-tagns-gov-001.environment": "pro",
+                    "o-p-om2-tagns-gov-001.iac": "terraform",
+                    "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                  }
+                }
+              }
+            },
+            "defined_tags": {
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-vcn-hub-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          }
+        },
+        "non_vcn_specific_gateways": {
+          "dynamic_routing_gateways": {
+            "DRG-VLL-LZ-HUB-KEY": {
+              "display_name": "o-p-om2-drg-hub-001",
+              "drg_attachments": {
+                "DRGATT-VLL-LZ-HUB-VCN-KEY": {
+                  "display_name": "o-p-om2-drgatt-hub-001",
+                  "drg_route_table_key": "DRGRT-VLL-LZ-HUB-KEY",
+                  "network_details": {
+                    "attached_resource_key": "VCN-VLL-LZ-HUB-KEY",
+                    "type": "VCN",
+                    "route_table_key": "RT-VLL-LZ-HUB-INGRESS-KEY"
+                  }
+                },
+                "DRGATT-VLL-LZ-EXACS-PRO-VCN-KEY": {
+                  "display_name": "o-p-om2-drgatt-exap-001",
+                  "network_details": {
+                    "attached_resource_key": "VCN-VLL-LZ-EXACS-PRO-KEY",
+                    "type": "VCN"
+                  }
+                },
+                "DRGATT-VLL-LZ-EXACS-NPR-VCN-KEY": {
+                  "display_name": "o-p-om2-drgatt-exad-001",
+                  "network_details": {
+                    "attached_resource_key": "VCN-VLL-LZ-EXACS-NPR-KEY",
+                    "type": "VCN"
+                  }
+                }
+              },
+              "drg_route_distributions": {
+                "DRGRD-VLL-LZ-HUB-KEY": {
+                  "display_name": "o-p-om2-drgrd-hub-001",
+                  "distribution_type": "IMPORT",
+                  "statements": {}
+                }
+              },
+              "drg_route_tables": {
+                "DRGRT-VLL-LZ-HUB-KEY": {
+                  "display_name": "o-p-om2-drgrt-hub-001b",
+                  "import_drg_route_distribution_key": "DRGRD-VLL-LZ-HUB-KEY",
+                  "is_ecmp_enabled": false,
+                  "route_rules": {}
+                },
+                "DRGRT-VLL-LZ-SPOKES-KEY": {
+                  "display_name": "o-p-om2-drgrt-spokes-001",
+                  "is_ecmp_enabled": false,
+                  "route_rules": {
+                    "DRGRT-VLL-LZ-SPOKES-STATIC-ROUTE": {
+                      "destination": "0.0.0.0/0",
+                      "destination_type": "CIDR_BLOCK",
+                      "next_hop_drg_attachment_key": "DRGATT-VLL-LZ-HUB-VCN-KEY"
+                    }
+                  }
+                }
+              },
+              "defined_tags": {
+                "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                "o-p-om2-tagns-gov-001.department": "__FILL__",
+                "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                "o-p-om2-tagns-gov-001.name": "o-p-om2-drg-hub-001",
+                "o-p-om2-tagns-gov-001.environment": "pro",
+                "o-p-om2-tagns-gov-001.iac": "terraform",
+                "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+              }
+            }
+          }
+        }
+      },
+      "1-shared-exacs-pro": {
+        "category_compartment_id": "CMP-LZ-NETWORK-KEY",
+        "vcns": {
+          "VCN-VLL-LZ-EXACS-PRO-KEY": {
+            "display_name": "o-p-om2-vcn-exacspro-001",
+            "cidr_blocks": [
+              "10.197.132.0/23"
+            ],
+            "dns_label": "opom2vcnexacpro",
+            "block_nat_traffic": false,
+            "is_attach_drg": false,
+            "is_create_igw": false,
+            "is_ipv6enabled": false,
+            "is_oracle_gua_allocation_enabled": false,
+            "subnets": {
+              "SN-VLL-LZ-EXACS-PRO-CLIENT-KEY": {
+                "display_name": "o-p-om2-sub-exacsprocli-001",
+                "cidr_block": "10.197.132.0/27",
+                "dns_label": "opom2subexapcli",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-EXACS-PRO-CLIENT-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-EXACS-PRO-CLIENT-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-exacsprocli-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SN-VLL-LZ-EXACS-PRO-BACKUP-KEY": {
+                "display_name": "o-p-om2-sub-exacsprobck-001",
+                "cidr_block": "10.197.132.32/27",
+                "dns_label": "opom2subexapbck",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-EXACS-PRO-BACKUP-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-EXACS-PRO-BACKUP-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sub-exacsprobck-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "route_tables": {
+              "RT-VLL-LZ-EXACS-PRO-CLIENT-KEY": {
+                "display_name": "o-p-om2-rtb-exacs-procli-001",
+                "route_rules": {
+                  "drg_route": {
+                    "description": "Route to the 0.0.0.0/0 through DRG",
+                    "destination": "0.0.0.0/0",
+                    "destination_type": "CIDR_BLOCK",
+                    "network_entity_key": "DRG-VLL-LZ-HUB-KEY"
+                  },
+                  "sgw_route": {
+                    "description": "Route to Oracle Services Network through Service GW",
+                    "destination": "all-services",
+                    "destination_type": "SERVICE_CIDR_BLOCK",
+                    "network_entity_key": "SGW-VLL-LZ-EXACS-PRO-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-exacs-procli-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "RT-VLL-LZ-EXACS-PRO-BACKUP-KEY": {
+                "display_name": "o-p-om2-rtb-exacs-procbck-001",
+                "route_rules": {
+                  "drg_route": {
+                    "description": "Route to the 0.0.0.0/0 through DRG",
+                    "destination": "0.0.0.0/0",
+                    "destination_type": "CIDR_BLOCK",
+                    "network_entity_key": "DRG-VLL-LZ-HUB-KEY"
+                  },
+                  "sgw_route": {
+                    "description": "Route to Oracle Services Network through Service GW",
+                    "destination": "all-services",
+                    "destination_type": "SERVICE_CIDR_BLOCK",
+                    "network_entity_key": "SGW-VLL-LZ-EXACS-PRO-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-rtb-exacs-procbck-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "default_security_list": {
+              "egress_rules": [],
+              "ingress_rules": []
+            },
+            "security_lists": {
+              "SL-VLL-LZ-EXACS-PRO-CLIENT-KEY": {
+                "display_name": "o-p-om2-sl-exacs-procli-001",
+                "egress_rules": [
+                  {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                ],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sl-exacs-procli-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SL-VLL-LZ-EXACS-PRO-BACKUP-KEY": {
+                "display_name": "o-p-om2-sl-exacs-probkc-001",
+                "egress_rules": [
+                  {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                ],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-sl-exacs-probkc-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "network_security_groups": {},
+            "vcn_specific_gateways": {
+              "service_gateways": {
+                "SGW-VLL-LZ-EXACS-PRO-KEY": {
+                  "display_name": "o-p-om2-sgw-exacs-pro-001",
+                  "services": "all-services",
+                  "defined_tags": {
+                    "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.department": "__FILL__",
+                    "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                    "o-p-om2-tagns-gov-001.name": "o-p-om2-sgw-exacs-pro-001",
+                    "o-p-om2-tagns-gov-001.environment": "pro",
+                    "o-p-om2-tagns-gov-001.iac": "terraform",
+                    "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                  }
+                }
+              }
+            },
+            "defined_tags": {
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-p-om2-vcn-exacspro-001",
+              "o-p-om2-tagns-gov-001.environment": "pro",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          }
+        }
+      },
+      "2-shared-exacs-nonpro": {
+        "category_compartment_id": "CMP-LZ-NETWORK-KEY",
+        "vcns": {
+          "VCN-VLL-LZ-EXACS-NPR-KEY": {
+            "display_name": "o-d-om2-vcn-exacsnpr-001",
+            "cidr_blocks": [
+              "10.197.134.0/23"
+            ],
+            "dns_label": "opom2vcnexanpr",
+            "block_nat_traffic": false,
+            "is_attach_drg": false,
+            "is_create_igw": false,
+            "is_ipv6enabled": false,
+            "is_oracle_gua_allocation_enabled": false,
+            "subnets": {
+              "SN-VLL-LZ-EXACS-NPR-CLIENT-KEY": {
+                "display_name": "o-d-om2-sub-exacs-nprcli-001",
+                "cidr_block": "10.197.134.0/27",
+                "dns_label": "onpom2snexnpcli",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-EXACS-NPR-CLIENT-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-EXACS-NPR-CLIENT-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-sub-exacs-nprcli-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SN-VLL-LZ-EXACS-NPR-BACKUP-KEY": {
+                "display_name": "o-d-om2-sub-exacs-nprbck-001",
+                "cidr_block": "10.197.134.32/27",
+                "dns_label": "onpom2snexnpbck",
+                "dhcp_options_key": "default_dhcp_options",
+                "prohibit_internet_ingress": true,
+                "prohibit_public_ip_on_vnic": true,
+                "route_table_key": "RT-VLL-LZ-EXACS-NPR-BACKUP-KEY",
+                "security_list_keys": [
+                  "SL-VLL-LZ-EXACS-NPR-BACKUP-KEY"
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-sub-exacs-nprbck-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "route_tables": {
+              "RT-VLL-LZ-EXACS-NPR-CLIENT-KEY": {
+                "display_name": "o-d-om2-rtb-exacs-nprcli-001",
+                "route_rules": {
+                  "drg_route": {
+                    "description": "Route to the 0.0.0.0/0 through DRG",
+                    "destination": "0.0.0.0/0",
+                    "destination_type": "CIDR_BLOCK",
+                    "network_entity_key": "DRG-VLL-LZ-HUB-KEY"
+                  },
+                  "sgw_route": {
+                    "description": "Route to Oracle Services Network through Service GW",
+                    "destination": "all-services",
+                    "destination_type": "SERVICE_CIDR_BLOCK",
+                    "network_entity_key": "SGW-VLL-LZ-EXACS-NPR-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-rtb-exacs-nprcli-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "RT-VLL-LZ-EXACS-NPR-BACKUP-KEY": {
+                "display_name": "o-d-om2-rtb-exacs-nprbck-001",
+                "route_rules": {
+                  "drg_route": {
+                    "description": "Route to the 0.0.0.0/0 through DRG",
+                    "destination": "0.0.0.0/0",
+                    "destination_type": "CIDR_BLOCK",
+                    "network_entity_key": "DRG-VLL-LZ-HUB-KEY"
+                  },
+                  "sgw_route": {
+                    "description": "Route to Oracle Services Network through Service GW",
+                    "destination": "all-services",
+                    "destination_type": "SERVICE_CIDR_BLOCK",
+                    "network_entity_key": "SGW-VLL-LZ-EXACS-NPR-KEY"
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-rtb-exacs-nprbck-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "default_security_list": {
+              "egress_rules": [],
+              "ingress_rules": []
+            },
+            "security_lists": {
+              "SL-VLL-LZ-EXACS-NPR-CLIENT-KEY": {
+                "display_name": "o-d-om2-sl-exacs-nprcli-001",
+                "egress_rules": [
+                  {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                ],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-sl-exacs-nprcli-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              },
+              "SL-VLL-LZ-EXACS-NPR-BACKUP-KEY": {
+                "display_name": "o-d-om2-sl-exacs-nprbck-001",
+                "egress_rules": [
+                  {
+                    "description": "Allow all outbound traffic to 0.0.0.0/0 over all protocols",
+                    "dst": "0.0.0.0/0",
+                    "dst_type": "CIDR_BLOCK",
+                    "protocol": "ALL",
+                    "stateless": false
+                  }
+                ],
+                "ingress_rules": [
+                  {
+                    "description": "ICMP type 3 code 4",
+                    "src": "0.0.0.0/0",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "icmp_code": 4,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 3",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 3,
+                    "stateless": false
+                  },
+                  {
+                    "description": "ICMP type 8 (Echo)",
+                    "src": "10.197.128.0/23",
+                    "src_type": "CIDR_BLOCK",
+                    "protocol": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0,
+                    "stateless": false
+                  }
+                ],
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-d-om2-sl-exacs-nprbck-001",
+                  "o-p-om2-tagns-gov-001.environment": "dev",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "network_security_groups": {},
+            "vcn_specific_gateways": {
+              "service_gateways": {
+                "SGW-VLL-LZ-EXACS-NPR-KEY": {
+                  "display_name": "o-d-om2-sgw-exacs-npr-001",
+                  "services": "all-services",
+                  "defined_tags": {
+                    "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                    "o-p-om2-tagns-gov-001.department": "__FILL__",
+                    "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                    "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                    "o-p-om2-tagns-gov-001.name": "o-d-om2-sgw-exacs-npr-001",
+                    "o-p-om2-tagns-gov-001.environment": "dev",
+                    "o-p-om2-tagns-gov-001.iac": "terraform",
+                    "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                    "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                  }
+                }
+              }
+            },
+            "defined_tags": {
+              "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+              "o-p-om2-tagns-gov-001.department": "__FILL__",
+              "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+              "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+              "o-p-om2-tagns-gov-001.name": "o-d-om2-vcn-exacsnpr-001",
+              "o-p-om2-tagns-gov-001.environment": "dev",
+              "o-p-om2-tagns-gov-001.iac": "terraform",
+              "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+              "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+            }
+          }
+        }
+      }
+    }
+  }
+}

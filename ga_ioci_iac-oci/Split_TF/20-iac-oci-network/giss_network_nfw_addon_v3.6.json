@@ -1,0 +1,180 @@
+{
+  "_meta": {
+    "repository": "iac-oci-network",
+    "stack_id": "20",
+    "version": "3.6",
+    "file_role": "OVERLAY_NFW",
+    "status": "REFERENCE_ONLY_NOT_DEPLOYED",
+    "responsible_team": "Cloud Networking admin",
+    "description": "Overlay de OCI Network Firewall. NO se despliega por defecto. Se mantiene como referencia tras la decisión de v3.4 de retirar el NFW del despliegue activo por optimización de costes.",
+    "reactivation_requires": [
+      "Rediseño de routing east-west (transitivo Hub o next-hop directo en spokes)",
+      "Política NFW con reglas L7 reales (la actual solo permite east-west)",
+      "Validación de coste con CSM Oracle sobre UCA GISS"
+    ],
+    "deploy_command_when_active": "terraform plan -var-file giss_network_base_v3.6.json -var-file giss_network_nfw_addon_v3.6.json -out tfplan.out",
+    "depends_on": [
+      "00-foundation",
+      "20-network-base"
+    ],
+    "deploy_order": 3.5,
+    "source_v3_5": [
+      "giss_network_hub_b_firewall_v3.5.json -> network_configuration.network_configuration_categories.0-shared.non_vcn_specific_gateways.network_firewalls_configuration"
+    ],
+    "last_sync_with_base": "v3.5 (2026-04-20)"
+  },
+  "network_configuration": {
+    "network_configuration_categories": {
+      "0-shared": {
+        "non_vcn_specific_gateways": {
+          "network_firewalls_configuration": {
+            "network_firewall_policies": {
+              "NFW-VLL-LZ-POLICY-01-KEY": {
+                "display_name": "o-p-om2-nfw-policy-001",
+                "services": {
+                  "NFW-VLL-LZ-SERVICE-01-KEY": {
+                    "name": "o-p-om2-nfw-service-001",
+                    "type": "TCP_SERVICE",
+                    "minimum_port": "80",
+                    "maximum_port": "80"
+                  },
+                  "NFW-VLL-LZ-SERVICE-02-KEY": {
+                    "name": "o-p-om2-nfw-service-002",
+                    "type": "TCP_SERVICE",
+                    "minimum_port": "443",
+                    "maximum_port": "443"
+                  }
+                },
+                "service_lists": {
+                  "NFW-VLL-LZ-SERLIST-01-KEY": {
+                    "name": "o-p-om2-nfw-servicelist-001",
+                    "services": [
+                      "NFW-VLL-LZ-SERVICE-01-KEY",
+                      "NFW-VLL-LZ-SERVICE-02-KEY"
+                    ]
+                  }
+                },
+                "applications": {
+                  "NFW-VLL-LZ-APPLICATION-01-KEY": {
+                    "name": "o-p-om2-nfw-application-001",
+                    "type": "ICMP",
+                    "icmp_type": 8,
+                    "icmp_code": 0
+                  }
+                },
+                "application_lists": {
+                  "NFW-VLL-LZ-APPLIST-01-KEY": {
+                    "name": "o-p-om2-nfw-applist-001",
+                    "applications": [
+                      "NFW-VLL-LZ-APPLICATION-01-KEY"
+                    ]
+                  }
+                },
+                "address_lists": {
+                  "NFW-VLL-LZ-ADDRLIST-PUB-KEY": {
+                    "name": "o-p-om2-nfw-addlpub-001",
+                    "type": "IP",
+                    "addresses": [
+                      "0.0.0.0/0"
+                    ]
+                  },
+                  "NFW-VLL-LZ-ADDRLIST-PROD-KEY": {
+                    "name": "o-p-om2-nfw-addlprod-001",
+                    "type": "IP",
+                    "addresses": [
+                      "10.197.132.0/23"
+                    ]
+                  },
+                  "NFW-VLL-LZ-ADDRLIST-PREPROD-KEY": {
+                    "name": "o-p-om2-nfw-addrlpprod-001",
+                    "type": "IP",
+                    "addresses": [
+                      "10.197.134.0/23"
+                    ]
+                  },
+                  "NFW-VLL-LZ-ADDRLIST-SPOKES-KEY": {
+                    "name": "o-p-om2-nfw-addrlspk-001",
+                    "type": "IP",
+                    "addresses": [
+                      "10.197.132.0/23",
+                      "10.197.134.0/23"
+                    ]
+                  }
+                },
+                "url_lists": {
+                  "NFW-VLL-LZ-URL-LIST-01-KEY": {
+                    "name": "o-p-om2-nfw-urllist-001",
+                    "type": "SIMPLE",
+                    "pattern": "*.oracle.com"
+                  },
+                  "NFW-VLL-LZ-URL-LIST-02-KEY": {
+                    "name": "o-p-om2-nfw-urllist-002",
+                    "type": "SIMPLE",
+                    "pattern": "*.google.com"
+                  }
+                },
+                "security_rules": {
+                  "NFW-VLL-LZ-SEC-RULE-01-KEY": {
+                    "name": "o-p-om2-nfw-alloweastwest-001",
+                    "action": "ALLOW",
+                    "source_address_lists": [
+                      "NFW-VLL-LZ-ADDRLIST-SPOKES-KEY"
+                    ],
+                    "destination_address_lists": [
+                      "NFW-VLL-LZ-ADDRLIST-SPOKES-KEY"
+                    ]
+                  }
+                },
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-nfw-policy-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            },
+            "network_firewalls": {
+              "NFW-VLL-LZ-HUB-KEY": {
+                "display_name": "o-p-om2-nfw-hub-001",
+                "ipv4address": "10.197.128.10",
+                "subnet_key": "SN-VLL-LZ-HUB-FW-KEY",
+                "network_security_group_keys": [
+                  "NSG-VLL-LZ-HUB-FW-KEY"
+                ],
+                "network_firewall_policy_key": "NFW-VLL-LZ-POLICY-01-KEY",
+                "defined_tags": {
+                  "o-p-om2-tagns-gov-001.technical-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.operational-owner": "__FILL__",
+                  "o-p-om2-tagns-gov-001.department": "__FILL__",
+                  "o-p-om2-tagns-gov-001.cost-center": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-code": "__FILL__",
+                  "o-p-om2-tagns-gov-001.application-name": "__FILL__",
+                  "o-p-om2-tagns-gov-001.name": "o-p-om2-nfw-hub-001",
+                  "o-p-om2-tagns-gov-001.environment": "pro",
+                  "o-p-om2-tagns-gov-001.iac": "terraform",
+                  "o-p-om2-tagns-gov-001.business-criticality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-authenticity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-integrity": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-availability": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-confidentiality": "__FILL__",
+                  "o-p-om2-tagns-ens-001.ens-traceability": "__FILL__"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

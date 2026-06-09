@@ -1,0 +1,2 @@
+﻿"resource_type","display_name","region","lifecycle_state","compartment_id","ocid","time_created","freeform_tags","defined_tags"
+"CloudGuardTarget","seguridadsocial (root)",,"ACTIVE","ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba","ocid1.cloudguardtarget.oc19.eu-madrid-2.amaaaaaapw27gbaasdholq2mxh7jcd4ivqjrx4to5an7i243brt6zdphapaa","2026-05-29T07:38:43.603000+00:00","{}","{""Oracle-Tags"":{""CreatedBy"":""o-p-om2-id-common-001/jorge-eduardo.torlaschi@at.seg-social.es"",""CreatedOn"":""2026-05-29T07:38:43.521Z""}}"

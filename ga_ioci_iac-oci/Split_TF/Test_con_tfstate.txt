@@ -1,0 +1,717 @@
+PS C:\gitlab\test_orchestrator_central> terraform init -reconfigure
+Initializing the backend...
+Initializing modules...
+Initializing provider plugins...
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Reusing previous version of hashicorp/http from the dependency lock file
+- Reusing previous version of oracle/oci from the dependency lock file
+- Reusing previous version of hashicorp/local from the dependency lock file
+- Reusing previous version of hashicorp/time from the dependency lock file
+- Reusing previous version of hashicorp/template from the dependency lock file
+- Using previously-installed hashicorp/null v3.2.4
+- Using previously-installed hashicorp/http v3.5.0
+- Using previously-installed oracle/oci v8.5.0
+- Using previously-installed hashicorp/local v2.8.0
+- Using previously-installed hashicorp/time v0.13.1
+- Using previously-installed hashicorp/template v2.2.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+PS C:\gitlab\test_orchestrator_central>
+PS C:\gitlab\test_orchestrator_central> terraform fmt -check
+PS C:\gitlab\test_orchestrator_central>
+PS C:\gitlab\test_orchestrator_central> terraform validate
+Success! The configuration is valid.
+
+PS C:\gitlab\test_orchestrator_central> terraform plan -var-file .\oci-credentials.auto.tfvars.json -var-file .\giss_foundation_v3.6.json -var-file .\giss_identity_v3.6.json -var-file .\giss_network_base_v3.6.json
+module.oci_lz_orchestrator.data.oci_identity_tenancy.this: Reading...
+module.oci_lz_orchestrator.data.oci_identity_regions.these: Reading...
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag_namespaces.oracle_default: Reading...
+module.oci_lz_orchestrator.data.oci_identity_regions.these: Read complete after 0s [id=IdentityRegionsDataSource-0]
+module.oci_lz_orchestrator.data.oci_identity_tenancy.this: Read complete after 0s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag_namespaces.oracle_default: Read complete after 0s [id=IdentityTagNamespacesDataSource-1032845147]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_on[0]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_by[0]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ROLE-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaa6u3i3nhokejdygnepikolj7qp6647p3wum25s3dnpjtt7shlqzuq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ENS-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaa3iliimrn4vxzbtpxutkshe52fu6qs4rbwcdnlvtxhcdybxgjzmeq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-GOV-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaad5ahmm2hnmoesuyygljfkjt63buqrgxpirzs7dohpnmp7qo4jaiq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_by[0]: Read complete after 0s [id=ocid1.tagdefinition.oc19..aaaaaaaall6sqrsh2yuvd637kelyfr7w2h5ll2juolz4pjsyeut7l7ilkcva]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_on[0]: Read complete after 0s [id=ocid1.tagdefinition.oc19..aaaaaaaaaglupfcjdya6tfufliurys3tvrxv5bsdlpmnmvid4ptvvdlr5foa]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-CODE-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaas4iukqceq7kkowric2ehdumve67pg5gxxwtov5uztfarxe6crqia]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-IAC-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaxnwvcchaichbonqcriawdffy6ze5tnej46xyc2jz2mbynnqr54tq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-TRACEABILITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaenskrszzcs3meq7k5n7px6dzz657nor4rd5mn7p46ttz4urodk7q]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-NAME-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaajccu7kuj6q7rbte2jsqlnk23fvahd6xzjyzm53cyj6o7b33plfa]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-ENVIRONMENT-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaahhcnbwfhoestjmzzlnewukgxkcx7s6fk6issnxq2quxduvtrkkva]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-CONFIDENTIALITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaafxanb42k6tmcz5elqpvy5gwctzz5nvs45eumthqhjhucjmrzbufq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-COST-CENTER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaavsvikjg3f7osihcs6aathmswrfruhbvlaaorobkvgu3ysnxrsjgq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-BUSINESS-CRITICALITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaxy576lbfa62hq57ixw7l7cymcii2qkux4xve5fjoj7ewvhzmy75a]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-NAME-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaad5jzdz2y7aedzthktttcireuonkd4rflqz44x34l7umd3tgxcleq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AVAILABILITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaamtykuxl7z7kecwlofbfuxpdjm2bagimktu7s7tj4o3qa4ohnowea]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-TECHNICAL-OWNER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaplzefdtq2pljsle54hm367q4zbxlawu7y7puo3z2t53q5ybuvgba]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-OPERATIONAL-OWNER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaa4nlc4els7tjtl7udg235wg6btydbxdtfbfd3h2nlxk2lkh3nh3ma]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-LZ-ROLE-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaa5nn6xvol36j5hhk7vl4t2h6jvj2nionfjbspjg22jx5jruyxveeq]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-INTEGRITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaazsjnfio6irydjlbyumodoasprnjmrobbmmawxnszehgmg2nfufga]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AUTHENTICITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaqxl7cnvybqoe36k4j6n7ot7o3ad3hpiaiclknohnlumr7z5mxtya]
+module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-DEPARTMENT-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaafo5dn4sumk5habfsuc77a4uoygjinzkibpopd42orpxyh4gp4njq]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_tenancy.this: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-DB-ADMINS"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-AUDITORS-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-SECURITY-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-IAM-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-GLOBALSERV-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_regions.these: Reading...
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.these["CMP-LANDINGZONE-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_region_subscriptions.this: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-INFRA-ADMINS"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_regions.these: Read complete after 0s [id=IdentityRegionsDataSource-0]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-AUDITORS-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-SECURITY-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-IAM-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-COST-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-INFRA-ADMINS"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-NETWORK-ADMIN-KEY"]: Reading...
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-DB-ADMINS"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-GLOBALSERV-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_tenancy.this: Read complete after 0s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_region_subscriptions.this: Read complete after 0s [id=IdentityRegionSubscriptionsDataSource-1032845147]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-COST-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-NETWORK-ADMIN-KEY"]: Read complete after 0s
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-CDINSS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaanalnmbuht65cel33bkqu2aowgdi3hvfcqofq2q7tsod5jcurxpxq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa6xwlxfjdyxcozp274vtvpp2ar5cahjmyljyxbb44wh726jjppm4q]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaayw5yjsj6mh5smp5piyjpjelequhd777a66psqqoxcw7czj4dyiua]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-PROD-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaavug4kpn4sdoskxdzgkfi2uvke26grr6gbxtvg2f3x6ve3ngs5jfq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-DEVOPS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaapmdgp7bcad4vembnxe3t3iajxbpvztrlp3dk2p7y6xzwgnlbwslq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-EXACS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaexcetgujt75cw4hxoyttqpq5lqqfe4zcutegmvlk5vwikibcf3na]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-LOGGING-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-NPR-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaas5tb4msd3rlj6luy7smtqmnybp3cm4sprqoya3v4fbqvycpe6ewq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaakq3vum5nnnrkpl5ro7qt7qorb3a7p2nrwwdpzn7wzkbh3vwqa2dq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-INFRA-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa2n4o2xmgt5b5auwg4ud6akdrdcnqqcrdmv6eiftlythr3ajhk7aa]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PROJECTS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaag2d27gjmfsd36j45w7mi7piyfz6uvstpiuszd2gh2wto7kvmf5rq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PROJECTS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa5ve7hl23gcpq4s3imssn3z4sext3mncvmk3i43h3rjts4uaw45hq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa7ct5zrs6wj5uyr4ooofev5pnrzktmz3ut35kxajmr72olgw3eo5a]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaandgh7xjaze7etcofiogdw3vmeyeh73w6aj4aowtxynrr7hlla77a]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-DB-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaepzjuq4cjhkstzgva5nrliugyqgakoxjby5nudywy2ptpjc5jxaq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaauvyilp65vl56pmzfvqqcv2dehlsykptzfbvliyrqwsqxmvsy3xcq]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaalzthcr6advj52mbrtu6h4viq523mko3gcyjc3nyppdu2ysxevqua]
+module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaatphkv6k4akaip3w5gvdauibjy5ag3p2hyhssgmfu5xgmivtykgha]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domain.these["COMMON-DOMAIN"]: Refreshing state... [id=ocid1.domain.oc19..aaaaaaaaeuc6e6twowrhwgh6i4dxyp22x7g6mf4sf6x7kg7bbddovq6q33aa]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-NETWORK-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaau7hj5voz2en3kpe4yqdsydyxy2s6ocdxlptsup3vwugugvdvunva]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-GLOBALSERV-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaanlp7wszhvfigqkbqqd7gcky4c2p6n4rpshpsgsakmjf5jlvd64xa]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-AUDITING-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaabjxgam7szuyh4d5eo7qudjqw3guez4datmm5bbuztshg4kde6zeq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-STORAGE-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaamoie5vsiedi32odiku54acf7u2j53xdibgqr7jobqd7ntgqwxhla]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-OS-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa3wd62tu3ysigprsk23oadqw77o5gfem5mkytkhq7qs7hc6zy7mya]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-INFRA-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaatvfyywb5ed64yslueu4wlpur4xnc2orplqrljaxsvwsatlszhqjq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-DB-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa6mkjpk4romgxowgqgwkzobk67ysco6bdmkfwcfotk6uy5w6fcwlq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-COST-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa5dumus2g7hu5wzdhl5ldz6k4b3b3cwk6z3uawcvqps5y46nvoaiq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-IAM-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaabmf4pp2dkjiimszoovt5szhe4odf5venihdww26pg7lgvr7l7hhq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-BILLING-VIEWER-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaah4udlb2ei2g5s3ycqxhhneib5yi67glvfp3utxrerppe7rdofhkq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-MARKETPLACE-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaajcg6iwjlvnnfojm3mgesto6bzbnj6pamzwwcrlbfedzoqjvc5gzq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-SERVICES-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaayo4vgbniuac6igjmwzmp7jiyvbfcg4e2gvea6vmmdxjbgh2rezva]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-MONITORING-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaaj2kskvm4ewjukys4ek4cfmgygrccdtkqg64tdmhf5bltsr6xcyrq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-TENANCY-ADMIN-001-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaaaglw5a3wq2yysld6nvnepuizdp4adegscd6zbmpmceshlpypfrhq]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-GENERIC-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaauuq6o2yznkigajumychulk7wji33rtqxj6poqmxyer25zhbaxnfa]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-GENERIC-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaadzr3fb2ot5oxhthk3ns3kjeyitjob6qqq24wee2f2ofmejgqmjaa]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-VIEWER-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa3yiyiynuhe47chu5vpqme2hk2f5ry4q3ebks2m5dhkd34zu654va]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg.these["DRG-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa]
+module.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-SECURITY-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaadw4yg722zptouzynqhvixgzor4elnceb3s2ezpgj3cpffgvafcsq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaahaampmaqpuconyvwmecndp6epapf6uv4p2okvyd2qe4q]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-EXACS-NPR-KEY"]: Refreshing state... [id=ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaatri7xmitendke5zbqpwk3dzghwa7apab56eya5rb2fza]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-EXACS-PRO-KEY"]: Refreshing state... [id=ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaa26l4e3e3jodcwszp52idisn7ntkehkfskz3zzbp7eliq]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-NETWORK-ADMIN-KEY"]: Refreshing state... [id=1f2d88b9fb024af691e8993071ec3bc7]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-IAM-ADMIN-KEY"]: Refreshing state... [id=8db5d4ee2d4d4872ba1174f6f9d3a72b]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-SECURITY-ADMIN-KEY"]: Refreshing state... [id=ee74da9199a543b9b01813e0d0f1df5a]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-GLOBALSERV-ADMIN-KEY"]: Refreshing state... [id=23ef3bf6cadb4c569054a54dba4eec97]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-LZ-DB-ADMINS"]: Refreshing state... [id=32ed5ce0c1e94813aa968f24cc79d4b1]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-LZ-INFRA-ADMINS"]: Refreshing state... [id=1f2d6edbbdba48de93f4fedd4c65173d]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-AUDITORS-ADMIN-KEY"]: Refreshing state... [id=fd59251e7ca84afbbd5276e6eb9fbc82]
+module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-COST-ADMIN-KEY"]: Refreshing state... [id=7c6989c51bdf4e3b96efb129c2812166]
+module.oci_lz_orchestrator.module.oci_lz_network[0].time_sleep.wait_for_dns_resolver: Refreshing state... [id=2026-03-10T14:43:39Z]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-PRO-CLIENT-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa5a3rinjqw7rsclpltq5hh64ec7gldm5jocgm2h2u2scjdvxoj7fq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-PRO-BACKUP-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa52gfgvniilio5mgu475f5k2bjfbnoaslvbvvnhfwwm4ztheyd7ua]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-NPR-CLIENT-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaaj3ondyeq6escsvhcprydlvvdrc36vjgnx5q3gdw2bitgtpf2sctq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-HUB-FW-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaacnodbu3y73ugby74ryrr7c5aoa2pzwdryyyoenq2frlckcoedj3a]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-NPR-BACKUP-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaaq3gxlqmzhihavo2fq4ftdt4lh2nwcvngfneo4oj6ihx7sjaetiiq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-HUB-MGMT-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaax4r77poacckw7t2nmbxddnkqmrxeh3sbdys6tbm2voyrtumnnbuq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-EXACS-PRO-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaam7bfpsyqjshbavhxef26hprqbywe6gbkbdpujtylf3mut5v6jtza]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaat22ufnlfb5ss4hzw6j5cl7s34itv7uzvgiidxorwkoqlzzde6zcq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-EXACS-NPR-KEY"]: Refreshing state... [id=ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa4jrnotramft6warg26vgbevq65zihdr5lw55dyhuqouuniphifqa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group.these["NSG-VLL-LZ-HUB-LB-KEY"]: Refreshing state... [id=ocid1.networksecuritygroup.oc19.eu-madrid-2.aaaaaaaa7t76tg6awptn6iw2flr7jqtf5ut6n7y3rvcjk4cxknm6evfl2yea]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group.these["NSG-VLL-LZ-HUB-FW-KEY"]: Refreshing state... [id=ocid1.networksecuritygroup.oc19.eu-madrid-2.aaaaaaaa5xxr7iqsclnzmnuo67fi2tvkwt6dcbxvunm5iidssolqfiifhmka]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.igw_natgw_specific_route_tables["RT-VLL-LZ-HUB-INGRESS-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa7rjao6irht6lazfqd3slojdxok4yqdyl62f6wnfqg2knnuv62qta]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.igw_natgw_specific_route_tables["RT-VLL-LZ-HUB-NATGW-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa7qnu4kwqdf6p7vt3ert6n6xyivqmavhegslyazq3nuna6zawzida]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_distribution.these["DRGRD-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.drgroutedistribution.oc19.eu-madrid-2.aaaaaaaazwzwsiygf2o2topuugf27l4vaqv44eumhaqpekx7levcokk2uaja]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.egress["NSG-VLL-LZ-HUB-FW-KEY.anywhere"]: Refreshing state... [id=7D5DE8]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.egress["NSG-VLL-LZ-HUB-FW-KEY.to_lb"]: Refreshing state... [id=CE333E]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.ingress["NSG-VLL-LZ-HUB-FW-KEY.from_lb"]: Refreshing state... [id=CF899D]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.ingress["NSG-VLL-LZ-HUB-LB-KEY.http_80"]: Refreshing state... [id=6ECC18]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.egress["NSG-VLL-LZ-HUB-LB-KEY.anywhere"]: Refreshing state... [id=3C8E41]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group_security_rule.ingress["NSG-VLL-LZ-HUB-LB-KEY.http_443"]: Refreshing state... [id=F43365]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_table.these["DRGRT-VLL-LZ-SPOKES-KEY"]: Refreshing state... [id=ocid1.drgroutetable.oc19.eu-madrid-2.aaaaaaaaty742znqtrv7jvixwrldirgntsxk6kvrnuoqzkluxfrpe4nib3ja]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_table.these["DRGRT-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.drgroutetable.oc19.eu-madrid-2.aaaaaaaagrypb4d6mrlafpq5de6uukf2ytbdppaprzayjty2ur2zkwjvtc3q]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaao3zwviqb3hw7jylshx4zk4bbsyoipquitxuh5qu3xkkyx6uutjua]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-NPR-KEY"]: Refreshing state... [id=ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-PRO-KEY"]: Refreshing state... [id=ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_nat_gateway.these["NGW-VLL-LZ-HUB-KEY"]: Refreshing state... [id=ocid1.natgateway.oc19.eu-madrid-2.aaaaaaaanu7fddyxgdcchizzlez6bbfeomnnwrffuasiou7dpm7aem4fwmwa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.lpg_specific_route_tables["RT-VLL-LZ-HUB-MGMT-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaplxulbv5ftsmxk3t23zaqo6zbest5cc7epsnx3l5i7k2g6geivbq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-BACKUP-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaxj3cpw5v7ck6pshlzysnpxep73cvbfv6wunmzcxesun4ewxnmkxa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-CLIENT-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaavysyvwdx5ejpjsmd5jxgvjam6oiflmsiidryhomite4ennv5enfq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-HUB-FW-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaamhwcecichg7l26fnd2rgvqk7ni5x2worom4hblpff3oax6fwie4a]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-BACKUP-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaalajl2baakfooxs77yvz6qt3ybptz6vxrc3fapjnc37i53ijhywqa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-EXACS-PRO-VCN-KEY"]: Refreshing state... [id=ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaaj33nwa5zf5dtjjbalee7p6eigxki26bmxpqejenw77q2u6secvaq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-CLIENT-KEY"]: Refreshing state... [id=ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa26d4p6ngnmfwyddmi7ayygbwkypfgw5sxh4wb7kznmfuparwdwjq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-HUB-VCN-KEY"]: Refreshing state... [id=ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaau5svtwnjv7cxgsdkjvf7qci5weqczdxvyfsn64vzf7hjrzdzsmva]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-EXACS-NPR-VCN-KEY"]: Refreshing state... [id=ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaapbha2jrstqqnvl4hq3zvk35jq5m56vufoznlphbdgqonuygo4bfa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_table_route_rule.these["DRGRT-VLL-LZ-SPOKES-STATIC-ROUTE"]: Refreshing state... [id=drgRouteTables/ocid1.drgroutetable.oc19.eu-madrid-2.aaaaaaaaty742znqtrv7jvixwrldirgntsxk6kvrnuoqzkluxfrpe4nib3ja/routeRules/5554]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-PRO-CLIENT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaa25at3fn2vvtxylgqpchpy6lwgcerzodsg3sc53qctppm7fqaddzq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-MGMT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaavcjg6zczpbp4h2avcsawctp2su5x6nbzsfeqizy5edgy7b2chwxa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-NPR-BACKUP-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaapzxknvaxdzhxhy6bnelwuyqykfwccruyrftnshskkcc2upjphvka]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-DNS"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaana6o4ztydw3u3i7f4nv4xkmmjkscvdj6aiv5t6wnuxqlcfrjp3bq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-FW-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaayg3uwvlk4sppnxnqwcqgwcw4egv3b2uwdim36mjqg7gzfvfvzmda]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-NPR-CLIENT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakekfuzcbd43hvuufgzx6x5uybwjcst35azjilncmjgc254i22gpa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-PRO-BACKUP-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakmjkmcwkvu6a3aq4izcvnpsqlgcac7aivh55zn7p4bg22xvwdw4q]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-MON-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaay4uhy4psi4rga5wpyz2ciq4ev4bw6ijmgjqqwj5at77l77xx6yhq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-EXACS-NPR-CLIENT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakekfuzcbd43hvuufgzx6x5uybwjcst35azjilncmjgc254i22gpa/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa26d4p6ngnmfwyddmi7ayygbwkypfgw5sxh4wb7kznmfuparwdwjq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-HUB-DNS"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaana6o4ztydw3u3i7f4nv4xkmmjkscvdj6aiv5t6wnuxqlcfrjp3bq/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaplxulbv5ftsmxk3t23zaqo6zbest5cc7epsnx3l5i7k2g6geivbq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-HUB-MGMT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaavcjg6zczpbp4h2avcsawctp2su5x6nbzsfeqizy5edgy7b2chwxa/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaplxulbv5ftsmxk3t23zaqo6zbest5cc7epsnx3l5i7k2g6geivbq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-EXACS-PRO-BACKUP-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakmjkmcwkvu6a3aq4izcvnpsqlgcac7aivh55zn7p4bg22xvwdw4q/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaalajl2baakfooxs77yvz6qt3ybptz6vxrc3fapjnc37i53ijhywqa]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-HUB-MON-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaay4uhy4psi4rga5wpyz2ciq4ev4bw6ijmgjqqwj5at77l77xx6yhq/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaplxulbv5ftsmxk3t23zaqo6zbest5cc7epsnx3l5i7k2g6geivbq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-HUB-FW-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaayg3uwvlk4sppnxnqwcqgwcw4egv3b2uwdim36mjqg7gzfvfvzmda/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaamhwcecichg7l26fnd2rgvqk7ni5x2worom4hblpff3oax6fwie4a]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-EXACS-PRO-CLIENT-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaa25at3fn2vvtxylgqpchpy6lwgcerzodsg3sc53qctppm7fqaddzq/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaavysyvwdx5ejpjsmd5jxgvjam6oiflmsiidryhomite4ennv5enfq]
+module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table_attachment.these["SN-VLL-LZ-EXACS-NPR-BACKUP-KEY"]: Refreshing state... [id=ocid1.subnet.oc19.eu-madrid-2.aaaaaaaapzxknvaxdzhxhy6bnelwuyqykfwccruyrftnshskkcc2upjphvka/ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaxj3cpw5v7ck6pshlzysnpxep73cvbfv6wunmzcxesun4ewxnmkxa]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  ~ update in-place
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_cpe_device_shapes.cpe_device_shapes[0] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_cpe_device_shapes" "cpe_device_shapes" {
+      + cpe_device_shapes = (known after apply)
+      + id                = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_services.oci_services[0] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_services" "oci_services" {
+      + id       = (known after apply)
+      + services = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-EXACS-NPR-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaatri7xmitendke5zbqpwk3dzghwa7apab56eya5rb2fza"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-EXACS-PRO-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaa26l4e3e3jodcwszp52idisn7ntkehkfskz3zzbp7eliq"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-HUB-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaahaampmaqpuconyvwmecndp6epapf6uv4p2okvyd2qe4q"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.lpg_specific_route_tables["RT-VLL-LZ-HUB-MGMT-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "lpg_specific_route_tables" {
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaplxulbv5ftsmxk3t23zaqo6zbest5cc7epsnx3l5i7k2g6geivbq"
+        # (7 unchanged attributes hidden)
+
+      - route_rules {
+          - description       = "Route to Oracle Services Network through Service GW" -> null
+          - destination       = "all-vll-services-in-oracle-services-network" -> null
+          - destination_type  = "SERVICE_CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaao3zwviqb3hw7jylshx4zk4bbsyoipquitxuh5qu3xkkyx6uutjua" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to Oracle Services Network through Service GW"
+          + destination       = (known after apply)
+          + destination_type  = "SERVICE_CIDR_BLOCK"
+          + network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaao3zwviqb3hw7jylshx4zk4bbsyoipquitxuh5qu3xkkyx6uutjua"
+          + route_type        = (known after apply)
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaxj3cpw5v7ck6pshlzysnpxep73cvbfv6wunmzcxesun4ewxnmkxa"
+        # (7 unchanged attributes hidden)
+
+      - route_rules {
+          - description       = "Route to Oracle Services Network through Service GW" -> null
+          - destination       = "all-vll-services-in-oracle-services-network" -> null
+          - destination_type  = "SERVICE_CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      - route_rules {
+          - description       = "Route to the 0.0.0.0/0 through DRG" -> null
+          - destination       = "0.0.0.0/0" -> null
+          - destination_type  = "CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to Oracle Services Network through Service GW"
+          + destination       = (known after apply)
+          + destination_type  = "SERVICE_CIDR_BLOCK"
+          + network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa"
+          + route_type        = (known after apply)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to the 0.0.0.0/0 through DRG"
+          + destination       = "0.0.0.0/0"
+          + destination_type  = "CIDR_BLOCK"
+          + network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+          + route_type        = "STATIC"
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa26d4p6ngnmfwyddmi7ayygbwkypfgw5sxh4wb7kznmfuparwdwjq"
+        # (7 unchanged attributes hidden)
+
+      - route_rules {
+          - description       = "Route to Oracle Services Network through Service GW" -> null
+          - destination       = "all-vll-services-in-oracle-services-network" -> null
+          - destination_type  = "SERVICE_CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      - route_rules {
+          - description       = "Route to the 0.0.0.0/0 through DRG" -> null
+          - destination       = "0.0.0.0/0" -> null
+          - destination_type  = "CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to Oracle Services Network through Service GW"
+          + destination       = (known after apply)
+          + destination_type  = "SERVICE_CIDR_BLOCK"
+          + network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa"
+          + route_type        = (known after apply)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to the 0.0.0.0/0 through DRG"
+          + destination       = "0.0.0.0/0"
+          + destination_type  = "CIDR_BLOCK"
+          + network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+          + route_type        = "STATIC"
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaalajl2baakfooxs77yvz6qt3ybptz6vxrc3fapjnc37i53ijhywqa"
+        # (7 unchanged attributes hidden)
+
+      - route_rules {
+          - description       = "Route to Oracle Services Network through Service GW" -> null
+          - destination       = "all-vll-services-in-oracle-services-network" -> null
+          - destination_type  = "SERVICE_CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      - route_rules {
+          - description       = "Route to the 0.0.0.0/0 through DRG" -> null
+          - destination       = "0.0.0.0/0" -> null
+          - destination_type  = "CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to Oracle Services Network through Service GW"
+          + destination       = (known after apply)
+          + destination_type  = "SERVICE_CIDR_BLOCK"
+          + network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a"
+          + route_type        = (known after apply)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to the 0.0.0.0/0 through DRG"
+          + destination       = "0.0.0.0/0"
+          + destination_type  = "CIDR_BLOCK"
+          + network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+          + route_type        = "STATIC"
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaavysyvwdx5ejpjsmd5jxgvjam6oiflmsiidryhomite4ennv5enfq"
+        # (7 unchanged attributes hidden)
+
+      - route_rules {
+          - description       = "Route to Oracle Services Network through Service GW" -> null
+          - destination       = "all-vll-services-in-oracle-services-network" -> null
+          - destination_type  = "SERVICE_CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      - route_rules {
+          - description       = "Route to the 0.0.0.0/0 through DRG" -> null
+          - destination       = "0.0.0.0/0" -> null
+          - destination_type  = "CIDR_BLOCK" -> null
+          - network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa" -> null
+          - route_type        = "STATIC" -> null
+            # (1 unchanged attribute hidden)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to Oracle Services Network through Service GW"
+          + destination       = (known after apply)
+          + destination_type  = "SERVICE_CIDR_BLOCK"
+          + network_entity_id = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a"
+          + route_type        = (known after apply)
+        }
+      + route_rules {
+          + cidr_block        = (known after apply)
+          + description       = "Route to the 0.0.0.0/0 through DRG"
+          + destination       = "0.0.0.0/0"
+          + destination_type  = "CIDR_BLOCK"
+          + network_entity_id = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+          + route_type        = "STATIC"
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-NPR-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa"
+        # (8 unchanged attributes hidden)
+
+      - services {
+          - service_id   = "ocid1.service.oc19.eu-madrid-2.aaaaaaaaalasrvugb3zwk4lghxvnjnbgdmgywqhhywrnkx47yjkbt4vlfhxq" -> null
+          - service_name = "All VLL Services In Oracle Services Network" -> null
+        }
+      + services {
+          + service_id   = (known after apply)
+          + service_name = (known after apply)
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-PRO-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a"
+        # (8 unchanged attributes hidden)
+
+      - services {
+          - service_id   = "ocid1.service.oc19.eu-madrid-2.aaaaaaaaalasrvugb3zwk4lghxvnjnbgdmgywqhhywrnkx47yjkbt4vlfhxq" -> null
+          - service_name = "All VLL Services In Oracle Services Network" -> null
+        }
+      + services {
+          + service_id   = (known after apply)
+          + service_name = (known after apply)
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaao3zwviqb3hw7jylshx4zk4bbsyoipquitxuh5qu3xkkyx6uutjua"
+        # (8 unchanged attributes hidden)
+
+      - services {
+          - service_id   = "ocid1.service.oc19.eu-madrid-2.aaaaaaaaalasrvugb3zwk4lghxvnjnbgdmgywqhhywrnkx47yjkbt4vlfhxq" -> null
+          - service_name = "All VLL Services In Oracle Services Network" -> null
+        }
+      + services {
+          + service_id   = (known after apply)
+          + service_name = (known after apply)
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_region_subscriptions.these will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_identity_region_subscriptions" "these" {
+      + id                   = (known after apply)
+      + region_subscriptions = (known after apply)
+      + tenancy_id           = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_tenancy.this will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_identity_tenancy" "this" {
+      + defined_tags                          = (known after apply)
+      + description                           = (known after apply)
+      + freeform_tags                         = (known after apply)
+      + home_region_key                       = (known after apply)
+      + id                                    = (known after apply)
+      + name                                  = (known after apply)
+      + tenancy_id                            = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+      + upi_idcs_compatibility_layer_endpoint = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AUTHENTICITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaqxl7cnvybqoe36k4j6n7ot7o3ad3hpiaiclknohnlumr7z5mxtya"
+        name             = "ens-authenticity"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AVAILABILITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaamtykuxl7z7kecwlofbfuxpdjm2bagimktu7s7tj4o3qa4ohnowea"
+        name             = "ens-availability"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-CONFIDENTIALITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafxanb42k6tmcz5elqpvy5gwctzz5nvs45eumthqhjhucjmrzbufq"
+        name             = "ens-confidentiality"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-INTEGRITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaazsjnfio6irydjlbyumodoasprnjmrobbmmawxnszehgmg2nfufga"
+        name             = "ens-integrity"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-TRACEABILITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaenskrszzcs3meq7k5n7px6dzz657nor4rd5mn7p46ttz4urodk7q"
+        name             = "ens-traceability"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-CODE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaas4iukqceq7kkowric2ehdumve67pg5gxxwtov5uztfarxe6crqia"
+        name             = "application-code"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-NAME-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaad5jzdz2y7aedzthktttcireuonkd4rflqz44x34l7umd3tgxcleq"
+        name             = "application-name"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-BUSINESS-CRITICALITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxy576lbfa62hq57ixw7l7cymcii2qkux4xve5fjoj7ewvhzmy75a"
+        name             = "business-criticality"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-COST-CENTER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaavsvikjg3f7osihcs6aathmswrfruhbvlaaorobkvgu3ysnxrsjgq"
+        name             = "cost-center"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-DEPARTMENT-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafo5dn4sumk5habfsuc77a4uoygjinzkibpopd42orpxyh4gp4njq"
+        name             = "department"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-ENVIRONMENT-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaahhcnbwfhoestjmzzlnewukgxkcx7s6fk6issnxq2quxduvtrkkva"
+        name             = "environment"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-IAC-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxnwvcchaichbonqcriawdffy6ze5tnej46xyc2jz2mbynnqr54tq"
+        name             = "iac"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-NAME-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaajccu7kuj6q7rbte2jsqlnk23fvahd6xzjyzm53cyj6o7b33plfa"
+        name             = "name"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-OPERATIONAL-OWNER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa4nlc4els7tjtl7udg235wg6btydbxdtfbfd3h2nlxk2lkh3nh3ma"
+        name             = "operational-owner"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-TECHNICAL-OWNER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaplzefdtq2pljsle54hm367q4zbxlawu7y7puo3z2t53q5ybuvgba"
+        name             = "technical-owner"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-LZ-ROLE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa5nn6xvol36j5hhk7vl4t2h6jvj2nionfjbspjg22jx5jruyxveeq"
+        name             = "o-p-om2-tag-role-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ENS-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa3iliimrn4vxzbtpxutkshe52fu6qs4rbwcdnlvtxhcdybxgjzmeq"
+        name           = "o-p-om2-tagns-ens-001"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-GOV-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaad5ahmm2hnmoesuyygljfkjt63buqrgxpirzs7dohpnmp7qo4jaiq"
+        name           = "o-p-om2-tagns-gov-001"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ROLE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa6u3i3nhokejdygnepikolj7qp6647p3wum25s3dnpjtt7shlqzuq"
+        name           = "o-p-om2-tagns-name-001"
+        # (6 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 27 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run
+"terraform apply" now.
+PS C:\gitlab\test_orchestrator_central>

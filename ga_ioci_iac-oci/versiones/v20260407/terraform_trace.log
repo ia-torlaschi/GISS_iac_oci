@@ -1,0 +1,312 @@
+2026-03-19T13:12:51.135+0100 [INFO]  Terraform version: 1.14.5
+2026-03-19T13:12:51.179+0100 [DEBUG] using github.com/hashicorp/go-tfe v1.94.0
+2026-03-19T13:12:51.179+0100 [DEBUG] using github.com/hashicorp/hcl/v2 v2.24.0
+2026-03-19T13:12:51.179+0100 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2026-03-19T13:12:51.179+0100 [DEBUG] using github.com/zclconf/go-cty v1.16.3
+2026-03-19T13:12:51.179+0100 [INFO]  Go runtime version: go1.25.6
+2026-03-19T13:12:51.179+0100 [INFO]  CLI args: []string{"C:\\Terraform\\terraform.exe", "init", "-reconfigure", "-upgrade"}
+2026-03-19T13:12:51.180+0100 [TRACE] Stdout is a terminal of width 133
+2026-03-19T13:12:51.181+0100 [TRACE] Stderr is a terminal of width 133
+2026-03-19T13:12:51.181+0100 [TRACE] Stdin is a terminal
+2026-03-19T13:12:51.185+0100 [DEBUG] Attempting to open CLI config file: C:\Users\jorge.e.torlaschi\AppData\Roaming\terraform.rc
+2026-03-19T13:12:51.185+0100 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2026-03-19T13:12:51.187+0100 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2026-03-19T13:12:51.187+0100 [DEBUG] ignoring non-existing provider search directory C:\Users\jorge.e.torlaschi\AppData\Roaming\terraform.d\plugins
+2026-03-19T13:12:51.190+0100 [DEBUG] ignoring non-existing provider search directory C:\Users\jorge.e.torlaschi\AppData\Roaming\HashiCorp\Terraform\plugins
+2026-03-19T13:12:51.190+0100 [INFO]  CLI command args: []string{"init", "-reconfigure", "-upgrade"}
+2026-03-19T13:12:51.299+0100 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2026-03-19T13:12:51.300+0100 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2026-03-19T13:12:51.300+0100 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2026-03-19T13:12:51.300+0100 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2026-03-19T13:12:51.300+0100 [DEBUG] checking for provisioner in "."
+2026-03-19T13:12:51.300+0100 [DEBUG] checking for provisioner in "C:\\Terraform"
+2026-03-19T13:12:51.301+0100 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2026-03-19T13:12:51.301+0100 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2026-03-19T13:12:51.301+0100 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2026-03-19T13:12:51.356+0100 [TRACE] statemgr.Filesystem: read snapshot with lineage "90606ece-dcbd-5b9b-edd4-5a490acb24ed" serial 473
+2026-03-19T13:12:51.360+0100 [TRACE] ModuleInstaller: installing child modules for . into .terraform\modules
+2026-03-19T13:12:51.365+0100 [DEBUG] Module installer: begin oci_lz_orchestrator
+2026-03-19T13:12:51.365+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator prior to install of oci_lz_orchestrator
+2026-03-19T13:12:51.365+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator has local path "../terraform-oci-modules-orchestrator"
+2026-03-19T13:12:51.365+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator uses directory from parent: ..\terraform-oci-modules-orchestrator
+2026-03-19T13:12:51.549+0100 [DEBUG] Module installer: oci_lz_orchestrator installed at ..\terraform-oci-modules-orchestrator
+2026-03-19T13:12:51.549+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_alarms
+2026-03-19T13:12:51.550+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_alarms prior to install of oci_lz_orchestrator.oci_lz_alarms
+2026-03-19T13:12:51.550+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_alarms address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//alarms?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:12:51.550+0100 [TRACE] getmodules: fetching "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_alarms"
+2026-03-19T13:13:02.912+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_alarms "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//alarms?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_alarms\alarms
+2026-03-19T13:13:02.999+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_alarms installed at .terraform\modules\oci_lz_orchestrator.oci_lz_alarms\alarms
+2026-03-19T13:13:03.000+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_bastions
+2026-03-19T13:13:03.000+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_bastions prior to install of oci_lz_orchestrator.oci_lz_bastions
+2026-03-19T13:13:03.000+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_bastions address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//bastion?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:13:03.000+0100 [TRACE] getmodules: fetching "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_bastions"
+2026-03-19T13:13:14.652+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_bastions "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//bastion?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_bastions\bastion
+2026-03-19T13:13:14.742+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_bastions installed at .terraform\modules\oci_lz_orchestrator.oci_lz_bastions\bastion
+2026-03-19T13:13:14.742+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_budgets
+2026-03-19T13:13:14.742+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_budgets prior to install of oci_lz_orchestrator.oci_lz_budgets
+2026-03-19T13:13:14.743+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_budgets address "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git//budgets?ref=v0.1.6" will be handled by go-getter
+2026-03-19T13:13:14.743+0100 [TRACE] getmodules: fetching "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git?ref=v0.1.6" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_budgets"
+2026-03-19T13:13:24.859+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_budgets "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git//budgets?ref=v0.1.6" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_budgets\budgets
+2026-03-19T13:13:24.925+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_budgets installed at .terraform\modules\oci_lz_orchestrator.oci_lz_budgets\budgets
+2026-03-19T13:13:24.925+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_cloud_guard
+2026-03-19T13:13:24.925+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_cloud_guard prior to install of oci_lz_orchestrator.oci_lz_cloud_guard
+2026-03-19T13:13:24.926+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_cloud_guard address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//cloud-guard?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:13:24.926+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_bastions to .terraform\modules\oci_lz_orchestrator.oci_lz_cloud_guard
+2026-03-19T13:13:28.076+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_cloud_guard "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//cloud-guard?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_cloud_guard\cloud-guard
+2026-03-19T13:13:28.093+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_cloud_guard installed at .terraform\modules\oci_lz_orchestrator.oci_lz_cloud_guard\cloud-guard
+2026-03-19T13:13:28.093+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_compartments
+2026-03-19T13:13:28.094+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_compartments prior to install of oci_lz_orchestrator.oci_lz_compartments
+2026-03-19T13:13:28.094+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_compartments address "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//compartments?ref=v0.3.3" will be handled by go-getter
+2026-03-19T13:13:28.095+0100 [TRACE] getmodules: fetching "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git?ref=v0.3.3" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_compartments"
+2026-03-19T13:13:40.785+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_compartments "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//compartments?ref=v0.3.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_compartments\compartments
+2026-03-19T13:13:40.840+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_compartments installed at .terraform\modules\oci_lz_orchestrator.oci_lz_compartments\compartments
+2026-03-19T13:13:40.841+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_compute
+2026-03-19T13:13:40.841+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_compute prior to install of oci_lz_orchestrator.oci_lz_compute
+2026-03-19T13:13:40.842+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_compute address "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git//cis-compute-storage?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:13:40.842+0100 [TRACE] getmodules: fetching "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git?ref=v0.2.3" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_compute"
+2026-03-19T13:13:53.758+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_compute "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git//cis-compute-storage?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_compute\cis-compute-storage
+2026-03-19T13:13:53.926+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_compute installed at .terraform\modules\oci_lz_orchestrator.oci_lz_compute\cis-compute-storage
+2026-03-19T13:13:53.926+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_dynamic_groups
+2026-03-19T13:13:53.926+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_dynamic_groups prior to install of oci_lz_orchestrator.oci_lz_dynamic_groups
+2026-03-19T13:13:53.928+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_dynamic_groups address "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//dynamic-groups?ref=v0.3.3" will be handled by go-getter
+2026-03-19T13:13:53.928+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git?ref=v0.3.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_compartments to .terraform\modules\oci_lz_orchestrator.oci_lz_dynamic_groups
+2026-03-19T13:13:59.394+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_dynamic_groups "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//dynamic-groups?ref=v0.3.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_dynamic_groups\dynamic-groups
+2026-03-19T13:13:59.405+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_dynamic_groups installed at .terraform\modules\oci_lz_orchestrator.oci_lz_dynamic_groups\dynamic-groups
+2026-03-19T13:13:59.405+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_events
+2026-03-19T13:13:59.405+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_events prior to install of oci_lz_orchestrator.oci_lz_events
+2026-03-19T13:13:59.406+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_events address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//events?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:13:59.406+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_events
+2026-03-19T13:14:03.581+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_events "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//events?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_events\events
+2026-03-19T13:14:03.601+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_events installed at .terraform\modules\oci_lz_orchestrator.oci_lz_events\events
+2026-03-19T13:14:03.602+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_groups
+2026-03-19T13:14:03.602+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_groups prior to install of oci_lz_orchestrator.oci_lz_groups
+2026-03-19T13:14:03.603+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_groups address "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//groups?ref=v0.3.3" will be handled by go-getter
+2026-03-19T13:14:03.603+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git?ref=v0.3.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_compartments to .terraform\modules\oci_lz_orchestrator.oci_lz_groups
+2026-03-19T13:14:07.406+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_groups "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//groups?ref=v0.3.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_groups\groups
+2026-03-19T13:14:07.419+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_groups installed at .terraform\modules\oci_lz_orchestrator.oci_lz_groups\groups
+2026-03-19T13:14:07.419+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_home_region_events
+2026-03-19T13:14:07.419+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_home_region_events prior to install of oci_lz_orchestrator.oci_lz_home_region_events
+2026-03-19T13:14:07.420+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_home_region_events address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//events?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:14:07.420+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_home_region_events
+2026-03-19T13:14:09.985+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_home_region_events "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//events?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_home_region_events\events
+2026-03-19T13:14:10.011+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_home_region_events installed at .terraform\modules\oci_lz_orchestrator.oci_lz_home_region_events\events
+2026-03-19T13:14:10.011+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_identity_domains
+2026-03-19T13:14:10.011+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_identity_domains prior to install of oci_lz_orchestrator.oci_lz_identity_domains
+2026-03-19T13:14:10.011+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_identity_domains address "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//identity-domains?ref=v0.3.3" will be handled by go-getter
+2026-03-19T13:14:10.011+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git?ref=v0.3.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_compartments to .terraform\modules\oci_lz_orchestrator.oci_lz_identity_domains
+2026-03-19T13:14:13.591+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_identity_domains "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//identity-domains?ref=v0.3.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_identity_domains\identity-domains
+2026-03-19T13:14:13.610+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_identity_domains installed at .terraform\modules\oci_lz_orchestrator.oci_lz_identity_domains\identity-domains
+2026-03-19T13:14:13.610+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_logging
+2026-03-19T13:14:13.610+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_logging prior to install of oci_lz_orchestrator.oci_lz_logging
+2026-03-19T13:14:13.611+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_logging address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//logging?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:14:13.611+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_logging
+2026-03-19T13:14:16.030+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_logging "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//logging?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_logging\logging
+2026-03-19T13:14:16.049+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_logging installed at .terraform\modules\oci_lz_orchestrator.oci_lz_logging\logging
+2026-03-19T13:14:16.049+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_network
+2026-03-19T13:14:16.049+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_network prior to install of oci_lz_orchestrator.oci_lz_network
+2026-03-19T13:14:16.049+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_network address "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git?ref=v0.8.1" will be handled by go-getter
+2026-03-19T13:14:16.049+0100 [TRACE] getmodules: fetching "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git?ref=v0.8.1" to ".terraform\\modules\\oci_lz_orchestrator.oci_lz_network"
+2026-03-19T13:14:29.542+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_network "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git?ref=v0.8.1" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_network
+2026-03-19T13:14:30.151+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_network installed at .terraform\modules\oci_lz_orchestrator.oci_lz_network
+2026-03-19T13:14:30.151+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_network.l7_load_balancers
+2026-03-19T13:14:30.151+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_network.l7_load_balancers prior to install of oci_lz_orchestrator.oci_lz_network.l7_load_balancers
+2026-03-19T13:14:30.152+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_network.l7_load_balancers has local path "./modules/l7_load_balancers"
+2026-03-19T13:14:30.152+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_network.l7_load_balancers uses directory from parent: .terraform\modules\oci_lz_orchestrator.oci_lz_network\modules\l7_load_balancers
+2026-03-19T13:14:30.368+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_network.l7_load_balancers installed at .terraform\modules\oci_lz_orchestrator.oci_lz_network\modules\l7_load_balancers
+2026-03-19T13:14:30.368+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_nlb
+2026-03-19T13:14:30.368+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_nlb prior to install of oci_lz_orchestrator.oci_lz_nlb
+2026-03-19T13:14:30.369+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_nlb address "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git//modules/nlb?ref=v0.8.1" will be handled by go-getter
+2026-03-19T13:14:30.369+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git?ref=v0.8.1" from .terraform\modules\oci_lz_orchestrator.oci_lz_network to .terraform\modules\oci_lz_orchestrator.oci_lz_nlb
+2026-03-19T13:15:26.648+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_nlb "git::https://github.com/oci-landing-zones/terraform-oci-modules-networking.git//modules/nlb?ref=v0.8.1" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_nlb\modules\nlb
+2026-03-19T13:15:26.661+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_nlb installed at .terraform\modules\oci_lz_orchestrator.oci_lz_nlb\modules\nlb
+2026-03-19T13:15:26.661+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_notifications
+2026-03-19T13:15:26.661+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_notifications prior to install of oci_lz_orchestrator.oci_lz_notifications
+2026-03-19T13:15:26.661+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_notifications address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//notifications?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:15:26.662+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_notifications
+2026-03-19T13:15:29.546+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_notifications "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//notifications?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_notifications\notifications
+2026-03-19T13:15:29.558+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_notifications installed at .terraform\modules\oci_lz_orchestrator.oci_lz_notifications\notifications
+2026-03-19T13:15:29.558+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_oke
+2026-03-19T13:15:29.558+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_oke prior to install of oci_lz_orchestrator.oci_lz_oke
+2026-03-19T13:15:29.559+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_oke address "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git//cis-oke?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:15:29.559+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_compute to .terraform\modules\oci_lz_orchestrator.oci_lz_oke
+2026-03-19T13:15:32.516+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_oke "git::https://github.com/oci-landing-zones/terraform-oci-modules-workloads.git//cis-oke?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_oke\cis-oke
+2026-03-19T13:15:32.537+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_oke installed at .terraform\modules\oci_lz_orchestrator.oci_lz_oke\cis-oke
+2026-03-19T13:15:32.537+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_policies
+2026-03-19T13:15:32.537+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_policies prior to install of oci_lz_orchestrator.oci_lz_policies
+2026-03-19T13:15:32.538+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_policies address "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//policies?ref=v0.3.3" will be handled by go-getter
+2026-03-19T13:15:32.538+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git?ref=v0.3.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_compartments to .terraform\modules\oci_lz_orchestrator.oci_lz_policies
+2026-03-19T13:15:36.285+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_policies "git::https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-iam.git//policies?ref=v0.3.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_policies\policies
+2026-03-19T13:15:36.331+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_policies installed at .terraform\modules\oci_lz_orchestrator.oci_lz_policies\policies
+2026-03-19T13:15:36.331+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_scanning
+2026-03-19T13:15:36.331+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_scanning prior to install of oci_lz_orchestrator.oci_lz_scanning
+2026-03-19T13:15:36.331+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_scanning address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//vss?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:15:36.331+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_bastions to .terraform\modules\oci_lz_orchestrator.oci_lz_scanning
+2026-03-19T13:15:37.860+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_scanning "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//vss?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_scanning\vss
+2026-03-19T13:15:37.874+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_scanning installed at .terraform\modules\oci_lz_orchestrator.oci_lz_scanning\vss
+2026-03-19T13:15:37.874+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_security_zones
+2026-03-19T13:15:37.874+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_security_zones prior to install of oci_lz_orchestrator.oci_lz_security_zones
+2026-03-19T13:15:37.874+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_security_zones address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//security-zones?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:15:37.874+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_bastions to .terraform\modules\oci_lz_orchestrator.oci_lz_security_zones
+2026-03-19T13:15:39.310+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_security_zones "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//security-zones?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_security_zones\security-zones
+2026-03-19T13:15:39.321+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_security_zones installed at .terraform\modules\oci_lz_orchestrator.oci_lz_security_zones\security-zones
+2026-03-19T13:15:39.322+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_service_connectors
+2026-03-19T13:15:39.322+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_service_connectors prior to install of oci_lz_orchestrator.oci_lz_service_connectors
+2026-03-19T13:15:39.322+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_service_connectors address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//service-connectors?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:15:39.322+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_service_connectors
+2026-03-19T13:15:42.006+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_service_connectors "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//service-connectors?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_service_connectors\service-connectors
+2026-03-19T13:15:42.038+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_service_connectors installed at .terraform\modules\oci_lz_orchestrator.oci_lz_service_connectors\service-connectors
+2026-03-19T13:15:42.038+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_streams
+2026-03-19T13:15:42.038+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_streams prior to install of oci_lz_orchestrator.oci_lz_streams
+2026-03-19T13:15:42.040+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_streams address "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//streams?ref=v0.2.4" will be handled by go-getter
+2026-03-19T13:15:42.040+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git?ref=v0.2.4" from .terraform\modules\oci_lz_orchestrator.oci_lz_alarms to .terraform\modules\oci_lz_orchestrator.oci_lz_streams
+2026-03-19T13:15:44.649+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_streams "git::https://github.com/oci-landing-zones/terraform-oci-modules-observability.git//streams?ref=v0.2.4" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_streams\streams
+2026-03-19T13:15:44.662+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_streams installed at .terraform\modules\oci_lz_orchestrator.oci_lz_streams\streams
+2026-03-19T13:15:44.662+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_tags
+2026-03-19T13:15:44.662+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_tags prior to install of oci_lz_orchestrator.oci_lz_tags
+2026-03-19T13:15:44.662+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_tags address "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git//tags?ref=v0.1.6" will be handled by go-getter
+2026-03-19T13:15:44.662+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git?ref=v0.1.6" from .terraform\modules\oci_lz_orchestrator.oci_lz_budgets to .terraform\modules\oci_lz_orchestrator.oci_lz_tags
+2026-03-19T13:15:46.655+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_tags "git::https://github.com/oci-landing-zones/terraform-oci-modules-governance.git//tags?ref=v0.1.6" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_tags\tags
+2026-03-19T13:15:46.670+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_tags installed at .terraform\modules\oci_lz_orchestrator.oci_lz_tags\tags
+2026-03-19T13:15:46.670+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_vaults
+2026-03-19T13:15:46.670+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_vaults prior to install of oci_lz_orchestrator.oci_lz_vaults
+2026-03-19T13:15:46.671+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_vaults address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//vaults?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:15:46.671+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_bastions to .terraform\modules\oci_lz_orchestrator.oci_lz_vaults
+2026-03-19T13:15:48.037+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_vaults "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//vaults?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_vaults\vaults
+2026-03-19T13:15:48.046+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_vaults installed at .terraform\modules\oci_lz_orchestrator.oci_lz_vaults\vaults
+2026-03-19T13:15:48.047+0100 [DEBUG] Module installer: begin oci_lz_orchestrator.oci_lz_zpr
+2026-03-19T13:15:48.047+0100 [TRACE] ModuleInstaller: cleaning directory .terraform\modules\oci_lz_orchestrator.oci_lz_zpr prior to install of oci_lz_orchestrator.oci_lz_zpr
+2026-03-19T13:15:48.047+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_zpr address "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//zpr?ref=v0.2.3" will be handled by go-getter
+2026-03-19T13:15:48.048+0100 [TRACE] getmodules: copying previous install of "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git?ref=v0.2.3" from .terraform\modules\oci_lz_orchestrator.oci_lz_bastions to .terraform\modules\oci_lz_orchestrator.oci_lz_zpr
+2026-03-19T13:15:49.435+0100 [TRACE] ModuleInstaller: oci_lz_orchestrator.oci_lz_zpr "git::https://github.com/oci-landing-zones/terraform-oci-modules-security.git//zpr?ref=v0.2.3" was downloaded to .terraform\modules\oci_lz_orchestrator.oci_lz_zpr\zpr
+2026-03-19T13:15:49.446+0100 [DEBUG] Module installer: oci_lz_orchestrator.oci_lz_zpr installed at .terraform\modules\oci_lz_orchestrator.oci_lz_zpr\zpr
+2026-03-19T13:15:49.446+0100 [TRACE] modsdir: writing modules manifest to .terraform\modules\modules.json
+2026-03-19T13:15:49.889+0100 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2026-03-19T13:15:49.889+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/.well-known/terraform.json
+2026-03-19T13:15:52.102+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/http/versions
+2026-03-19T13:15:52.103+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/http/versions
+2026-03-19T13:15:52.289+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/template/versions
+2026-03-19T13:15:52.289+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/template/versions
+2026-03-19T13:15:52.525+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/oracle/oci/versions
+2026-03-19T13:15:52.525+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/oracle/oci/versions
+2026-03-19T13:15:52.820+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/local/versions
+2026-03-19T13:15:52.820+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/local/versions
+2026-03-19T13:15:52.993+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/time/versions
+2026-03-19T13:15:52.993+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/time/versions
+2026-03-19T13:15:53.159+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/null/versions
+2026-03-19T13:15:53.159+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/null/versions
+2026-03-19T13:15:53.333+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:15:53.333+0100 [TRACE] getproviders.SearchLocalDirectory: failed to resolve symlinks for .terraform\providers: GetFileAttributesEx .terraform\providers: The system cannot find the file specified.
+2026-03-19T13:15:53.333+0100 [TRACE] providercache.fillMetaCache: error while scanning directory .terraform\providers: cannot search .terraform\providers: GetFileAttributesEx .terraform\providers: The system cannot find the file specified.
+2026-03-19T13:15:53.333+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/template/2.2.0/download/windows/amd64
+2026-03-19T13:15:53.333+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/template/2.2.0/download/windows/amd64
+2026-03-19T13:15:53.544+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_SHA256SUMS
+2026-03-19T13:15:53.544+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_SHA256SUMS
+2026-03-19T13:15:53.963+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:15:53.963+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:15:54.109+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/template v2.2.0 from https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_windows_amd64.zip
+2026-03-19T13:15:54.112+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-template/2.2.0/terraform-provider-template_2.2.0_windows_amd64.zip
+2026-03-19T13:15:55.377+0100 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-03-19T13:15:55.589+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:15:55.594+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:15:55.594+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:15:56.787+0100 [TRACE] providercache.fillMetaCache: using cached result from previous scan of .terraform\providers
+2026-03-19T13:15:56.787+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/oracle/oci/8.5.0/download/windows/amd64
+2026-03-19T13:15:56.787+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/oracle/oci/8.5.0/download/windows/amd64
+2026-03-19T13:15:57.024+0100 [DEBUG] GET https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_SHA256SUMS
+2026-03-19T13:15:57.024+0100 [TRACE] HTTP client GET request to https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_SHA256SUMS
+2026-03-19T13:15:57.518+0100 [TRACE] HTTP client GET request to https://release-assets.githubusercontent.com/github-production-release-asset/72815297/383d6b81-f1b0-4cd6-bda4-b17a28eb96d4?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-03-19T12%3A59%3A59Z&rscd=attachment%3B+filename%3Dterraform-provider-oci_8.5.0_SHA256SUMS&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-03-19T11%3A59%3A01Z&ske=2026-03-19T12%3A59%3A59Z&sks=b&skv=2018-11-09&sig=tOdOW4PAIGCwC6GLuTvnKvfuiirhUgteCsV7oNygjBM%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3MzkyMjg1NywibmJmIjoxNzczOTIyNTU3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.NY_wlTfICgjBMfaxw4TExvzNyUfElOu7znUvhC1TzcQ&response-content-disposition=attachment%3B%20filename%3Dterraform-provider-oci_8.5.0_SHA256SUMS&response-content-type=application%2Foctet-stream
+2026-03-19T13:15:57.827+0100 [DEBUG] GET https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_SHA256SUMS.sig
+2026-03-19T13:15:57.827+0100 [TRACE] HTTP client GET request to https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_SHA256SUMS.sig
+2026-03-19T13:15:58.060+0100 [TRACE] HTTP client GET request to https://release-assets.githubusercontent.com/github-production-release-asset/72815297/ff188e89-08ac-4f4a-a0c6-f770f5b370a3?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-03-19T12%3A59%3A23Z&rscd=attachment%3B+filename%3Dterraform-provider-oci_8.5.0_SHA256SUMS.sig&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-03-19T11%3A58%3A39Z&ske=2026-03-19T12%3A59%3A23Z&sks=b&skv=2018-11-09&sig=ljdL%2Bv5KLcak1FF9%2FLsYPQ16chyvnmJh8TDFLkcnTos%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3MzkyMjg1NywibmJmIjoxNzczOTIyNTU3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.NY_wlTfICgjBMfaxw4TExvzNyUfElOu7znUvhC1TzcQ&response-content-disposition=attachment%3B%20filename%3Dterraform-provider-oci_8.5.0_SHA256SUMS.sig&response-content-type=application%2Foctet-stream
+2026-03-19T13:15:58.161+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/oracle/oci v8.5.0 from https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_windows_amd64.zip
+2026-03-19T13:15:58.162+0100 [TRACE] HTTP client GET request to https://github.com/oracle/terraform-provider-oci/releases/download/v8.5.0/terraform-provider-oci_8.5.0_windows_amd64.zip
+2026-03-19T13:15:58.740+0100 [TRACE] HTTP client GET request to https://release-assets.githubusercontent.com/github-production-release-asset/72815297/03ddb38f-ad01-4009-9eaa-d4a6bb2407a5?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-03-19T12%3A58%3A14Z&rscd=attachment%3B+filename%3Dterraform-provider-oci_8.5.0_windows_amd64.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-03-19T11%3A57%3A20Z&ske=2026-03-19T12%3A58%3A14Z&sks=b&skv=2018-11-09&sig=j6AeigACnpbprd1rGCH3UT%2BWFG%2Bspi9qKmvDbluKtwc%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3MzkyNDM1OCwibmJmIjoxNzczOTIyNTU4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Y4h03m1KynYOa_xHPLnYTTBnR1VMwSJu9aQaaNUPnVU&response-content-disposition=attachment%3B%20filename%3Dterraform-provider-oci_8.5.0_windows_amd64.zip&response-content-type=application%2Foctet-stream
+2026-03-19T13:16:05.159+0100 [DEBUG] Provider signed by 1533A49284137CEB Tf_oci_pub (GPG key for the signing) <TF-OCI-PUB_WW@ORACLE.COM>
+2026-03-19T13:16:07.338+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:16:07.344+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:16:07.346+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/oracle/oci v8.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64
+2026-03-19T13:16:07.347+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:16:07.347+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64 as a candidate package for registry.terraform.io/oracle/oci 8.5.0
+2026-03-19T13:16:07.717+0100 [TRACE] providercache.fillMetaCache: using cached result from previous scan of .terraform\providers
+2026-03-19T13:16:07.717+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/local/2.7.0/download/windows/amd64
+2026-03-19T13:16:07.717+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/local/2.7.0/download/windows/amd64
+2026-03-19T13:16:07.921+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_SHA256SUMS
+2026-03-19T13:16:07.921+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_SHA256SUMS
+2026-03-19T13:16:08.117+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:08.117+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:08.252+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/local v2.7.0 from https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_windows_amd64.zip
+2026-03-19T13:16:08.255+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-local/2.7.0/terraform-provider-local_2.7.0_windows_amd64.zip
+2026-03-19T13:16:10.223+0100 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-03-19T13:16:11.135+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:16:11.146+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/local v2.7.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64
+2026-03-19T13:16:11.148+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:16:11.150+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/oracle/oci v8.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64
+2026-03-19T13:16:11.150+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/local 2.7.0
+2026-03-19T13:16:11.150+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:16:11.150+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64 as a candidate package for registry.terraform.io/oracle/oci 8.5.0
+2026-03-19T13:16:11.340+0100 [TRACE] providercache.fillMetaCache: using cached result from previous scan of .terraform\providers
+2026-03-19T13:16:11.341+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/time/0.13.1/download/windows/amd64
+2026-03-19T13:16:11.341+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/time/0.13.1/download/windows/amd64
+2026-03-19T13:16:11.570+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_SHA256SUMS
+2026-03-19T13:16:11.571+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_SHA256SUMS
+2026-03-19T13:16:11.842+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:11.842+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:11.988+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/time v0.13.1 from https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_windows_amd64.zip
+2026-03-19T13:16:11.990+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-time/0.13.1/terraform-provider-time_0.13.1_windows_amd64.zip
+2026-03-19T13:16:12.634+0100 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-03-19T13:16:13.831+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:16:13.833+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/local v2.7.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64
+2026-03-19T13:16:13.833+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:16:13.834+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/time v0.13.1 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64
+2026-03-19T13:16:13.835+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/oracle/oci v8.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64
+2026-03-19T13:16:13.835+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/local 2.7.0
+2026-03-19T13:16:13.835+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:16:13.835+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/time 0.13.1
+2026-03-19T13:16:13.835+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64 as a candidate package for registry.terraform.io/oracle/oci 8.5.0
+2026-03-19T13:16:13.943+0100 [TRACE] providercache.fillMetaCache: using cached result from previous scan of .terraform\providers
+2026-03-19T13:16:13.943+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/null/3.2.4/download/windows/amd64
+2026-03-19T13:16:13.943+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/null/3.2.4/download/windows/amd64
+2026-03-19T13:16:14.212+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_SHA256SUMS
+2026-03-19T13:16:14.212+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_SHA256SUMS
+2026-03-19T13:16:14.529+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:14.529+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:14.763+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/null v3.2.4 from https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_windows_amd64.zip
+2026-03-19T13:16:14.766+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-null/3.2.4/terraform-provider-null_3.2.4_windows_amd64.zip
+2026-03-19T13:16:15.675+0100 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-03-19T13:16:16.567+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:16:16.570+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/local v2.7.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64
+2026-03-19T13:16:16.573+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/null v3.2.4 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\null\3.2.4\windows_amd64
+2026-03-19T13:16:16.575+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:16:16.575+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/time v0.13.1 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64
+2026-03-19T13:16:16.575+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/oracle/oci v8.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64
+2026-03-19T13:16:16.575+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/local 2.7.0
+2026-03-19T13:16:16.575+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\null\3.2.4\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/null 3.2.4
+2026-03-19T13:16:16.575+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:16:16.575+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/time 0.13.1
+2026-03-19T13:16:16.575+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64 as a candidate package for registry.terraform.io/oracle/oci 8.5.0
+2026-03-19T13:16:16.614+0100 [TRACE] providercache.fillMetaCache: using cached result from previous scan of .terraform\providers
+2026-03-19T13:16:16.614+0100 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/http/3.5.0/download/windows/amd64
+2026-03-19T13:16:16.614+0100 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/http/3.5.0/download/windows/amd64
+2026-03-19T13:16:16.936+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_SHA256SUMS
+2026-03-19T13:16:16.936+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_SHA256SUMS
+2026-03-19T13:16:17.163+0100 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:17.163+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_SHA256SUMS.72D7468F.sig
+2026-03-19T13:16:17.294+0100 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/http v3.5.0 from https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_windows_amd64.zip
+2026-03-19T13:16:17.296+0100 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-http/3.5.0/terraform-provider-http_3.5.0_windows_amd64.zip
+2026-03-19T13:16:18.191+0100 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-03-19T13:16:19.231+0100 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-03-19T13:16:19.233+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/http v3.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\http\3.5.0\windows_amd64
+2026-03-19T13:16:19.235+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/local v2.7.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64
+2026-03-19T13:16:19.236+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/null v3.2.4 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\null\3.2.4\windows_amd64
+2026-03-19T13:16:19.236+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/template v2.2.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64
+2026-03-19T13:16:19.237+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/time v0.13.1 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64
+2026-03-19T13:16:19.239+0100 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/oracle/oci v8.5.0 for windows_amd64 at .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\template\2.2.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/template 2.2.0
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\time\0.13.1\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/time 0.13.1
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\oracle\oci\8.5.0\windows_amd64 as a candidate package for registry.terraform.io/oracle/oci 8.5.0
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\http\3.5.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/http 3.5.0
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\local\2.7.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/local 2.7.0
+2026-03-19T13:16:19.239+0100 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\null\3.2.4\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/null 3.2.4

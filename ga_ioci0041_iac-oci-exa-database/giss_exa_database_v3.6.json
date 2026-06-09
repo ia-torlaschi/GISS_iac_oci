@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "repository": "iac-oci-exa-database",
+    "stack_id": "41",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud DB admin (grp-admi-database-001)",
+    "description": "Capa de bases de datos sobre Exadata: VM Clusters, DB Homes, Databases, PDBs, backups y Data Safe. Asignado al compartment o-p-om2-cmp-exacsdb-001 con TBAC tag o-p-om2-tag-role-exadb-001.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity",
+      "20-network",
+      "40-exa-infra"
+    ],
+    "deploy_order": 6,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "oci_database_cloud_vm_cluster (lookup de cloud_exadata_infrastructure_id por nombre)",
+      "oci_database_db_home",
+      "oci_database_database",
+      "oci_database_pluggable_database",
+      "oci_database_backup_destination (a buckets del stack 70-storage)",
+      "oci_data_safe_target_database (registro en Data Safe)"
+    ],
+    "iam_dependencies": [
+      "PCY-LZ-PLATFORM-EXACS-DB-ADMIN-KEY autoriza al grupo grp-admi-database-001 con TBAC sobre tag-role-exadb-001",
+      "PCY-LZ-PLATFORM-EXACS-GENERIC-ADMIN-KEY para operaciones compartidas entre infra y DBA"
+    ],
+    "notes": [
+      "output_path se deja deshabilitado por defecto. Activarlo únicamente cuando sea necesario exportar outputs reutilizables para otros stacks dependientes."
+    ]
+  },
+  "output_path": "./dependencies" 
+}

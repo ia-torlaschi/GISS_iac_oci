@@ -1,0 +1,4 @@
+.terraform/
+.terraform_mirror/
+*.pem 
+*.auto.tfvars.json

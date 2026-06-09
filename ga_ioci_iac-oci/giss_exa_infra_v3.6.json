@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "repository": "iac-oci-exa-infra",
+    "stack_id": "40",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud Infra admin (grp-admi-infra-001)",
+    "description": "Infraestructura física Exadata: Cloud Exadata Infrastructure (CEI) y scheduling policies/windows para mantenimiento. Asignado al compartment o-p-om2-cmp-exacsinfra-001 con TBAC tag o-p-om2-tag-role-exainfra-001.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity",
+      "20-network"
+    ],
+    "deploy_order": 5,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "oci_database_cloud_exadata_infrastructure (1 instancia para PRO, 1 para NPR si aplica)",
+      "oci_database_cloud_exadata_infrastructure_scheduling_policy",
+      "oci_database_cloud_exadata_infrastructure_scheduling_window",
+      "Vinculación con subnet client del spoke ExaCS correspondiente"
+    ],
+    "iam_dependencies": [
+      "PCY-LZ-PLATFORM-EXACS-INFRA-ADMIN-KEY autoriza al grupo grp-admi-infra-001 con TBAC sobre tag-role-exainfra-001"
+    ],
+    "integration_notes": []
+  }
+}

@@ -1,0 +1,9 @@
+.terraform/
+.terraform_mirror/
+terraform.tfstate
+terraform.tfstate.backup
+*.pem 
+*.auto.tfvars.json 
+tfplan
+tfplan.txt
+tfplan.json

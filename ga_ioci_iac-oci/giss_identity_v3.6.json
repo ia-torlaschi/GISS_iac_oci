@@ -1,0 +1,430 @@
+{
+  "_meta": {
+    "repository": "iac-oci-identity",
+    "stack_id": "10",
+    "version": "3.6",
+    "responsible_team": "Cloud IAM admin",
+    "description": "Identidad y permisos. Contiene 1 Identity Domain (license=free), 8 grupos nativos OCI y 18 políticas IAM (incluye TBAC y federación Entra ID con grupos 99GISS.*).",
+    "depends_on": [
+      "00-foundation"
+    ],
+    "deploy_order": 2,
+    "source_v3_5": [
+      "giss_iam_v3.5.json -> identity_domain_groups_configuration",
+      "giss_iam_v3.5.json -> identity_domains_configuration",
+      "giss_iam_v3.5.json -> policies_configuration"
+    ],
+    "notes": [
+      "Las políticas referencian compartments por NOMBRE, no OCID, lo que mantiene independencia del state de foundation.",
+      "Excepción: PCY-COST-ADMIN-KEY y PCY-BILLING-VIEWER-KEY contienen OCID literal del tenancy usage-report. Considerar parametrización vía variable del stack."
+    ]
+  },
+  "identity_domain_groups_configuration": {
+    "default_identity_domain_id": "COMMON-DOMAIN",
+    "groups": {
+      "GRP-AUDITORS-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-auditors-001",
+        "description": "Tenancy global read access group(for security auditing or health checks)."
+      },
+      "GRP-COST-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-costs-001",
+        "description": "Tenancy global cost control group."
+      },
+      "GRP-IAM-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-iam-001",
+        "description": "Tenancy global Identity and access management administrator group."
+      },
+      "GRP-NETWORK-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-network-001",
+        "description": "Shared network administration group, including common OE network elements."
+      },
+      "GRP-SECURITY-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-security-001",
+        "description": "Shared security administration group, including common OE network elements."
+      },
+      "GRP-GLOBALSERV-ADMIN-KEY": {
+        "name": "o-p-om2-grp-admi-globalserv-001",
+        "description": "Tenancy Administrators for global services, as Cloud Guard."
+      },
+      "GRP-LZ-INFRA-ADMINS": {
+        "name": "o-p-om2-grp-admi-infra-001",
+        "description": "Global exacs administration, Infra Team group"
+      },
+      "GRP-LZ-DB-ADMINS": {
+        "name": "o-p-om2-grp-admi-database-001",
+        "description": "Global exacs administration, DBA Team group"
+      }
+    }
+  },
+  "identity_domains_configuration": {
+    "default_compartment_id": null,
+    "default_defined_tags": null,
+    "default_freeform_tags": null,
+    "identity_domains": {
+      "COMMON-DOMAIN": {
+        "display_name": "o-p-om2-id-common-001",
+        "description": "One-OE LZ common Identity Domain",
+        "compartment_id": null,
+        "admin_email": null,
+        "admin_first_name": null,
+        "admin_last_name": null,
+        "admin_user_name": null,
+        "allow_signing_cert_public_access": false,
+        "home_region": null,
+        "is_hidden_on_login": false,
+        "is_notification_bypassed": false,
+        "is_primary_email_required": false,
+        "license_type": "free",
+        "replica_region": null
+      }
+    }
+  },
+  "policies_configuration": {
+    "enable_cis_benchmark_checks": "false",
+    "supplied_policies": {
+      "PCY-AUDITING-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-auda-001",
+        "description": "Allow o-p-om2-grp-admi-auditors-001 group users to read all the resources in the tenancy.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to inspect all-resources in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read instances in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read load-balancers in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read buckets in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read nat-gateways in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read public-ips in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read file-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read instance-configurations in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read network-security-groups in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read resource-availability in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read audit-events in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read users in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to use cloud-shell in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read vss-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read usage-budgets in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read usage-reports in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read data-safe-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read vaults in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read keys in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read tag-namespaces in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to read serviceconnectors in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001' to use ons-family in tenancy where any {request.operation!=/Create*/, request.operation!=/Update*/, request.operation!=/Delete*/, request.operation!=/Change*/}"
+        ]
+      },
+      "PCY-COST-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-costs-001",
+        "description": "Allow o-p-om2-grp-admi-costs-001 group users to manage all budget resources in the tenancy.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "define tenancy usage-report as ocid1.tenancy.oc19..aaaaaaaaqukxloflofczrs2yrqwemn356zrtyo2hdnjtu3gn3mg5e3ve6g4a",
+          "endorse group  'Administrators', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-costs-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_admin', 'o-p-om2-id-common-001'/'99GISS.ORACLE_Administradores'  to read objects in tenancy usage-report",
+          "allow group  'Administrators', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-costs-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_admin', 'o-p-om2-id-common-001'/'99GISS.ORACLE_Administradores'  to manage usage-report in tenancy",
+          "allow group  'Administrators', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-costs-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_admin', 'o-p-om2-id-common-001'/'99GISS.ORACLE_Administradores'  to manage usage-budgets in tenancy"
+        ]
+      },
+      "PCY-GENERIC-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-gadm-001",
+        "description": "Allow defined groups to use generic services.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use cloud-shell in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use cloud-shell-public-network in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read usage-budgets in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read usage-reports in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-auditors-001', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin', 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read objectstorage-namespaces in tenancy",
+          "allow any-user to inspect tag-namespaces in tenancy where target.tag-namespace.name='o-p-om2-tagns-name-001'",
+          "allow any-user to inspect tag-namespaces in tenancy where target.tag-namespace.name='o-p-om2-tagns-gov-001'",
+          "allow any-user to inspect tag-namespaces in tenancy where target.tag-namespace.name='o-p-om2-tagns-ens-001'"
+        ]
+      },
+      "PCY-IAM-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-iam-001",
+        "description": "Allow o-p-om2-grp-admi-iam-001 group users to manage IAM resources in the tenancy.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage policies in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage users in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to inspect groups in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage groups in tenancy where all {target.group.name != 'Administrators'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage identity-providers in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage dynamic-groups in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage authentication-policies in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage network-sources in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage quota in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage tag-defaults in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage tag-namespaces in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage orm-jobs in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-iam-001' to manage orm-config-source-providers in tenancy"
+        ]
+      },
+      "PCY-NETWORK-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-nadm-001",
+        "description": "Allow o-p-om2-grp-neta-001 group users to manage all network resources in the child compartments of o-p-om2-cmp-001 with the matching tags.",
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read all-resources in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage virtual-network-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage dns in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage load-balancers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage alarms in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage metrics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage orm-stacks in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage orm-jobs in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage orm-config-source-providers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read audit-events in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read work-requests in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage instance-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage volume-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001')), request.permission != 'VOLUME_BACKUP_DELETE', request.permission != 'VOLUME_DELETE', request.permission != 'BOOT_VOLUME_BACKUP_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage object-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001')), request.permission != 'OBJECT_DELETE', request.permission != 'BUCKET_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage file-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001')), request.permission != 'FILE_SYSTEM_DELETE', request.permission != 'MOUNT_TARGET_DELETE', request.permission != 'EXPORT_SET_DELETE', request.permission != 'FILE_SYSTEM_DELETE_SNAPSHOT', request.permission != 'FILE_SYSTEM_NFSv3_UNEXPORT'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage bastion-session in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage cloudevents-rules in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read instance-agent-plugins in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage keys in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use key-delegate in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage secret-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to manage repos in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read vss-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read ons-topics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use bastion in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use bastion-session in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to use vaults in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-network-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Networking_admin' to read logging-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))"
+        ]
+      },
+      "PCY-SECURITY-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-secua-001",
+        "description": "Allow o-p-om2-grp-admi-security-001 group users to manage all security resources in the child compartments of o-p-om2-cmp-001 with the matching tags.",
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage tag-namespaces in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage tag-defaults in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage repos in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read audit-events in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read app-catalog-listing in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read instance-images in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to inspect buckets in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read all-resources in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage instance-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage volume-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001')), request.permission != 'VOLUME_BACKUP_DELETE', request.permission != 'VOLUME_DELETE', request.permission != 'BOOT_VOLUME_BACKUP_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage object-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001')), request.permission != 'OBJECT_DELETE', request.permission != 'BUCKET_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage file-family in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001')), request.permission != 'FILE_SYSTEM_DELETE', request.permission != 'MOUNT_TARGET_DELETE', request.permission != 'EXPORT_SET_DELETE', request.permission != 'FILE_SYSTEM_DELETE_SNAPSHOT', request.permission != 'FILE_SYSTEM_NFSv3_UNEXPORT'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage vaults in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage keys in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage secret-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage logging-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage serviceconnectors in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage streams in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage ons-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage functions-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage waas-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage security-zone in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage orm-stacks in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage orm-jobs in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage orm-config-source-providers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage vss-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read work-requests in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage bastion-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read instance-agent-plugins in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage cloudevents-rules in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage alarms in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage metrics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to use key-delegate in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read virtual-network-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to use subnets in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to use network-security-groups in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to use vnics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage private-ips in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to read keys in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-security-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_Security_admin' to manage operator-control-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-security-001'))"
+        ]
+      },
+      "PCY-GLOBALSERV-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-globalserv-001",
+        "description": "Allow o-p-om2-grp-admi-globresou-001 group users to manage gloabal service, as cloud guard",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-globalserv-001' to manage cloudevents-rules in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-globalserv-001' to manage cloud-guard-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-globalserv-001' to read tenancies in tenancy"
+        ]
+      },
+      "PCY-SERVICES-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-srva-001",
+        "description": "Policy for all supported services in the tenancy.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow service cloudguard to manage cloudevents-rules in tenancy where target.rule.type='managed'",
+          "allow service cloudguard to read tenancies in tenancy",
+          "allow service cloudguard to read all-resources in tenancy",
+          "allow service cloudguard to use network-security-groups in tenancy",
+          "allow any-user to { WLP_BOM_READ, WLP_CONFIG_READ } in tenancy where all { request.principal.id = target.agent.id, request.principal.type = 'workloadprotectionagent'}",
+          "endorse any-user to { WLP_LOG_CREATE, WLP_METRICS_CREATE, WLP_ADHOC_QUERY_READ, WLP_ADHOC_RESULTS_CREATE } in any-tenancy where all { request.principal.id = target.agent.id, request.principal.type = 'workloadprotectionagent' }",
+          "allow service vulnerability-scanning-service to manage instances in tenancy",
+          "allow service vulnerability-scanning-service to read compartments in tenancy",
+          "allow service vulnerability-scanning-service to read repos in tenancy",
+          "allow service vulnerability-scanning-service to read vnics in tenancy",
+          "allow service vulnerability-scanning-service to read vnic-attachments in tenancy",
+          "allow service osms to read instances in tenancy",
+          "allow service blockstorage, oke, streaming to use keys in tenancy"
+        ]
+      },
+      "PCY-LZ-PLATFORM-EXACS-GENERIC-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-eadm-001",
+        "description": "Policy which allows the groups o-p-om2-grp-admi-infra-001 and o-p-om2-grp-admi-database-001 to have shared privilegies in all exacs compartments",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to use cloud-shell in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read compartments in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read all-resources in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage alarms in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage metrics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read audit-events in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read work-requests in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage cloudevents-rules in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001','o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage ons-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exa-001'))"
+        ]
+      },
+      "PCY-LZ-PLATFORM-EXACS-DB-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-edb-001",
+        "description": "Example policy which allows the o-p-om2-grp-admi-database-001 group users to manage databases in all the environments and projects.",
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage orm-stacks in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage orm-jobs in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage orm-config-source-providers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read audit-events in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read work-requests in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage data-safe-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage cloudevents-rules in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to use cloud-exadata-infrastructures in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001')), request.operation != 'ChangeCloudExadataInfrastructureCompartment', request.operation != 'AddStorageCapacityCloudExadataInfrastructure'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to use cloud-vmclusters in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001')), request.permission != 'CLOUD_VM_CLUSTER_UPDATE_SSH_KEY', request.permission != 'CLOUD_VM_CLUSTER_UPDATE_CPU', request.permission != 'CLOUD_VM_CLUSTER_UPDATE_MEMORY', request.permission !='CLOUD_VM_CLUSTER_UPDATE_LOCAL_STORAGE', request.permission != 'CLOUD_VM_CLUSTER_UPDATE_FILE_SYSTEM'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage backups in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage database-software-image in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage db-homes in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage databases in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage pluggable-databases in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage autonomous-databases in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage autonomous-backups in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage autonomous-container-databases in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exadb-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-database-001', 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to read virtual-network-family in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))"
+        ]
+      },
+      "PCY-LZ-PLATFORM-EXACS-INFRA-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-einf-001",
+        "description": "Example policy which allows the o-p-om2-grp-admi-infra-001 group users to manage the DB infra in all the environments and projects.",
+        "compartment_id": "CMP-LANDINGZONE-KEY",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage cloud-exadata-infrastructures in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage scheduling-policies in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage scheduling-windows in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage execution-windows in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage orm-stacks in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage orm-jobs in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage orm-config-source-providers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to read audit-events in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to read work-requests in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage cloudevents-rules in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage cloud-vmclusters in compartment o-p-om2-cmp-land-001 where all{sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001')), request.permission != 'CLOUD_VM_CLUSTER_UPDATE_GI_SOFTWARE', request.permission != 'CLOUD_VM_CLUSTER_UPDATE_EXADATA_STORAGE'}",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to use dbServers in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage dbnode-console-connection in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage dbnode-console-history in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage cloud-autonomous-vmclusters in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to use subnets in compartment o-p-om2-cmp-land-001  where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to use vnics in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to manage db-nodes in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-exainfra-001'))",
+          "allow group 'o-p-om2-id-common-001'/'o-p-om2-grp-admi-infra-001' to use database-software-images in compartment o-p-om2-cmp-land-001 where sets-intersect(target.resource.compartment.tag.o-p-om2-tagns-name-001.o-p-om2-tag-role-001, ('o-p-om2-tag-role-network-001'))"
+        ]
+      },
+      "PCY-TENANCY-ADMIN-001-KEY": {
+        "name": "o-p-om2-pcy-tenantadmin-001",
+        "description": "Tenancy administrators. Grants manage all-resources to ORACLE_Administradores, Cloud_Admin and Cloud_DB_admin groups.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.ORACLE_Administradores' to manage all-resources in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Admin' to manage all-resources in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_DB_admin' to manage all-resources in tenancy"
+        ]
+      },
+      "PCY-BILLING-VIEWER-KEY": {
+        "name": "o-p-om2-pcy-billv-001",
+        "description": "Read-only access to billing reports and budgets.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "define tenancy usage-report as ocid1.tenancy.oc19..aaaaaaaaqukxloflofczrs2yrqwemn356zrtyo2hdnjtu3gn3mg5e3ve6g4a",
+          "endorse group 'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to read objects in tenancy usage-report",
+          "allow group   'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to read instance-family in tenancy",
+          "allow group   'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to inspect all-resources in tenancy",
+          "allow group   'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to manage usage-report in tenancy",
+          "allow group   'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to manage usage-budgets in tenancy",
+          "allow group   'o-p-om2-id-common-001'/'99GISS.Cloud_Billing_viewer' to use cloud-shell in tenancy"
+        ]
+      },
+      "PCY-VIEWER-KEY": {
+        "name": "o-p-om2-pcy-viewer-001",
+        "description": "Global read-only viewer. Inspect all resources across the tenancy.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Viewer' to inspect all-resources in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Viewer' to use cloud-shell in tenancy"
+        ]
+      },
+      "PCY-MONITORING-KEY": {
+        "name": "o-p-om2-pcy-monit-001",
+        "description": "Monitoring administration. Manage metrics, alarms, logging and notification services in the Landing Zone.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to manage metrics in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to manage alarms in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to manage logging-family in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to manage serviceconnectors in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to manage ons-family in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to read audit-events in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to read work-requests in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Monitoring_admin' to use cloud-shell in tenancy"
+        ]
+      },
+      "PCY-STORAGE-KEY": {
+        "name": "o-p-om2-pcy-stora-001",
+        "description": "Storage administration. Manage object, file and block storage in the Landing Zone. Destructive operations restricted.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Storage_admin' to manage object-family in compartment o-p-om2-cmp-land-001 where all{request.permission != 'OBJECT_DELETE', request.permission != 'BUCKET_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Storage_admin' to manage file-family in compartment o-p-om2-cmp-land-001 where all{request.permission != 'FILE_SYSTEM_DELETE', request.permission != 'MOUNT_TARGET_DELETE', request.permission != 'EXPORT_SET_DELETE', request.permission != 'FILE_SYSTEM_DELETE_SNAPSHOT', request.permission != 'FILE_SYSTEM_NFSv3_UNEXPORT'}",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Storage_admin' to manage volume-family in compartment o-p-om2-cmp-land-001 where all{request.permission != 'VOLUME_DELETE', request.permission != 'VOLUME_BACKUP_DELETE', request.permission != 'BOOT_VOLUME_BACKUP_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Storage_admin' to read all-resources in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_Storage_admin' to use cloud-shell in tenancy"
+        ]
+      },
+      "PCY-OS-ADMIN-KEY": {
+        "name": "o-p-om2-pcy-osadm-001",
+        "description": "OS and compute instance administration within the Landing Zone.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to manage instance-family in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to manage volume-family in compartment o-p-om2-cmp-land-001 where all{request.permission != 'VOLUME_DELETE', request.permission != 'VOLUME_BACKUP_DELETE', request.permission != 'BOOT_VOLUME_BACKUP_DELETE'}",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to manage instance-agent-family in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to read virtual-network-family in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to read audit-events in compartment o-p-om2-cmp-land-001",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_OS_admin' to use cloud-shell in tenancy"
+        ]
+      },
+      "PCY-MARKETPLACE-KEY": {
+        "name": "o-p-om2-pcy-mktpl-001",
+        "description": "Marketplace subscriber. Allows reading and subscribing to app catalog listings.",
+        "compartment_id": "TENANCY-ROOT",
+        "statements": [
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to inspect compartments in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to manage app-catalog-listing in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to manage instance-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to use volume-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to use virtual-network-family in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to manage orm-stack in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to manage orm-job in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to manage repos in tenancy",
+          "allow group 'o-p-om2-id-common-001'/'99GISS.Cloud_MarketplaceSuscriber' to use cloud-shell in tenancy"
+        ]
+      }
+    }
+  }
+}

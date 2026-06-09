@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "repository": "iac-oci-storage",
+    "stack_id": "70",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud Storage admin (99GISS.Cloud_Storage_admin)",
+    "description": "Almacenamiento gestionado: buckets Object Storage, File Storage Service, Block Volume groups, lifecycle policies. Distribuido en compartments según uso (backups en exacsdb, intercambio en cdin-projects, archivado en logg).",
+    "depends_on": [
+      "00-foundation",
+      "10-identity"
+    ],
+    "deploy_order": 4,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "oci_objectstorage_bucket (backups ExaCS en compartment exacsdb)",
+      "oci_objectstorage_bucket (intercambio aplicacional en cdin-projects)",
+      "oci_objectstorage_bucket (archivado de logs en logg, lifecycle Archive)",
+      "oci_objectstorage_lifecycle_policy",
+      "oci_file_storage_file_system (FSS si aplica)",
+      "oci_core_volume_group (snapshots coordinados de Block Volume)"
+    ],
+    "iam_dependencies": [
+      "PCY-STORAGE-KEY autoriza al grupo Cloud_Storage_admin manage object/file/volume family SIN permiso de DELETE (borrado solo via break-glass o approval explícito)"
+    ],
+    "integration_notes": []
+  }
+}

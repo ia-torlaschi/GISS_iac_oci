@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "repository": "iac-oci-obs-monitor",
+    "stack_id": "60",
+    "version": "3.6",
+    "status": "SKELETON_PENDING_IMPLEMENTATION",
+    "responsible_team": "Cloud Monitoring admin (99GISS.Cloud_Monitoring_admin)",
+    "description": "Monitorización con destino a sistema de terceros. Metrics namespaces, Alarms sobre métricas estándar de ExaCS/VCN/NAT, ONS Topics y conector hacia el sistema de monitorización externo.",
+    "depends_on": [
+      "00-foundation",
+      "10-identity"
+    ],
+    "deploy_order": 5,
+    "source_v3_5": "Sin contenido en v3.5. A implementar en v3.6+.",
+    "todo_resources": [
+      "oci_monitoring_alarm (CPU/memoria/storage de ExaCS, uso NAT GW, salud DRG, errores de Service Gateway)",
+      "oci_ons_notification_topic",
+      "oci_ons_subscription (webhook al sistema del tercero, o Service Connector Hub -> Stream -> consumer del tercero)",
+      "Validar egress permitido en NAT GW hacia endpoint del tercero"
+    ],
+    "iam_dependencies": [],
+    "integration_notes": [
+      "Si el tercero está fuera de la red GISS, validar reglas de egress.",
+      "Política PCY-MONITORING-KEY ya existe y autoriza al grupo Cloud_Monitoring_admin sobre el compartment o-p-om2-cmp-land-001."
+    ]
+  }
+}
