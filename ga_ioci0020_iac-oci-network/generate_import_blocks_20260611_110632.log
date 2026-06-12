@@ -1,0 +1,28 @@
+[2026-06-11 11:06:32] [INFO] ==========================================================================================
+[2026-06-11 11:06:32] [INFO]   GENERADOR DECLARATIVO DE IMPORT BLOCKS - OCI LANDING ZONE ORCHESTRATOR
+[2026-06-11 11:06:32] [INFO] ==========================================================================================
+[2026-06-11 11:06:32] [INFO] PowerShell version: 7.6.2
+[2026-06-11 11:06:32] [INFO] Working directory: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network
+[2026-06-11 11:06:32] [INFO] ConfigPath: .\giss_network_base_v3.7.json
+[2026-06-11 11:06:32] [INFO] StackType: network
+[2026-06-11 11:06:32] [INFO] Mode: Generate
+[2026-06-11 11:06:32] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\oci-credentials.auto.tfvars.json
+[2026-06-11 11:06:32] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\giss_network_base_v3.7.json
+[2026-06-11 11:06:32] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:06:32] [OK] Dependency file declarado: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:06:43] [OK] OCI CLI: 3.85.0
+[2026-06-11 11:06:43] [OK] Terraform v1.15.5
+[2026-06-11 11:06:43] [INFO] Verificando acceso OCI con profile 'DEFAULT'...
+[2026-06-11 11:06:45] [OK] Tenancy accesible.
+[2026-06-11 11:06:45] [OK] Dependency file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:06:45] [INFO] Precheck Terraform: configuracion evaluable sin refresh.
+[2026-06-11 11:07:05] [OK] Precheck correcto. ExitCode=2
+[2026-06-11 11:07:05] [INFO] Leyendo state actual para omitir direcciones ya importadas.
+[2026-06-11 11:07:06] [INFO] Recursos ya presentes en state: 65
+[2026-06-11 11:07:06] [INFO] Recursos candidatos del discovery plan: 0
+[2026-06-11 11:07:06] [INFO] Resumen de specs resueltas:
+[2026-06-11 11:07:06] [INFO]   Total specs: 0
+[2026-06-11 11:07:06] [OK] Import blocks generados: .\migration\network_imports_v3.7.auto.tf
+[2026-06-11 11:07:06] [INFO] Incluidos: 0
+[2026-06-11 11:07:06] [INFO] Omitidos por existir en state: 0
+[2026-06-11 11:07:06] [WARN] No hay imports pendientes. No se ejecuta plan.

@@ -1,0 +1,477 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-EXACS-NPR-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaatri7xmitendke5zbqpwk3dzghwa7apab56eya5rb2fza"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-EXACS-PRO-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaa26l4e3e3jodcwszp52idisn7ntkehkfskz3zzbp7eliq"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_vcn_dns_resolver_association.dns_resolvers["VCN-VLL-LZ-HUB-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_vcn_dns_resolver_association" "dns_resolvers" {
+      + dns_resolver_id = (known after apply)
+      + id              = (known after apply)
+      + state           = (known after apply)
+      + vcn_id          = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaahaampmaqpuconyvwmecndp6epapf6uv4p2okvyd2qe4q"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-EXACS-NPR-KEY"] will be updated in-place
+  ~ resource "oci_core_default_security_list" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa4jrnotramft6warg26vgbevq65zihdr5lw55dyhuqouuniphifqa"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-EXACS-PRO-KEY"] will be updated in-place
+  ~ resource "oci_core_default_security_list" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaam7bfpsyqjshbavhxef26hprqbywe6gbkbdpujtylf3mut5v6jtza"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_default_security_list.these["CUSTOM-DEFAULT-SEC-LIST-VCN-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_default_security_list" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaat22ufnlfb5ss4hzw6j5cl7s34itv7uzvgiidxorwkoqlzzde6zcq"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-EXACS-NPR-VCN-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_attachment" "these" {
+      ~ freeform_tags      = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                 = "ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaapbha2jrstqqnvl4hq3zvk35jq5m56vufoznlphbdgqonuygo4bfa"
+        # (9 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-EXACS-PRO-VCN-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_attachment" "these" {
+      ~ freeform_tags      = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                 = "ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaaj33nwa5zf5dtjjbalee7p6eigxki26bmxpqejenw77q2u6secvaq"
+        # (9 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_attachment.these["DRGATT-VLL-LZ-HUB-VCN-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_attachment" "these" {
+      ~ freeform_tags      = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                 = "ocid1.drgattachment.oc19.eu-madrid-2.aaaaaaaau5svtwnjv7cxgsdkjvf7qci5weqczdxvyfsn64vzf7hjrzdzsmva"
+        # (10 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_distribution.these["DRGRD-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_route_distribution" "these" {
+      ~ freeform_tags     = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                = "ocid1.drgroutedistribution.oc19.eu-madrid-2.aaaaaaaazwzwsiygf2o2topuugf27l4vaqv44eumhaqpekx7levcokk2uaja"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_table.these["DRGRT-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_route_table" "these" {
+      ~ freeform_tags                    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                               = "ocid1.drgroutetable.oc19.eu-madrid-2.aaaaaaaagrypb4d6mrlafpq5de6uukf2ytbdppaprzayjty2ur2zkwjvtc3q"
+        # (8 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg_route_table.these["DRGRT-VLL-LZ-SPOKES-KEY"] will be updated in-place
+  ~ resource "oci_core_drg_route_table" "these" {
+      ~ freeform_tags   = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id              = "ocid1.drgroutetable.oc19.eu-madrid-2.aaaaaaaaty742znqtrv7jvixwrldirgntsxk6kvrnuoqzkluxfrpe4nib3ja"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_nat_gateway.these["NGW-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_nat_gateway" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.natgateway.oc19.eu-madrid-2.aaaaaaaanu7fddyxgdcchizzlez6bbfeomnnwrffuasiou7dpm7aem4fwmwa"
+        # (10 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group.these["NSG-VLL-LZ-HUB-FW-KEY"] will be updated in-place
+  ~ resource "oci_core_network_security_group" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.networksecuritygroup.oc19.eu-madrid-2.aaaaaaaa5xxr7iqsclnzmnuo67fi2tvkwt6dcbxvunm5iidssolqfiifhmka"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_network_security_group.these["NSG-VLL-LZ-HUB-LB-KEY"] will be updated in-place
+  ~ resource "oci_core_network_security_group" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.networksecuritygroup.oc19.eu-madrid-2.aaaaaaaa7t76tg6awptn6iw2flr7jqtf5ut6n7y3rvcjk4cxknm6evfl2yea"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaaxj3cpw5v7ck6pshlzysnpxep73cvbfv6wunmzcxesun4ewxnmkxa"
+        # (6 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-NPR-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaa26d4p6ngnmfwyddmi7ayygbwkypfgw5sxh4wb7kznmfuparwdwjq"
+        # (6 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaalajl2baakfooxs77yvz6qt3ybptz6vxrc3fapjnc37i53ijhywqa"
+        # (6 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-EXACS-PRO-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaavysyvwdx5ejpjsmd5jxgvjam6oiflmsiidryhomite4ennv5enfq"
+        # (6 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_route_table.non_gw_specific_remaining_route_tables["RT-VLL-LZ-HUB-FW-KEY"] will be updated in-place
+  ~ resource "oci_core_route_table" "non_gw_specific_remaining_route_tables" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.routetable.oc19.eu-madrid-2.aaaaaaaamhwcecichg7l26fnd2rgvqk7ni5x2worom4hblpff3oax6fwie4a"
+        # (6 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-NPR-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaaq3gxlqmzhihavo2fq4ftdt4lh2nwcvngfneo4oj6ihx7sjaetiiq"
+        # (6 unchanged attributes hidden)
+
+        # (4 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-NPR-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaaj3ondyeq6escsvhcprydlvvdrc36vjgnx5q3gdw2bitgtpf2sctq"
+        # (6 unchanged attributes hidden)
+
+        # (4 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-PRO-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa52gfgvniilio5mgu475f5k2bjfbnoaslvbvvnhfwwm4ztheyd7ua"
+        # (6 unchanged attributes hidden)
+
+        # (4 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-EXACS-PRO-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaa5a3rinjqw7rsclpltq5hh64ec7gldm5jocgm2h2u2scjdvxoj7fq"
+        # (6 unchanged attributes hidden)
+
+        # (4 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-HUB-FW-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaacnodbu3y73ugby74ryrr7c5aoa2pzwdryyyoenq2frlckcoedj3a"
+        # (6 unchanged attributes hidden)
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_security_list.these["SL-VLL-LZ-HUB-MGMT-KEY"] will be updated in-place
+  ~ resource "oci_core_security_list" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.securitylist.oc19.eu-madrid-2.aaaaaaaax4r77poacckw7t2nmbxddnkqmrxeh3sbdys6tbm2voyrtumnnbuq"
+        # (6 unchanged attributes hidden)
+
+        # (5 unchanged blocks hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-NPR-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaa3gxhavba3sykmzt2reypnwomdrcozlkmixnpu2elhenu5u6oripa"
+        # (7 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-EXACS-PRO-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaavxjuqe7azfv344j6xgkbhuk2u5j6az5ndjzmrljhupocmfpejm7a"
+        # (7 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_service_gateway.these["SGW-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_service_gateway" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id             = "ocid1.servicegateway.oc19.eu-madrid-2.aaaaaaaao3zwviqb3hw7jylshx4zk4bbsyoipquitxuh5qu3xkkyx6uutjua"
+        # (7 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-NPR-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaapzxknvaxdzhxhy6bnelwuyqykfwccruyrftnshskkcc2upjphvka"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-NPR-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakekfuzcbd43hvuufgzx6x5uybwjcst35azjilncmjgc254i22gpa"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-PRO-BACKUP-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakmjkmcwkvu6a3aq4izcvnpsqlgcac7aivh55zn7p4bg22xvwdw4q"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-EXACS-PRO-CLIENT-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaa25at3fn2vvtxylgqpchpy6lwgcerzodsg3sc53qctppm7fqaddzq"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-DNS"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaana6o4ztydw3u3i7f4nv4xkmmjkscvdj6aiv5t6wnuxqlcfrjp3bq"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-FW-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaayg3uwvlk4sppnxnqwcqgwcw4egv3b2uwdim36mjqg7gzfvfvzmda"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-MGMT-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaavcjg6zczpbp4h2avcsawctp2su5x6nbzsfeqizy5edgy7b2chwxa"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_subnet.these["SN-VLL-LZ-HUB-MON-KEY"] will be updated in-place
+  ~ resource "oci_core_subnet" "these" {
+      ~ freeform_tags              = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                         = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaay4uhy4psi4rga5wpyz2ciq4ev4bw6ijmgjqqwj5at77l77xx6yhq"
+        # (18 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-EXACS-NPR-KEY"] will be updated in-place
+  ~ resource "oci_core_vcn" "these" {
+      ~ freeform_tags            = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                       = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaatri7xmitendke5zbqpwk3dzghwa7apab56eya5rb2fza"
+        # (17 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-EXACS-PRO-KEY"] will be updated in-place
+  ~ resource "oci_core_vcn" "these" {
+      ~ freeform_tags            = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                       = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaa26l4e3e3jodcwszp52idisn7ntkehkfskz3zzbp7eliq"
+        # (17 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_vcn.these["VCN-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_vcn" "these" {
+      ~ freeform_tags            = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        id                       = "ocid1.vcn.oc19.eu-madrid-2.amaaaaaapw27gbaahaampmaqpuconyvwmecndp6epapf6uv4p2okvyd2qe4q"
+        # (17 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 37 to change, 0 to destroy.

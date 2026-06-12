@@ -1,0 +1,236 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AUTHENTICITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaqxl7cnvybqoe36k4j6n7ot7o3ad3hpiaiclknohnlumr7z5mxtya"
+        name             = "ens-authenticity"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AVAILABILITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaamtykuxl7z7kecwlofbfuxpdjm2bagimktu7s7tj4o3qa4ohnowea"
+        name             = "ens-availability"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-CONFIDENTIALITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafxanb42k6tmcz5elqpvy5gwctzz5nvs45eumthqhjhucjmrzbufq"
+        name             = "ens-confidentiality"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-INTEGRITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaazsjnfio6irydjlbyumodoasprnjmrobbmmawxnszehgmg2nfufga"
+        name             = "ens-integrity"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-TRACEABILITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaenskrszzcs3meq7k5n7px6dzz657nor4rd5mn7p46ttz4urodk7q"
+        name             = "ens-traceability"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-CODE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaas4iukqceq7kkowric2ehdumve67pg5gxxwtov5uztfarxe6crqia"
+        name             = "application-code"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-NAME-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaad5jzdz2y7aedzthktttcireuonkd4rflqz44x34l7umd3tgxcleq"
+        name             = "application-name"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-BUSINESS-CRITICALITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxy576lbfa62hq57ixw7l7cymcii2qkux4xve5fjoj7ewvhzmy75a"
+        name             = "business-criticality"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-COST-CENTER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaavsvikjg3f7osihcs6aathmswrfruhbvlaaorobkvgu3ysnxrsjgq"
+        name             = "cost-center"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-DEPARTMENT-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafo5dn4sumk5habfsuc77a4uoygjinzkibpopd42orpxyh4gp4njq"
+        name             = "department"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-ENVIRONMENT-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaahhcnbwfhoestjmzzlnewukgxkcx7s6fk6issnxq2quxduvtrkkva"
+        name             = "environment"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-IAC-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxnwvcchaichbonqcriawdffy6ze5tnej46xyc2jz2mbynnqr54tq"
+        name             = "iac"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-NAME-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaajccu7kuj6q7rbte2jsqlnk23fvahd6xzjyzm53cyj6o7b33plfa"
+        name             = "name"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-OPERATIONAL-OWNER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa4nlc4els7tjtl7udg235wg6btydbxdtfbfd3h2nlxk2lkh3nh3ma"
+        name             = "operational-owner"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-TECHNICAL-OWNER-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaplzefdtq2pljsle54hm367q4zbxlawu7y7puo3z2t53q5ybuvgba"
+        name             = "technical-owner"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-LZ-ROLE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag" "these" {
+      ~ freeform_tags    = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa5nn6xvol36j5hhk7vl4t2h6jvj2nionfjbspjg22jx5jruyxveeq"
+        name             = "o-p-om2-tag-role-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ENS-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa3iliimrn4vxzbtpxutkshe52fu6qs4rbwcdnlvtxhcdybxgjzmeq"
+        name           = "o-p-om2-tagns-ens-001"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-GOV-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaad5ahmm2hnmoesuyygljfkjt63buqrgxpirzs7dohpnmp7qo4jaiq"
+        name           = "o-p-om2-tagns-gov-001"
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ROLE-KEY"] will be updated in-place
+  ~ resource "oci_identity_tag_namespace" "these" {
+      ~ freeform_tags  = {
+          ~ "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa6u3i3nhokejdygnepikolj7qp6647p3wum25s3dnpjtt7shlqzuq"
+        name           = "o-p-om2-tagns-name-001"
+        # (6 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 19 to change, 0 to destroy.

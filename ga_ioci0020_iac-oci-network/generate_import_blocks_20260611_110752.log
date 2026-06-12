@@ -1,0 +1,37 @@
+[2026-06-11 11:07:52] [INFO] ==========================================================================================
+[2026-06-11 11:07:52] [INFO]   GENERADOR DECLARATIVO DE IMPORT BLOCKS - OCI LANDING ZONE ORCHESTRATOR
+[2026-06-11 11:07:52] [INFO] ==========================================================================================
+[2026-06-11 11:07:52] [INFO] PowerShell version: 7.6.2
+[2026-06-11 11:07:52] [INFO] Working directory: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network
+[2026-06-11 11:07:52] [INFO] ConfigPath: .\giss_network_base_v3.7.json
+[2026-06-11 11:07:52] [INFO] StackType: network
+[2026-06-11 11:07:52] [INFO] Mode: Generate
+[2026-06-11 11:07:52] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\oci-credentials.auto.tfvars.json
+[2026-06-11 11:07:52] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\giss_network_base_v3.7.json
+[2026-06-11 11:07:52] [OK] Var-file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:07:52] [OK] Dependency file declarado: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:07:53] [OK] OCI CLI: 3.85.0
+[2026-06-11 11:07:54] [OK] Terraform v1.15.5
+[2026-06-11 11:07:54] [INFO] Verificando acceso OCI con profile 'DEFAULT'...
+[2026-06-11 11:07:56] [OK] Tenancy accesible.
+[2026-06-11 11:07:56] [OK] Dependency file: C:\gitlab\GISS_iac_oci\ga_ioci0020_iac-oci-network\dependencies\foundation_dependencies.auto.tfvars.json
+[2026-06-11 11:07:56] [INFO] Precheck Terraform: configuracion evaluable sin refresh.
+[2026-06-11 11:08:12] [OK] Precheck correcto. ExitCode=2
+[2026-06-11 11:08:12] [INFO] Leyendo state actual para omitir direcciones ya importadas.
+[2026-06-11 11:08:13] [INFO] Recursos ya presentes en state: 65
+[2026-06-11 11:08:13] [INFO] Recursos candidatos del discovery plan: 2
+[2026-06-11 11:08:13] [INFO] Resolviendo network import: oci_core_virtual_circuit key=FCVC-VLL-LZ-HUB-001-KEY
+[2026-06-11 11:08:24] [INFO] Virtual Circuit visibles: o-p-om2-fas-connect-001[PROVISIONED], o-p-om2-fas-connect-002[PROVISIONED]
+[2026-06-11 11:08:24] [INFO] Resolviendo network import: oci_core_virtual_circuit key=FCVC-VLL-LZ-HUB-002-KEY
+[2026-06-11 11:08:27] [INFO] Virtual Circuit visibles: o-p-om2-fas-connect-001[PROVISIONED], o-p-om2-fas-connect-002[PROVISIONED]
+[2026-06-11 11:08:27] [INFO] Resumen de specs resueltas:
+[2026-06-11 11:08:27] [INFO]   oci_core_virtual_circuit: 2
+[2026-06-11 11:08:27] [INFO]   Total specs: 2
+[2026-06-11 11:08:27] [WARN] Existia .\migration\network_imports_v3.7.auto.tf. Backup generado: .\migration\network_imports_v3.7.auto.tf.bak_20260611_110827
+[2026-06-11 11:08:27] [OK] Import blocks generados: .\migration\network_imports_v3.7.auto.tf
+[2026-06-11 11:08:27] [INFO] Incluidos: 2
+[2026-06-11 11:08:27] [INFO] Omitidos por existir en state: 0
+[2026-06-11 11:08:27] [WARN] Modo Generate completado. Siguiente paso recomendado:
+[2026-06-11 11:08:27] [WARN] terraform plan -input=false -out=".\network-import.tfplan" <var-files>
+[2026-06-11 11:08:27] [WARN] Aplicar solo si el plan indica exclusivamente imports y 0 add/change/destroy.
+[2026-06-11 11:08:27] [INFO] Log completo: .\generate_import_blocks_20260611_110752.log

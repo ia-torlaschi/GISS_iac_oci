@@ -1,0 +1,3 @@
+"resource_type","display_name","region","lifecycle_state","compartment_id","ocid","time_created","freeform_tags","defined_tags"
+"TagDefault","createdon",,,"ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba","ocid1.tagdefault.oc19..aaaaaaaal2ffcwmwwvzwshfapvaj3vxvkuhzw2yozfymhxmumvofdn6wjjca","20/02/2026 9:33:52","{}","{}"
+"TagDefault","createdby",,,"ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba","ocid1.tagdefault.oc19..aaaaaaaaxlm4ss44uvtfemsufgznypdrdwwxdwrfiyuwdh5vzkaoqkhj3hva","20/02/2026 9:33:52","{}","{}"

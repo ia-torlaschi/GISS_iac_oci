@@ -1,0 +1,176 @@
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Read complete after 0s [id=IdentityRegionsDataSource-0][0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Read complete after 0s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_regions.these: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_region_subscriptions.this: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-COST-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-IAM-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-GLOBALSERV-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-DB-ADMINS"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-INFRA-ADMINS"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_tenancy.this: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-AUDITORS-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_regions.these: Read complete after 0s [id=IdentityRegionsDataSource-0][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-SECURITY-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_tenancy.this: Read complete after 0s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-NETWORK-ADMIN-KEY"]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-COST-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domain.these["COMMON-DOMAIN"]: Refreshing state... [id=ocid1.domain.oc19..aaaaaaaaeuc6e6twowrhwgh6i4dxyp22x7g6mf4sf6x7kg7bbddovq6q33aa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-DB-ADMINS"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-GLOBALSERV-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_region_subscriptions.this: Read complete after 0s [id=IdentityRegionSubscriptionsDataSource-1032845147][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-AUDITORS-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-NETWORK-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-IAM-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-LZ-INFRA-ADMINS"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].data.oci_identity_domain.grp_domain["GRP-SECURITY-ADMIN-KEY"]: Read complete after 0s[0m
+[0m[1mmodule.oci_lz_orchestrator.local_file.identity_domains_output[0]: Refreshing state... [id=2d31ea8afc70a7c1a18689e67ea73671cff9ea0b][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-LZ-INFRA-ADMINS"]: Refreshing state... [id=1f2d6edbbdba48de93f4fedd4c65173d][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-LZ-DB-ADMINS"]: Refreshing state... [id=32ed5ce0c1e94813aa968f24cc79d4b1][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-GLOBALSERV-ADMIN-KEY"]: Refreshing state... [id=23ef3bf6cadb4c569054a54dba4eec97][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-IAM-ADMIN-KEY"]: Refreshing state... [id=8db5d4ee2d4d4872ba1174f6f9d3a72b][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-COST-ADMIN-KEY"]: Refreshing state... [id=7c6989c51bdf4e3b96efb129c2812166][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-AUDITORS-ADMIN-KEY"]: Refreshing state... [id=fd59251e7ca84afbbd5276e6eb9fbc82][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-NETWORK-ADMIN-KEY"]: Refreshing state... [id=1f2d88b9fb024af691e8993071ec3bc7][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_group.these["GRP-SECURITY-ADMIN-KEY"]: Refreshing state... [id=ee74da9199a543b9b01813e0d0f1df5a][0m
+[0m[1mmodule.oci_lz_orchestrator.time_sleep.iam_policy_group_propagation[0]: Refreshing state... [id=2026-05-19T09:53:16Z][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-GLOBALSERV-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaanlp7wszhvfigqkbqqd7gcky4c2p6n4rpshpsgsakmjf5jlvd64xa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-SERVICES-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaayo4vgbniuac6igjmwzmp7jiyvbfcg4e2gvea6vmmdxjbgh2rezva][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-NETWORK-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaau7hj5voz2en3kpe4yqdsydyxy2s6ocdxlptsup3vwugugvdvunva][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-GENERIC-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaauuq6o2yznkigajumychulk7wji33rtqxj6poqmxyer25zhbaxnfa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-INFRA-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaatvfyywb5ed64yslueu4wlpur4xnc2orplqrljaxsvwsatlszhqjq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-MONITORING-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaaj2kskvm4ewjukys4ek4cfmgygrccdtkqg64tdmhf5bltsr6xcyrq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-GENERIC-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaadzr3fb2ot5oxhthk3ns3kjeyitjob6qqq24wee2f2ofmejgqmjaa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-MARKETPLACE-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaajcg6iwjlvnnfojm3mgesto6bzbnj6pamzwwcrlbfedzoqjvc5gzq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-OS-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa3wd62tu3ysigprsk23oadqw77o5gfem5mkytkhq7qs7hc6zy7mya][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-LZ-PLATFORM-EXACS-DB-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa6mkjpk4romgxowgqgwkzobk67ysco6bdmkfwcfotk6uy5w6fcwlq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-AUDITING-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaabjxgam7szuyh4d5eo7qudjqw3guez4datmm5bbuztshg4kde6zeq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-COST-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa5dumus2g7hu5wzdhl5ldz6k4b3b3cwk6z3uawcvqps5y46nvoaiq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-TENANCY-ADMIN-001-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaaaglw5a3wq2yysld6nvnepuizdp4adegscd6zbmpmceshlpypfrhq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-VIEWER-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaa3yiyiynuhe47chu5vpqme2hk2f5ry4q3ebks2m5dhkd34zu654va][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-SECURITY-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaadw4yg722zptouzynqhvixgzor4elnceb3s2ezpgj3cpffgvafcsq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-BILLING-VIEWER-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaah4udlb2ei2g5s3ycqxhhneib5yi67glvfp3utxrerppe7rdofhkq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-STORAGE-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaamoie5vsiedi32odiku54acf7u2j53xdibgqr7jobqd7ntgqwxhla][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_policies[0].oci_identity_policy.these["PCY-IAM-ADMIN-KEY"]: Refreshing state... [id=ocid1.policy.oc19..aaaaaaaabmf4pp2dkjiimszoovt5szhe4odf5venihdww26pg7lgvr7l7hhq][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+ [36m<=[0m read (data resources)[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_setting.cert_public_access_setting["COMMON-DOMAIN"][0m will be created
+[0m  [32m+[0m[0m resource "oci_identity_domains_setting" "cert_public_access_setting" {
+      [32m+[0m[0m account_always_trust_scope                                 = (known after apply)
+      [32m+[0m[0m allowed_domains                                            = (known after apply)
+      [32m+[0m[0m allowed_forgot_password_flow_return_urls                   = (sensitive value)
+      [32m+[0m[0m allowed_notification_redirect_urls                         = (known after apply)
+      [32m+[0m[0m audit_event_retention_period                               = (known after apply)
+      [32m+[0m[0m cloud_account_name                                         = (known after apply)
+      [32m+[0m[0m cloud_migration_custom_url                                 = (known after apply)
+      [32m+[0m[0m cloud_migration_url_enabled                                = (known after apply)
+      [32m+[0m[0m compartment_ocid                                           = (known after apply)
+      [32m+[0m[0m contact_emails                                             = (known after apply)
+      [32m+[0m[0m csr_access                                                 = "none"
+      [32m+[0m[0m custom_branding                                            = (known after apply)
+      [32m+[0m[0m custom_css_location                                        = (known after apply)
+      [32m+[0m[0m custom_html_location                                       = (known after apply)
+      [32m+[0m[0m custom_translation                                         = (known after apply)
+      [32m+[0m[0m default_company_names                                      = (known after apply)
+      [32m+[0m[0m default_images                                             = (known after apply)
+      [32m+[0m[0m default_login_texts                                        = (known after apply)
+      [32m+[0m[0m default_trust_scope                                        = (known after apply)
+      [32m+[0m[0m delete_in_progress                                         = (known after apply)
+      [32m+[0m[0m diagnostic_level                                           = (known after apply)
+      [32m+[0m[0m diagnostic_record_for_search_identifies_returned_resources = (known after apply)
+      [32m+[0m[0m diagnostic_tracing_upto                                    = (known after apply)
+      [32m+[0m[0m domain_ocid                                                = (known after apply)
+      [32m+[0m[0m enable_terms_of_use                                        = (known after apply)
+      [32m+[0m[0m external_id                                                = (known after apply)
+      [32m+[0m[0m iam_upst_session_expiry                                    = (known after apply)
+      [32m+[0m[0m id                                                         = (known after apply)
+      [32m+[0m[0m idcs_created_by                                            = (known after apply)
+      [32m+[0m[0m idcs_endpoint                                              = "https://idcs-e0138a37daa84b4aacdb004b63eb5d75.eu-madrid-idcs-2.identity.oci.oraclecloud.eu:443"
+      [32m+[0m[0m idcs_last_modified_by                                      = (known after apply)
+      [32m+[0m[0m idcs_last_upgraded_in_release                              = (known after apply)
+      [32m+[0m[0m idcs_prevented_operations                                  = (known after apply)
+      [32m+[0m[0m is_hosted_page                                             = (known after apply)
+      [32m+[0m[0m issuer                                                     = (known after apply)
+      [32m+[0m[0m locale                                                     = (known after apply)
+      [32m+[0m[0m max_no_of_app_cmva_to_return                               = (known after apply)
+      [32m+[0m[0m max_no_of_app_role_members_to_return                       = (known after apply)
+      [32m+[0m[0m meta                                                       = (known after apply)
+      [32m+[0m[0m migration_status                                           = (known after apply)
+      [32m+[0m[0m ocid                                                       = (known after apply)
+      [32m+[0m[0m on_premises_provisioning                                   = (known after apply)
+      [32m+[0m[0m preferred_language                                         = (known after apply)
+      [32m+[0m[0m prev_issuer                                                = (known after apply)
+      [32m+[0m[0m privacy_policy_url                                         = (known after apply)
+      [32m+[0m[0m re_auth_factor                                             = (known after apply)
+      [32m+[0m[0m re_auth_when_changing_my_authentication_factors            = (known after apply)
+      [32m+[0m[0m schemas                                                    = [
+          [32m+[0m[0m "urn:ietf:params:scim:schemas:oracle:idcs:Settings",
+        ]
+      [32m+[0m[0m service_admin_cannot_list_other_users                      = (known after apply)
+      [32m+[0m[0m setting_id                                                 = "Settings"
+      [32m+[0m[0m signing_cert_public_access                                 = true
+      [32m+[0m[0m sub_mapping_attr                                           = (known after apply)
+      [32m+[0m[0m tenancy_ocid                                               = (known after apply)
+      [32m+[0m[0m terms_of_use_url                                           = (known after apply)
+      [32m+[0m[0m timezone                                                   = (known after apply)
+
+      [32m+[0m[0m certificate_validation (known after apply)
+
+      [32m+[0m[0m cloud_gate_cors_settings (known after apply)
+
+      [32m+[0m[0m company_names (known after apply)
+
+      [32m+[0m[0m images (known after apply)
+
+      [32m+[0m[0m login_texts (known after apply)
+
+      [32m+[0m[0m purge_configs (known after apply)
+
+      [32m+[0m[0m tags (known after apply)
+
+      [32m+[0m[0m tenant_custom_claims (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_region_subscriptions.these[0m will be read during apply
+  # (depends on a resource or a module with changes pending)
+[0m [36m<=[0m[0m data "oci_identity_region_subscriptions" "these" {
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m region_subscriptions = (known after apply)
+      [32m+[0m[0m tenancy_id           = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_tenancy.this[0m will be read during apply
+  # (depends on a resource or a module with changes pending)
+[0m [36m<=[0m[0m data "oci_identity_tenancy" "this" {
+      [32m+[0m[0m defined_tags                          = (known after apply)
+      [32m+[0m[0m description                           = (known after apply)
+      [32m+[0m[0m freeform_tags                         = (known after apply)
+      [32m+[0m[0m home_region_key                       = (known after apply)
+      [32m+[0m[0m id                                    = (known after apply)
+      [32m+[0m[0m name                                  = (known after apply)
+      [32m+[0m[0m tenancy_id                            = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+      [32m+[0m[0m upi_idcs_compatibility_layer_endpoint = (known after apply)
+    }
+
+[1mPlan:[0m [0m1 to add, 0 to change, 0 to destroy.
+
+[1m[33mWarnings:[0m
+
+[0m- Deprecated value used
+  on .terraform\modules\oci_lz_orchestrator.oci_lz_policies\policies\outputs.tf line 6 (and 53 more)
+
+To see the full warning notes, run Terraform without -compact-warnings.
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: .\log_plan\02_identity_v3.7.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply ".\\log_plan\\02_identity_v3.7.tfplan"

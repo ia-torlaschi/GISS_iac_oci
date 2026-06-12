@@ -1,0 +1,417 @@
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Read complete after 2s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba][0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Read complete after 2s [id=IdentityRegionsDataSource-0][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_alarms[0].oci_monitoring_alarm.these["NETWORK-ALARM-FAST-CONNECT-STATUS-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_monitoring_alarm" "these" {
+      [32m+[0m[0m alarm_summary                                 = (known after apply)
+      [32m+[0m[0m body                                          = (known after apply)
+      [32m+[0m[0m compartment_id                                = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      [32m+[0m[0m defined_tags                                  = (known after apply)
+      [32m+[0m[0m destinations                                  = (known after apply)
+      [32m+[0m[0m display_name                                  = "o-p-om2-alm-fastconnect-001"
+      [32m+[0m[0m evaluation_slack_duration                     = (known after apply)
+      [32m+[0m[0m freeform_tags                                 = {
+          [32m+[0m[0m "ocilz-terraform-module" = "alarms/0.2.6"
+        }
+      [32m+[0m[0m id                                            = (known after apply)
+      [32m+[0m[0m is_enabled                                    = true
+      [32m+[0m[0m is_notifications_per_metric_dimension_enabled = (known after apply)
+      [32m+[0m[0m message_format                                = "PRETTY_JSON"
+      [32m+[0m[0m metric_compartment_id                         = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      [32m+[0m[0m metric_compartment_id_in_subtree              = (known after apply)
+      [32m+[0m[0m namespace                                     = "oci_fastconnect"
+      [32m+[0m[0m notification_title                            = (known after apply)
+      [32m+[0m[0m notification_version                          = (known after apply)
+      [32m+[0m[0m pending_duration                              = "PT5M"
+      [32m+[0m[0m query                                         = "ConnectionState[1m].mean() == 0"
+      [32m+[0m[0m repeat_notification_duration                  = "PT4H"
+      [32m+[0m[0m resolution                                    = (known after apply)
+      [32m+[0m[0m resource_group                                = (known after apply)
+      [32m+[0m[0m rule_name                                     = (known after apply)
+      [32m+[0m[0m severity                                      = "CRITICAL"
+      [32m+[0m[0m state                                         = (known after apply)
+      [32m+[0m[0m time_created                                  = (known after apply)
+      [32m+[0m[0m time_updated                                  = (known after apply)
+
+      [32m+[0m[0m overrides (known after apply)
+
+      [32m+[0m[0m suppression (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_alarms[0].oci_ons_notification_topic.these["TOP-LZ-NETWORK-ALARM-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_notification_topic" "these" {
+      [32m+[0m[0m api_endpoint   = (known after apply)
+      [32m+[0m[0m compartment_id = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      [32m+[0m[0m defined_tags   = (known after apply)
+      [32m+[0m[0m description    = "Topic para alarmas de red y FastConnect de la Landing Zone."
+      [32m+[0m[0m etag           = (known after apply)
+      [32m+[0m[0m freeform_tags  = {
+          [32m+[0m[0m "ocilz-terraform-module" = "alarms/0.2.6"
+        }
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m name           = "o-p-om2-top-network-alarm-001"
+      [32m+[0m[0m short_topic_id = (known after apply)
+      [32m+[0m[0m state          = (known after apply)
+      [32m+[0m[0m time_created   = (known after apply)
+      [32m+[0m[0m topic_id       = (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_alarms[0].oci_ons_subscription.these["TOP-LZ-NETWORK-ALARM-KEY.jorge-eduardo.torlaschi@at.seg-social.es"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_subscription" "these" {
+      [32m+[0m[0m compartment_id  = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      [32m+[0m[0m created_time    = (known after apply)
+      [32m+[0m[0m defined_tags    = (known after apply)
+      [32m+[0m[0m delivery_policy = (known after apply)
+      [32m+[0m[0m endpoint        = "jorge-eduardo.torlaschi@at.seg-social.es"
+      [32m+[0m[0m etag            = (known after apply)
+      [32m+[0m[0m freeform_tags   = {
+          [32m+[0m[0m "ocilz-terraform-module" = "alarms/0.2.6"
+        }
+      [32m+[0m[0m id              = (known after apply)
+      [32m+[0m[0m protocol        = "EMAIL"
+      [32m+[0m[0m state           = (known after apply)
+      [32m+[0m[0m topic_id        = (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_events[0].oci_events_rule.these["EVT-LZ-DATABASE-CRITICAL-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_events_rule" "these" {
+      [32m+[0m[0m compartment_id    = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m condition         = jsonencode(
+            {
+              [32m+[0m[0m data      = {}
+              [32m+[0m[0m eventType = [
+                  [32m+[0m[0m "com.oraclecloud.databaseservice.autonomous.database.critical",
+                  [32m+[0m[0m "com.oraclecloud.databaseservice.dbsystem.critical",
+                  [32m+[0m[0m "com.oraclecloud.databaseservice.exadatainfrastructure.critical",
+                  [32m+[0m[0m "com.oraclecloud.databaseservice.autonomous.cloudautonomousvmcluster.critical",
+                ]
+            }
+        )
+      [32m+[0m[0m defined_tags      = (known after apply)
+      [32m+[0m[0m description       = "Notifica eventos criticos de base de datos y Exadata."
+      [32m+[0m[0m display_name      = "o-p-om2-evt-database-001"
+      [32m+[0m[0m freeform_tags     = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m is_enabled        = true
+      [32m+[0m[0m lifecycle_message = (known after apply)
+      [32m+[0m[0m state             = (known after apply)
+      [32m+[0m[0m time_created      = (known after apply)
+
+      [32m+[0m[0m actions {
+          [32m+[0m[0m actions {
+              [32m+[0m[0m action_type       = "ONS"
+              [32m+[0m[0m description       = "Events are published into a topic."
+              [32m+[0m[0m function_id       = (known after apply)
+              [32m+[0m[0m id                = (known after apply)
+              [32m+[0m[0m is_enabled        = true
+              [32m+[0m[0m lifecycle_message = (known after apply)
+              [32m+[0m[0m state             = (known after apply)
+              [32m+[0m[0m stream_id         = (known after apply)
+              [32m+[0m[0m topic_id          = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_events[0].oci_events_rule.these["EVT-LZ-NETWORK-CHANGES-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_events_rule" "these" {
+      [32m+[0m[0m compartment_id    = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m condition         = jsonencode(
+            {
+              [32m+[0m[0m data      = {}
+              [32m+[0m[0m eventType = [
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createvcn",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletevcn",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatevcn",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createroutetable",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deleteroutetable",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updateroutetable",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.changeroutetablecompartment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createsecuritylist",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletesecuritylist",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatesecuritylist",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.changesecuritylistcompartment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createnetworksecuritygroup",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletenetworksecuritygroup",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatenetworksecuritygroup",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatenetworksecuritygroupsecurityrules",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.changenetworksecuritygroupcompartment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createdrg",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletedrg",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatedrg",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createdrgattachment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletedrgattachment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatedrgattachment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createinternetgateway",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deleteinternetgateway",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updateinternetgateway",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.changeinternetgatewaycompartment",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.createlocalpeeringgateway",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.deletelocalpeeringgateway.end",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.updatelocalpeeringgateway",
+                  [32m+[0m[0m "com.oraclecloud.virtualnetwork.changelocalpeeringgatewaycompartment",
+                  [32m+[0m[0m "com.oraclecloud.natgateway.createnatgateway",
+                  [32m+[0m[0m "com.oraclecloud.natgateway.deletenatgateway",
+                  [32m+[0m[0m "com.oraclecloud.natgateway.updatenatgateway",
+                  [32m+[0m[0m "com.oraclecloud.natgateway.changenatgatewaycompartment",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.createservicegateway",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.deleteservicegateway.end",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.attachserviceid",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.detachserviceid",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.updateservicegateway",
+                  [32m+[0m[0m "com.oraclecloud.servicegateway.changeservicegatewaycompartment",
+                ]
+            }
+        )
+      [32m+[0m[0m defined_tags      = (known after apply)
+      [32m+[0m[0m description       = "Notifica cambios de red en la Landing Zone."
+      [32m+[0m[0m display_name      = "o-p-om2-evt-network-001"
+      [32m+[0m[0m freeform_tags     = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m is_enabled        = true
+      [32m+[0m[0m lifecycle_message = (known after apply)
+      [32m+[0m[0m state             = (known after apply)
+      [32m+[0m[0m time_created      = (known after apply)
+
+      [32m+[0m[0m actions {
+          [32m+[0m[0m actions {
+              [32m+[0m[0m action_type       = "ONS"
+              [32m+[0m[0m description       = "Events are published into a topic."
+              [32m+[0m[0m function_id       = (known after apply)
+              [32m+[0m[0m id                = (known after apply)
+              [32m+[0m[0m is_enabled        = true
+              [32m+[0m[0m lifecycle_message = (known after apply)
+              [32m+[0m[0m state             = (known after apply)
+              [32m+[0m[0m stream_id         = (known after apply)
+              [32m+[0m[0m topic_id          = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_events[0].oci_ons_notification_topic.these["TOP-LZ-EVENTS-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_notification_topic" "these" {
+      [32m+[0m[0m api_endpoint   = (known after apply)
+      [32m+[0m[0m compartment_id = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m defined_tags   = (known after apply)
+      [32m+[0m[0m description    = "Topic para eventos operativos de red y plataforma."
+      [32m+[0m[0m etag           = (known after apply)
+      [32m+[0m[0m freeform_tags  = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m name           = "o-p-om2-top-events-001"
+      [32m+[0m[0m short_topic_id = (known after apply)
+      [32m+[0m[0m state          = (known after apply)
+      [32m+[0m[0m time_created   = (known after apply)
+      [32m+[0m[0m topic_id       = (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_events[0].oci_ons_subscription.these["TOP-LZ-EVENTS-KEY.jorge-eduardo.torlaschi@at.seg-social.es"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_subscription" "these" {
+      [32m+[0m[0m compartment_id  = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m created_time    = (known after apply)
+      [32m+[0m[0m defined_tags    = (known after apply)
+      [32m+[0m[0m delivery_policy = (known after apply)
+      [32m+[0m[0m endpoint        = "jorge-eduardo.torlaschi@at.seg-social.es"
+      [32m+[0m[0m etag            = (known after apply)
+      [32m+[0m[0m freeform_tags   = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id              = (known after apply)
+      [32m+[0m[0m protocol        = "EMAIL"
+      [32m+[0m[0m state           = (known after apply)
+      [32m+[0m[0m topic_id        = (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_home_region_events[0].oci_events_rule.these["EVT-HR-BUDGET-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_events_rule" "these" {
+      [32m+[0m[0m compartment_id    = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m condition         = jsonencode(
+            {
+              [32m+[0m[0m data      = {}
+              [32m+[0m[0m eventType = [
+                  [32m+[0m[0m "com.oraclecloud.budgets.updatealertrule",
+                  [32m+[0m[0m "com.oraclecloud.budgets.deletealertrule",
+                  [32m+[0m[0m "com.oraclecloud.budgets.updatebudget",
+                  [32m+[0m[0m "com.oraclecloud.budgets.deletebudget",
+                ]
+            }
+        )
+      [32m+[0m[0m defined_tags      = (known after apply)
+      [32m+[0m[0m description       = "Notifica cambios sobre presupuestos y reglas de alerta."
+      [32m+[0m[0m display_name      = "o-p-om2-evt-budget-001"
+      [32m+[0m[0m freeform_tags     = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m is_enabled        = true
+      [32m+[0m[0m lifecycle_message = (known after apply)
+      [32m+[0m[0m state             = (known after apply)
+      [32m+[0m[0m time_created      = (known after apply)
+
+      [32m+[0m[0m actions {
+          [32m+[0m[0m actions {
+              [32m+[0m[0m action_type       = "ONS"
+              [32m+[0m[0m description       = "Events are published into a topic."
+              [32m+[0m[0m function_id       = (known after apply)
+              [32m+[0m[0m id                = (known after apply)
+              [32m+[0m[0m is_enabled        = true
+              [32m+[0m[0m lifecycle_message = (known after apply)
+              [32m+[0m[0m state             = (known after apply)
+              [32m+[0m[0m stream_id         = (known after apply)
+              [32m+[0m[0m topic_id          = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_home_region_events[0].oci_events_rule.these["EVT-HR-CLOUDGUARD-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_events_rule" "these" {
+      [32m+[0m[0m compartment_id    = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m condition         = jsonencode(
+            {
+              [32m+[0m[0m data      = {}
+              [32m+[0m[0m eventType = [
+                  [32m+[0m[0m "com.oraclecloud.cloudguard.problemdetected",
+                  [32m+[0m[0m "com.oraclecloud.cloudguard.problemdismissed",
+                  [32m+[0m[0m "com.oraclecloud.cloudguard.problemremediated",
+                ]
+            }
+        )
+      [32m+[0m[0m defined_tags      = (known after apply)
+      [32m+[0m[0m description       = "Notifica hallazgos y remediaciones de Cloud Guard."
+      [32m+[0m[0m display_name      = "o-p-om2-evt-cloudguard-001"
+      [32m+[0m[0m freeform_tags     = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m is_enabled        = true
+      [32m+[0m[0m lifecycle_message = (known after apply)
+      [32m+[0m[0m state             = (known after apply)
+      [32m+[0m[0m time_created      = (known after apply)
+
+      [32m+[0m[0m actions {
+          [32m+[0m[0m actions {
+              [32m+[0m[0m action_type       = "ONS"
+              [32m+[0m[0m description       = "Events are published into a topic."
+              [32m+[0m[0m function_id       = (known after apply)
+              [32m+[0m[0m id                = (known after apply)
+              [32m+[0m[0m is_enabled        = true
+              [32m+[0m[0m lifecycle_message = (known after apply)
+              [32m+[0m[0m state             = (known after apply)
+              [32m+[0m[0m stream_id         = (known after apply)
+              [32m+[0m[0m topic_id          = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_home_region_events[0].oci_events_rule.these["EVT-HR-IAM-CHANGES-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_events_rule" "these" {
+      [32m+[0m[0m compartment_id    = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m condition         = jsonencode(
+            {
+              [32m+[0m[0m data      = {}
+              [32m+[0m[0m eventType = [
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.createidentityprovider",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.deleteidentityprovider",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updateidentityprovider",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.addidpgroupmapping",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.removeidpgroupmapping",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updateidpgroupmapping",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.addusertogroup",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.creategroup",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.deletegroup",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.removeuserfromgroup",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updategroup",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.createpolicy",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.deletepolicy",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updatepolicy",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.createuser",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.deleteuser",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updateuser",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updateusercapabilities",
+                  [32m+[0m[0m "com.oraclecloud.identitycontrolplane.updateuserstate",
+                  [32m+[0m[0m "com.oraclecloud.identitysignon.interactivelogin",
+                ]
+            }
+        )
+      [32m+[0m[0m defined_tags      = (known after apply)
+      [32m+[0m[0m description       = "Notifica cambios IAM en home region."
+      [32m+[0m[0m display_name      = "o-p-om2-evt-iam-001"
+      [32m+[0m[0m freeform_tags     = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m is_enabled        = true
+      [32m+[0m[0m lifecycle_message = (known after apply)
+      [32m+[0m[0m state             = (known after apply)
+      [32m+[0m[0m time_created      = (known after apply)
+
+      [32m+[0m[0m actions {
+          [32m+[0m[0m actions {
+              [32m+[0m[0m action_type       = "ONS"
+              [32m+[0m[0m description       = "Events are published into a topic."
+              [32m+[0m[0m function_id       = (known after apply)
+              [32m+[0m[0m id                = (known after apply)
+              [32m+[0m[0m is_enabled        = true
+              [32m+[0m[0m lifecycle_message = (known after apply)
+              [32m+[0m[0m state             = (known after apply)
+              [32m+[0m[0m stream_id         = (known after apply)
+              [32m+[0m[0m topic_id          = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_home_region_events[0].oci_ons_notification_topic.these["TOP-HR-SECURITY-EVENTS-KEY"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_notification_topic" "these" {
+      [32m+[0m[0m api_endpoint   = (known after apply)
+      [32m+[0m[0m compartment_id = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m defined_tags   = (known after apply)
+      [32m+[0m[0m description    = "Topic para eventos IAM, Budget y Cloud Guard en home region."
+      [32m+[0m[0m etag           = (known after apply)
+      [32m+[0m[0m freeform_tags  = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m name           = "o-p-om2-top-security-events-001"
+      [32m+[0m[0m short_topic_id = (known after apply)
+      [32m+[0m[0m state          = (known after apply)
+      [32m+[0m[0m time_created   = (known after apply)
+      [32m+[0m[0m topic_id       = (known after apply)
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_home_region_events[0].oci_ons_subscription.these["TOP-HR-SECURITY-EVENTS-KEY.jorge-eduardo.torlaschi@at.seg-social.es"][0m will be created
+[0m  [32m+[0m[0m resource "oci_ons_subscription" "these" {
+      [32m+[0m[0m compartment_id  = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+      [32m+[0m[0m created_time    = (known after apply)
+      [32m+[0m[0m defined_tags    = (known after apply)
+      [32m+[0m[0m delivery_policy = (known after apply)
+      [32m+[0m[0m endpoint        = "jorge-eduardo.torlaschi@at.seg-social.es"
+      [32m+[0m[0m etag            = (known after apply)
+      [32m+[0m[0m freeform_tags   = {
+          [32m+[0m[0m "ocilz-terraform-module" = "events/0.2.6"
+        }
+      [32m+[0m[0m id              = (known after apply)
+      [32m+[0m[0m protocol        = "EMAIL"
+      [32m+[0m[0m state           = (known after apply)
+      [32m+[0m[0m topic_id        = (known after apply)
+    }
+
+[1mPlan:[0m [0m12 to add, 0 to change, 0 to destroy.
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: .\log_plan\02_obs_monitor_v3.7.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply ".\\log_plan\\02_obs_monitor_v3.7.tfplan"

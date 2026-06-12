@@ -25,7 +25,8 @@
 [CmdletBinding()]
 param(
   [string]$DepPath = $PSScriptRoot,
-  [string]$OutFile = "network_dependencies.auto.tfvars.json"
+  [string]$OutFile = "network_dependencies.auto.tfvars.json",
+  [bool]$DistributeDownstream = $true
 )
 
 $ErrorActionPreference = "Stop"
@@ -50,3 +51,28 @@ $vars |
   Set-Content -Path $outPath -Encoding utf8
 
 Write-Host "Generado: $outPath"
+
+if ($DistributeDownstream) {
+  $moduleRoot = Split-Path $DepPath -Parent
+  $workspaceRoot = Split-Path $moduleRoot -Parent
+  $targets = @(
+    "ga_ioci0030_iac-oci-security-svc",
+    "ga_ioci0040_iac-oci-exa-infra",
+    "ga_ioci0041_iac-oci-exa-database",
+    "ga_ioci0050_iac-oci-obs-logs",
+    "ga_ioci0060_iac-oci-obs-monitor",
+    "ga_ioci0070_iac-oci-storage"
+  )
+
+  foreach ($target in $targets) {
+    $targetDepDir = Join-Path (Join-Path $workspaceRoot $target) "dependencies"
+    if (-not (Test-Path $targetDepDir)) {
+      Write-Warning "No existe dependencies en modulo destino: $targetDepDir"
+      continue
+    }
+
+    $targetPath = Join-Path $targetDepDir $OutFile
+    Copy-Item -Path $outPath -Destination $targetPath -Force
+    Write-Host "Distribuido: $targetPath"
+  }
+}

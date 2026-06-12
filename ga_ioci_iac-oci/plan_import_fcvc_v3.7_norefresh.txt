@@ -1,0 +1,307 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-CDINSS-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_2" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaanalnmbuht65cel33bkqu2aowgdi3hvfcqofq2q7tsod5jcurxpxq"
+        name           = "o-p-om2-cmp-cdin-core-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-NETWORK-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_2" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+        name           = "o-p-om2-cmp-network-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-PLATFORM-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_2" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa6xwlxfjdyxcozp274vtvpp2ar5cahjmyljyxbb44wh726jjppm4q"
+        name           = "o-p-om2-cmp-platform-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-SECURITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_2" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaayw5yjsj6mh5smp5piyjpjelequhd777a66psqqoxcw7czj4dyiua"
+        name           = "o-p-om2-cmp-security-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-NPR-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_3" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaas5tb4msd3rlj6luy7smtqmnybp3cm4sprqoya3v4fbqvycpe6ewq"
+        name           = "o-d-om2-cmp-cdin-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-PROD-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_3" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaavug4kpn4sdoskxdzgkfi2uvke26grr6gbxtvg2f3x6ve3ngs5jfq"
+        name           = "o-p-om2-cmp-cdin-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-DEVOPS-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_3" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaapmdgp7bcad4vembnxe3t3iajxbpvztrlp3dk2p7y6xzwgnlbwslq"
+        name           = "o-p-om2-cmp-devop-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-EXACS-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_3" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaaexcetgujt75cw4hxoyttqpq5lqqfe4zcutegmvlk5vwikibcf3na"
+        name           = "o-p-om2-cmp-exacs-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-LOGGING-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_3" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+        name           = "o-p-om2-cmp-logg-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-NETWORK-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaauvyilp65vl56pmzfvqqcv2dehlsykptzfbvliyrqwsqxmvsy3xcq"
+        name           = "o-d-om2-cmp-cdin-network-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PLATFORM-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa7ct5zrs6wj5uyr4ooofev5pnrzktmz3ut35kxajmr72olgw3eo5a"
+        name           = "o-d-om2-cmp-cdin-platform-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PROJECTS-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa5ve7hl23gcpq4s3imssn3z4sext3mncvmk3i43h3rjts4uaw45hq"
+        name           = "o-d-om2-cmp-cdin-projects-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-SECURITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaalzthcr6advj52mbrtu6h4viq523mko3gcyjc3nyppdu2ysxevqua"
+        name           = "o-d-om2-cmp-cdin-security-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-NETWORK-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaandgh7xjaze7etcofiogdw3vmeyeh73w6aj4aowtxynrr7hlla77a"
+        name           = "o-p-om2-cmp-cdin-network-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PLATFORM-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaatphkv6k4akaip3w5gvdauibjy5ag3p2hyhssgmfu5xgmivtykgha"
+        name           = "o-p-om2-cmp-cdin-platform-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PROJECTS-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaag2d27gjmfsd36j45w7mi7piyfz6uvstpiuszd2gh2wto7kvmf5rq"
+        name           = "o-p-om2-cmp-cdin-projects-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-SECURITY-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaakq3vum5nnnrkpl5ro7qt7qorb3a7p2nrwwdpzn7wzkbh3vwqa2dq"
+        name           = "o-p-om2-cmp-cdin-security-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-DB-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaaepzjuq4cjhkstzgva5nrliugyqgakoxjby5nudywy2ptpjc5jxaq"
+        name           = "o-p-om2-cmp-exacsdb-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-INFRA-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "level_4" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa2n4o2xmgt5b5auwg4ud6akdrdcnqqcrdmv6eiftlythr3ajhk7aa"
+        name           = "o-p-om2-cmp-exacsinfra-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.these["CMP-LANDINGZONE-KEY"] will be updated in-place
+  ~ resource "oci_identity_compartment" "these" {
+      ~ enable_delete  = true -> false
+        id             = "ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa"
+        name           = "o-p-om2-cmp-land-001"
+        # (7 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_fast_connect_provider_services.fast_connect_provider_services["FCVC-VLL-LZ-HUB-001-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_fast_connect_provider_services" "fast_connect_provider_services" {
+      + compartment_id                 = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      + fast_connect_provider_services = (known after apply)
+      + id                             = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].data.oci_core_fast_connect_provider_services.fast_connect_provider_services["FCVC-VLL-LZ-HUB-002-KEY"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_core_fast_connect_provider_services" "fast_connect_provider_services" {
+      + compartment_id                 = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+      + fast_connect_provider_services = (known after apply)
+      + id                             = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_drg.these["DRG-VLL-LZ-HUB-KEY"] will be updated in-place
+  ~ resource "oci_core_drg" "these" {
+      ~ freeform_tags                            = {
+          ~ "ocilz-terraform-module" = <<-EOT
+              - networking/0.8.1
+              + networking/0.8.2
+            EOT
+        }
+        id                                       = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+        # (8 unchanged attributes hidden)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_virtual_circuit.these["FCVC-VLL-LZ-HUB-001-KEY"] will be updated in-place
+  # (imported from "ocid1.virtualcircuit.oc19.eu-madrid-2.amaaaaaapw27gbaanuzurkyeiybpbdq3rzledpyh2pfrfy3gdqxm5ahgpxqa")
+  ~ resource "oci_core_virtual_circuit" "these" {
+        bandwidth_shape_name                = "1 Gbps"
+        bgp_admin_state                     = "ENABLED"
+        bgp_ipv6session_state               = "DOWN"
+        bgp_management                      = "CUSTOMER_MANAGED"
+        bgp_session_state                   = "DOWN"
+        compartment_id                      = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+        customer_asn                        = "12956"
+      ~ defined_tags                        = {
+            "Oracle-Tags.CreatedBy"      = "o-p-om2-id-common-001/jorge-eduardo.torlaschi@at.seg-social.es"
+            "Oracle-Tags.CreatedOn"      = "2026-06-04T13:34:06.912Z"
+          - "o-p-om2-tagns-gov-001.name" = "o-p-om2-fas-connect-001" -> null
+        }
+        display_name                        = "o-p-om2-fas-connect-001"
+      ~ freeform_tags                       = {
+          + "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        gateway_id                          = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+        id                                  = "ocid1.virtualcircuit.oc19.eu-madrid-2.amaaaaaapw27gbaanuzurkyeiybpbdq3rzledpyh2pfrfy3gdqxm5ahgpxqa"
+        ip_mtu                              = "MTU_1500"
+        is_bfd_enabled                      = false
+        is_transport_mode                   = false
+        oracle_bgp_asn                      = 11506
+        provider_service_id                 = "ocid1.providerservice.oc19.eu-madrid-2.aaaaaaaa3ddals6uqjfjflke5fgeyrq2vurmjfzko37clcjmp3ob7uwwkwuq"
+        provider_state                      = "ACTIVE"
+        routing_policy                      = [
+            "MARKET_LEVEL",
+        ]
+        service_type                        = "LAYER2"
+        state                               = "PROVISIONED"
+        time_created                        = "2026-06-04 13:34:07.02 +0000 UTC"
+        type                                = "PRIVATE"
+        virtual_circuit_redundancy_metadata = [
+            {
+                configured_redundancy_level       = "DEVICE"
+                ipv4bgp_session_redundancy_status = "NOT_MET_SLA"
+                ipv6bgp_session_redundancy_status = "NOT_MET_SLA"
+            },
+        ]
+
+        cross_connect_mappings {
+            bgp_md5auth_key                         = null
+            cross_connect_or_cross_connect_group_id = "ocid1.crossconnectgroup.oc19.eu-madrid-2.aaaaaaaarebp4yc7xv6nscqpkv4ywy6ksailyr7xa2n5l5cd6i4fwc5xfwoq"
+            customer_bgp_peering_ip                 = "172.31.224.9/30"
+            customer_bgp_peering_ipv6               = null
+            oracle_bgp_peering_ip                   = "172.31.224.10/30"
+            oracle_bgp_peering_ipv6                 = null
+            vlan                                    = 100
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_network[0].oci_core_virtual_circuit.these["FCVC-VLL-LZ-HUB-002-KEY"] will be updated in-place
+  # (imported from "ocid1.virtualcircuit.oc19.eu-madrid-2.amaaaaaapw27gbaaao7b23y5cy6gvtype4l2xgjsv2xb2r6ekbqpi3jxuzra")
+  ~ resource "oci_core_virtual_circuit" "these" {
+        bandwidth_shape_name                = "1 Gbps"
+        bgp_admin_state                     = "ENABLED"
+        bgp_ipv6session_state               = "DOWN"
+        bgp_management                      = "CUSTOMER_MANAGED"
+        bgp_session_state                   = "DOWN"
+        compartment_id                      = "ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq"
+        customer_asn                        = "12956"
+      ~ defined_tags                        = {
+            "Oracle-Tags.CreatedBy"      = "o-p-om2-id-common-001/jorge-eduardo.torlaschi@at.seg-social.es"
+            "Oracle-Tags.CreatedOn"      = "2026-06-04T13:35:13.273Z"
+          - "o-p-om2-tagns-gov-001.name" = "o-p-om2-fas-connect-002" -> null
+        }
+        display_name                        = "o-p-om2-fas-connect-002"
+      ~ freeform_tags                       = {
+          + "ocilz-terraform-module" = <<-EOT
+                networking/0.8.2
+            EOT
+        }
+        gateway_id                          = "ocid1.drg.oc19.eu-madrid-2.aaaaaaaa7mto5domu4v7gk3bxq2rnlnslpdc2mnxlue7gatndpienpgmq5wa"
+        id                                  = "ocid1.virtualcircuit.oc19.eu-madrid-2.amaaaaaapw27gbaaao7b23y5cy6gvtype4l2xgjsv2xb2r6ekbqpi3jxuzra"
+        ip_mtu                              = "MTU_1500"
+        is_bfd_enabled                      = false
+        is_transport_mode                   = false
+        oracle_bgp_asn                      = 11506
+        provider_service_id                 = "ocid1.providerservice.oc19.eu-madrid-2.aaaaaaaa3ddals6uqjfjflke5fgeyrq2vurmjfzko37clcjmp3ob7uwwkwuq"
+        provider_state                      = "ACTIVE"
+        routing_policy                      = [
+            "MARKET_LEVEL",
+        ]
+        service_type                        = "LAYER2"
+        state                               = "PROVISIONED"
+        time_created                        = "2026-06-04 13:35:13.39 +0000 UTC"
+        type                                = "PRIVATE"
+        virtual_circuit_redundancy_metadata = [
+            {
+                configured_redundancy_level       = "DEVICE"
+                ipv4bgp_session_redundancy_status = "NOT_MET_SLA"
+                ipv6bgp_session_redundancy_status = "NOT_MET_SLA"
+            },
+        ]
+
+        cross_connect_mappings {
+            bgp_md5auth_key                         = null
+            cross_connect_or_cross_connect_group_id = "ocid1.crossconnectgroup.oc19.eu-madrid-2.aaaaaaaatzfozstd3pbxd4deic43nbnz3o7n5ncnzwgyd3qtlvfb6mmmy7vq"
+            customer_bgp_peering_ip                 = "172.31.224.13/30"
+            customer_bgp_peering_ipv6               = null
+            oracle_bgp_peering_ip                   = "172.31.224.14/30"
+            oracle_bgp_peering_ipv6                 = null
+            vlan                                    = 100
+        }
+    }
+
+Plan: 2 to import, 0 to add, 23 to change, 0 to destroy.

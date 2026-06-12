@@ -248,6 +248,11 @@ variable "nlbs_dependency" {
   default = null
 }
 
+variable "identity_domains_dependency" {
+  type    = any
+  default = null
+}
+
 # --- Output path ---
 variable "output_path" {
   type    = string

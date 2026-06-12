@@ -1,0 +1,294 @@
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag_namespaces.oracle_default: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_regions.these: Read complete after 2s [id=IdentityRegionsDataSource-0][0m
+[0m[1mmodule.oci_lz_orchestrator.data.oci_identity_tenancy.this: Read complete after 2s [id=ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag_namespaces.oracle_default: Read complete after 2s [id=IdentityTagNamespacesDataSource-1032845147][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_by[0]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_on[0]: Reading...[0m[0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ENS-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaa3iliimrn4vxzbtpxutkshe52fu6qs4rbwcdnlvtxhcdybxgjzmeq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ROLE-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaa6u3i3nhokejdygnepikolj7qp6647p3wum25s3dnpjtt7shlqzuq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-GOV-KEY"]: Refreshing state... [id=ocid1.tagnamespace.oc19..aaaaaaaad5ahmm2hnmoesuyygljfkjt63buqrgxpirzs7dohpnmp7qo4jaiq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_on[0]: Read complete after 0s [id=ocid1.tagdefinition.oc19..aaaaaaaaaglupfcjdya6tfufliurys3tvrxv5bsdlpmnmvid4ptvvdlr5foa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].data.oci_identity_tag.default_created_by[0]: Read complete after 0s [id=ocid1.tagdefinition.oc19..aaaaaaaall6sqrsh2yuvd637kelyfr7w2h5ll2juolz4pjsyeut7l7ilkcva][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-IAC-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaxnwvcchaichbonqcriawdffy6ze5tnej46xyc2jz2mbynnqr54tq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-TECHNICAL-OWNER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaplzefdtq2pljsle54hm367q4zbxlawu7y7puo3z2t53q5ybuvgba][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-COST-CENTER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaavsvikjg3f7osihcs6aathmswrfruhbvlaaorobkvgu3ysnxrsjgq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-DEPARTMENT-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaafo5dn4sumk5habfsuc77a4uoygjinzkibpopd42orpxyh4gp4njq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-CODE-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaas4iukqceq7kkowric2ehdumve67pg5gxxwtov5uztfarxe6crqia][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-TRACEABILITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaenskrszzcs3meq7k5n7px6dzz657nor4rd5mn7p46ttz4urodk7q][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-OPERATIONAL-OWNER-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaa4nlc4els7tjtl7udg235wg6btydbxdtfbfd3h2nlxk2lkh3nh3ma][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-INTEGRITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaazsjnfio6irydjlbyumodoasprnjmrobbmmawxnszehgmg2nfufga][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AVAILABILITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaamtykuxl7z7kecwlofbfuxpdjm2bagimktu7s7tj4o3qa4ohnowea][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-CONFIDENTIALITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaafxanb42k6tmcz5elqpvy5gwctzz5nvs45eumthqhjhucjmrzbufq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-BUSINESS-CRITICALITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaxy576lbfa62hq57ixw7l7cymcii2qkux4xve5fjoj7ewvhzmy75a][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-LZ-ROLE-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaa5nn6xvol36j5hhk7vl4t2h6jvj2nionfjbspjg22jx5jruyxveeq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-ENVIRONMENT-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaahhcnbwfhoestjmzzlnewukgxkcx7s6fk6issnxq2quxduvtrkkva][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-NAME-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaad5jzdz2y7aedzthktttcireuonkd4rflqz44x34l7umd3tgxcleq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AUTHENTICITY-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaqxl7cnvybqoe36k4j6n7ot7o3ad3hpiaiclknohnlumr7z5mxtya][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-NAME-KEY"]: Refreshing state... [id=ocid1.tagdefinition.oc19..aaaaaaaaajccu7kuj6q7rbte2jsqlnk23fvahd6xzjyzm53cyj6o7b33plfa][0m
+[0m[1mmodule.oci_lz_orchestrator.local_file.tags_output[0]: Refreshing state... [id=c598b908871123b45b8366d1d0cf1d9d9011cda7][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.these["CMP-LANDINGZONE-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa43gu35rhrbtmirjlkxilrma3v5s2bqzhico4up6jvstnluiud3oa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa5gtrrkqmob4ummcgl52exbo4d4vf55uvlzdku5j4fammf3b2pmlq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-CDINSS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaanalnmbuht65cel33bkqu2aowgdi3hvfcqofq2q7tsod5jcurxpxq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa6xwlxfjdyxcozp274vtvpp2ar5cahjmyljyxbb44wh726jjppm4q][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_2["CMP-LZ-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaayw5yjsj6mh5smp5piyjpjelequhd777a66psqqoxcw7czj4dyiua][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-LOGGING-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-DEVOPS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaapmdgp7bcad4vembnxe3t3iajxbpvztrlp3dk2p7y6xzwgnlbwslq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-NPR-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaas5tb4msd3rlj6luy7smtqmnybp3cm4sprqoya3v4fbqvycpe6ewq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-EXACS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaexcetgujt75cw4hxoyttqpq5lqqfe4zcutegmvlk5vwikibcf3na][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_3["CMP-LZ-CDINSS-PROD-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaavug4kpn4sdoskxdzgkfi2uvke26grr6gbxtvg2f3x6ve3ngs5jfq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaandgh7xjaze7etcofiogdw3vmeyeh73w6aj4aowtxynrr7hlla77a][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa7ct5zrs6wj5uyr4ooofev5pnrzktmz3ut35kxajmr72olgw3eo5a][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PROJECTS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaag2d27gjmfsd36j45w7mi7piyfz6uvstpiuszd2gh2wto7kvmf5rq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-DB-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaaepzjuq4cjhkstzgva5nrliugyqgakoxjby5nudywy2ptpjc5jxaq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-NETWORK-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaauvyilp65vl56pmzfvqqcv2dehlsykptzfbvliyrqwsqxmvsy3xcq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-EXACS-INFRA-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa2n4o2xmgt5b5auwg4ud6akdrdcnqqcrdmv6eiftlythr3ajhk7aa][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-PLATFORM-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaatphkv6k4akaip3w5gvdauibjy5ag3p2hyhssgmfu5xgmivtykgha][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-PROJECTS-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaa5ve7hl23gcpq4s3imssn3z4sext3mncvmk3i43h3rjts4uaw45hq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-PROD-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaakq3vum5nnnrkpl5ro7qt7qorb3a7p2nrwwdpzn7wzkbh3vwqa2dq][0m
+[0m[1mmodule.oci_lz_orchestrator.module.oci_lz_compartments[0].oci_identity_compartment.level_4["CMP-LZ-CDINSS-NPR-SECURITY-KEY"]: Refreshing state... [id=ocid1.compartment.oc19..aaaaaaaalzthcr6advj52mbrtu6h4viq523mko3gcyjc3nyppdu2ysxevqua][0m
+[0m[1mmodule.oci_lz_orchestrator.local_file.compartments_output[0]: Refreshing state... [id=b381ef0a806f32e99f3e24e83e270e26248d29a4][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AUTHENTICITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaqxl7cnvybqoe36k4j6n7ot7o3ad3hpiaiclknohnlumr7z5mxtya"
+        name             = "ens-authenticity"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-AVAILABILITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaamtykuxl7z7kecwlofbfuxpdjm2bagimktu7s7tj4o3qa4ohnowea"
+        name             = "ens-availability"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-CONFIDENTIALITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafxanb42k6tmcz5elqpvy5gwctzz5nvs45eumthqhjhucjmrzbufq"
+        name             = "ens-confidentiality"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-INTEGRITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaazsjnfio6irydjlbyumodoasprnjmrobbmmawxnszehgmg2nfufga"
+        name             = "ens-integrity"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-ENS-TRACEABILITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaenskrszzcs3meq7k5n7px6dzz657nor4rd5mn7p46ttz4urodk7q"
+        name             = "ens-traceability"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-CODE-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaas4iukqceq7kkowric2ehdumve67pg5gxxwtov5uztfarxe6crqia"
+        name             = "application-code"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-APPLICATION-NAME-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaad5jzdz2y7aedzthktttcireuonkd4rflqz44x34l7umd3tgxcleq"
+        name             = "application-name"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-BUSINESS-CRITICALITY-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxy576lbfa62hq57ixw7l7cymcii2qkux4xve5fjoj7ewvhzmy75a"
+        name             = "business-criticality"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-COST-CENTER-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaavsvikjg3f7osihcs6aathmswrfruhbvlaaorobkvgu3ysnxrsjgq"
+        name             = "cost-center"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-DEPARTMENT-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaafo5dn4sumk5habfsuc77a4uoygjinzkibpopd42orpxyh4gp4njq"
+        name             = "department"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-ENVIRONMENT-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaahhcnbwfhoestjmzzlnewukgxkcx7s6fk6issnxq2quxduvtrkkva"
+        name             = "environment"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-IAC-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaxnwvcchaichbonqcriawdffy6ze5tnej46xyc2jz2mbynnqr54tq"
+        name             = "iac"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-NAME-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaajccu7kuj6q7rbte2jsqlnk23fvahd6xzjyzm53cyj6o7b33plfa"
+        name             = "name"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-OPERATIONAL-OWNER-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa4nlc4els7tjtl7udg235wg6btydbxdtfbfd3h2nlxk2lkh3nh3ma"
+        name             = "operational-owner"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-GOV-TECHNICAL-OWNER-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaaplzefdtq2pljsle54hm367q4zbxlawu7y7puo3z2t53q5ybuvgba"
+        name             = "technical-owner"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag.these["TAG-LZ-ROLE-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag" "these" {
+      [33m~[0m[0m freeform_tags    = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id               = "ocid1.tagdefinition.oc19..aaaaaaaa5nn6xvol36j5hhk7vl4t2h6jvj2nionfjbspjg22jx5jruyxveeq"
+        name             = "o-p-om2-tag-role-001"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ENS-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag_namespace" "these" {
+      [33m~[0m[0m freeform_tags  = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa3iliimrn4vxzbtpxutkshe52fu6qs4rbwcdnlvtxhcdybxgjzmeq"
+        name           = "o-p-om2-tagns-ens-001"
+        [90m# (6 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-GOV-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag_namespace" "these" {
+      [33m~[0m[0m freeform_tags  = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaad5ahmm2hnmoesuyygljfkjt63buqrgxpirzs7dohpnmp7qo4jaiq"
+        name           = "o-p-om2-tagns-gov-001"
+        [90m# (6 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.oci_lz_orchestrator.module.oci_lz_tags[0].oci_identity_tag_namespace.these["TAGNS-LZ-ROLE-KEY"][0m will be updated in-place
+[0m  [33m~[0m[0m resource "oci_identity_tag_namespace" "these" {
+      [33m~[0m[0m freeform_tags  = {
+          [33m~[0m[0m "ocilz-terraform-module" = <<-EOT
+                tags/0.1.6
+            EOT
+        }
+        id             = "ocid1.tagnamespace.oc19..aaaaaaaa6u3i3nhokejdygnepikolj7qp6647p3wum25s3dnpjtt7shlqzuq"
+        name           = "o-p-om2-tagns-name-001"
+        [90m# (6 unchanged attributes hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 19 to change, 0 to destroy.
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: .\log_plan\02_foundation_v3.7.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply ".\\log_plan\\02_foundation_v3.7.tfplan"

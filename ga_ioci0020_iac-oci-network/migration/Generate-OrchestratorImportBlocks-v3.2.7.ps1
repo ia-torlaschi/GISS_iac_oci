@@ -19,6 +19,7 @@
 
   Para network soporta imports declarativos basados en discovery plan JSON:
     - oci_core_vcn
+    - oci_core_virtual_circuit
     - oci_core_subnet
     - oci_core_route_table
     - oci_core_route_table_attachment
@@ -68,7 +69,8 @@ param(
   [Parameter(Mandatory=$true)]
   [string]$TenancyOcid,
 
-  [string]$Profile = "DEFAULT",
+  [Alias("Profile")]
+  [string]$OciProfile = "DEFAULT",
 
   [string[]]$VarFiles = @(),
 
@@ -143,8 +145,8 @@ function Invoke-Native {
 function Invoke-Oci {
   param([string[]]$Arguments = @())
   $clean = @($Arguments | Where-Object { $null -ne $_ -and -not [string]::IsNullOrWhiteSpace([string]$_) })
-  $args = @("--profile", $Profile) + $clean
-  return Invoke-Native -FilePath "oci" -Arguments $args
+  $ociArgs = @("--profile", $OciProfile) + $clean
+  return Invoke-Native -FilePath "oci" -Arguments $ociArgs
 }
 
 function Invoke-Terraform {
@@ -590,12 +592,12 @@ function Write-ImportBlocksFile {
 }
 
 function Get-VarFileArgs {
-  $args = @()
+  $varFileArgs = @()
   foreach ($vf in $VarFiles) {
     $full = Resolve-Path $vf -ErrorAction Stop
-    $args += "-var-file=$full"
+    $varFileArgs += "-var-file=$full"
   }
-  return $args
+  return $varFileArgs
 }
 
 
@@ -663,6 +665,7 @@ function New-NetworkIndex {
   param($Config)
   $idx = @{
     vcns = @{}
+    virtual_circuits = @{}
     subnets = @{}
     route_tables = @{}
     security_lists = @{}
@@ -758,6 +761,18 @@ function New-NetworkIndex {
       compartment_key = $cmp
     }
   }
+
+  foreach ($vck in (Get-PropNames $nc.fast_connect_virtual_circuits)) {
+    $vc = Get-PropValue $nc.fast_connect_virtual_circuits $vck
+    $cmp = $vc.compartment_id
+    if ($null -eq $cmp) { $cmp = $nc.default_compartment_id }
+    $idx.virtual_circuits[$vck] = @{
+      key = $vck
+      display_name = $vc.display_name
+      compartment_key = $cmp
+    }
+  }
+
   foreach ($rtk in (Get-PropNames $nc.drg_route_tables)) {
     $rt = Get-PropValue $nc.drg_route_tables $rtk
     $idx.drg_route_tables[$rtk] = @{
@@ -836,12 +851,12 @@ function Resolve-GenericInVcn {
     $display = if ($After.display_name) { $After.display_name } else { $info.display_name }
     $cmpVal = if ($After.compartment_id) { $After.compartment_id } else { $info.compartment_key }
     $cmp = Resolve-CompartmentKeyOrOcid $cmpVal $Deps
-    $args = @($CliBase + @("--compartment-id",$cmp))
+    $lookupArgs = @($CliBase + @("--compartment-id",$cmp))
     if (-not $NoVcnArg) {
       $vcnId = Resolve-VcnId -Key $info.vcn_key -After ([pscustomobject]@{}) -Idx $Idx -Deps $Deps -Cache $Cache
-      if ($vcnId) { $args += @("--vcn-id",$vcnId) }
+      if ($vcnId) { $lookupArgs += @("--vcn-id",$vcnId) }
     }
-    $obj = Find-OciByDisplayName -Label $Label -Arguments $args -DisplayName $display
+    $obj = Find-OciByDisplayName -Label $Label -Arguments $lookupArgs -DisplayName $display
     if ($null -eq $obj) { return $null }
     return $obj.id
   }
@@ -1102,6 +1117,9 @@ function Get-NetworkImportSpecs {
       "oci_core_vcn" {
         $importId = Resolve-VcnId -Key $key -After $after -Idx $idx -Deps $Dependencies -Cache $cache
       }
+      "oci_core_virtual_circuit" {
+        $importId = Resolve-GenericInVcn -Label "Virtual Circuit" -CliBase @("network","virtual-circuit","list") -Key $key -After $after -InfoMap $idx.virtual_circuits -Idx $idx -Deps $Dependencies -Cache $cache -NoVcnArg
+      }
       "oci_core_subnet" {
         $importId = Resolve-GenericInVcn -Label "Subnet" -CliBase @("network","subnet","list") -Key $key -After $after -InfoMap $idx.subnets -Idx $idx -Deps $Dependencies -Cache $cache
       }
@@ -1193,15 +1211,15 @@ function Get-NetworkImportSpecs {
   return @($specs)
 }
 
-function Run-Precheck {
+function Invoke-Precheck {
   if ($NoPrecheck) {
     Write-Log WARN "Precheck omitido por parametro -NoPrecheck."
     return
   }
 
   Write-Log INFO "Precheck Terraform: configuracion evaluable sin refresh."
-  $args = @("plan","-refresh=false","-input=false","-lock=false","-detailed-exitcode") + (Get-VarFileArgs)
-  $res = Invoke-Terraform -Arguments $args -AllowFailure
+  $precheckArgs = @("plan","-refresh=false","-input=false","-lock=false","-detailed-exitcode") + (Get-VarFileArgs)
+  $res = Invoke-Terraform -Arguments $precheckArgs -AllowFailure
 
   if ($res.ExitCode -eq 0 -or $res.ExitCode -eq 2) {
     Write-Log OK "Precheck correcto. ExitCode=$($res.ExitCode)"
@@ -1212,10 +1230,10 @@ function Run-Precheck {
   }
 }
 
-function Run-Plan {
+function Invoke-Plan {
   Write-Log INFO "Ejecutando terraform plan con import blocks. Revisar que sea SOLO imports."
-  $args = @("plan","-input=false","-out=$PlanOut") + (Get-VarFileArgs)
-  $res = Invoke-Terraform -Arguments $args -AllowFailure
+  $planArgs = @("plan","-input=false","-out=$PlanOut") + (Get-VarFileArgs)
+  $res = Invoke-Terraform -Arguments $planArgs -AllowFailure
   Write-Log INFO $res.Output
 
   if ($res.ExitCode -ne 0) {
@@ -1251,7 +1269,7 @@ Write-Log OK "OCI CLI: $($ociVersion.Output.Trim())"
 $tfVersion = Invoke-Native -FilePath "terraform" -Arguments @("version")
 Write-Log OK (($tfVersion.Output -split "`r?`n")[0])
 
-Write-Log INFO "Verificando acceso OCI con profile '$Profile'..."
+Write-Log INFO "Verificando acceso OCI con profile '$OciProfile'..."
 $null = Invoke-Oci -Arguments @("iam","tenancy","get","--tenancy-id",$TenancyOcid,"--output","json")
 Write-Log OK "Tenancy accesible."
 
@@ -1261,7 +1279,7 @@ if (-not (Test-Path ".terraform")) {
 
 $config = Get-Json -Path $ConfigPath
 $dependencies = Read-DependencyFiles -Files $DependencyFiles
-Run-Precheck
+Invoke-Precheck
 
 Write-Log INFO "Leyendo state actual para omitir direcciones ya importadas."
 $existing = Get-ExistingStateAddresses
@@ -1306,7 +1324,7 @@ if ($result.Included -eq 0) {
 }
 
 if ($Mode -eq "Plan") {
-  Run-Plan
+  Invoke-Plan
 }
 else {
   Write-Log WARN "Modo Generate completado. Siguiente paso recomendado:"

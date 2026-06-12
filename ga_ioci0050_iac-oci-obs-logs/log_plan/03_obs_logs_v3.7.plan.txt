@@ -1,0 +1,405 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.local_file.custom_logs_output[0] will be created
+  + resource "local_file" "custom_logs_output" {
+      + content              = jsonencode(
+            {
+              + custom_logs = {}
+            }
+        )
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "./dependencies/custom_logs_output.json"
+      + id                   = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.local_file.service_logs_output[0] will be created
+  + resource "local_file" "service_logs_output" {
+      + content              = (known after apply)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "./dependencies/service_logs_output.json"
+      + id                   = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-D-OM2-SUB-EXACS-NPRBCK-001-C2UPJPHVKA"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-d-om2-sub-exacs-nprbck-001-c2upjphvka-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaapzxknvaxdzhxhy6bnelwuyqykfwccruyrftnshskkcc2upjphvka"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-D-OM2-SUB-EXACS-NPRCLI-001-C254I22GPA"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-d-om2-sub-exacs-nprcli-001-c254i22gpa-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakekfuzcbd43hvuufgzx6x5uybwjcst35azjilncmjgc254i22gpa"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-EXACSPROBCK-001-G22XVWDW4Q"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-exacsprobck-001-g22xvwdw4q-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaakmjkmcwkvu6a3aq4izcvnpsqlgcac7aivh55zn7p4bg22xvwdw4q"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-EXACSPROCLI-001-PM7FQADDZQ"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-exacsprocli-001-pm7fqaddzq-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaa25at3fn2vvtxylgqpchpy6lwgcerzodsg3sc53qctppm7fqaddzq"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-HUBDNS-001-QLCFRJP3BQ"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-hubdns-001-qlcfrjp3bq-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaana6o4ztydw3u3i7f4nv4xkmmjkscvdj6aiv5t6wnuxqlcfrjp3bq"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-HUBFW-001-GZFVFVZMDA"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-hubfw-001-gzfvfvzmda-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaayg3uwvlk4sppnxnqwcqgwcw4egv3b2uwdim36mjqg7gzfvfvzmda"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-HUBMGMT-001-GY7B2CHWXA"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-hubmgmt-001-gy7b2chwxa-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaavcjg6zczpbp4h2avcsawctp2su5x6nbzsfeqizy5edgy7b2chwxa"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log.flow_logs["FLOW-LZ-NETWORK-KEY-O-P-OM2-SUB-HUBMON-001-7L77XX6YHQ"] will be created
+  + resource "oci_logging_log" "flow_logs" {
+      + compartment_id     = (known after apply)
+      + defined_tags       = (known after apply)
+      + display_name       = "o-p-om2-sub-hubmon-001-7l77xx6yhq-flow-log"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + is_enabled         = true
+      + log_group_id       = (known after apply)
+      + log_type           = "SERVICE"
+      + retention_duration = 180
+      + state              = (known after apply)
+      + tenancy_id         = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+
+      + configuration {
+          + compartment_id = (known after apply)
+
+          + source {
+              + category    = "subnet"
+              + parameters  = (known after apply)
+              + resource    = "ocid1.subnet.oc19.eu-madrid-2.aaaaaaaay4uhy4psi4rga5wpyz2ciq4ev4bw6ijmgjqqwj5at77l77xx6yhq"
+              + service     = "flowlogs"
+              + source_type = "OCISERVICE"
+            }
+        }
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_logging[0].oci_logging_log_group.these["LGG-LZ-NETWORK-KEY"] will be created
+  + resource "oci_logging_log_group" "these" {
+      + compartment_id     = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+      + defined_tags       = (known after apply)
+      + description        = "Log Group para VCN Flow Logs de la Landing Zone."
+      + display_name       = "o-p-om2-lgg-network-001"
+      + freeform_tags      = {
+          + "ocilz-terraform-module" = "logging/0.2.6"
+        }
+      + id                 = (known after apply)
+      + state              = (known after apply)
+      + time_created       = (known after apply)
+      + time_last_modified = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_service_connectors[0].oci_identity_policy.these["SCH-LZ-AUDIT-STREAM-KEY"] will be created
+  + resource "oci_identity_policy" "these" {
+      + ETag           = (known after apply)
+      + compartment_id = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+      + defined_tags   = (known after apply)
+      + description    = "Permite a Service Connector Hub publicar Audit logs en el stream privado del SIEM."
+      + freeform_tags  = {
+          + "ocilz-terraform-module" = "service-connectors/0.2.6"
+        }
+      + id             = (known after apply)
+      + inactive_state = (known after apply)
+      + lastUpdateETag = (known after apply)
+      + name           = "o-p-om2-pcy-sch-audit-001"
+      + policyHash     = (known after apply)
+      + state          = (known after apply)
+      + statements     = (known after apply)
+      + time_created   = (known after apply)
+      + version_date   = (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_service_connectors[0].oci_sch_service_connector.these["SCH-LZ-AUDIT-STREAM-KEY"] will be created
+  + resource "oci_sch_service_connector" "these" {
+      + compartment_id    = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+      + defined_tags      = (known after apply)
+      + description       = "Service Connector para exportar Audit logs del tenancy al stream privado del SIEM."
+      + display_name      = "o-p-om2-sch-audit-stream-001"
+      + freeform_tags     = {
+          + "ocilz-terraform-module" = "service-connectors/0.2.6"
+        }
+      + id                = (known after apply)
+      + lifecycle_details = (known after apply)
+      + lifecyle_details  = (known after apply)
+      + state             = "ACTIVE"
+      + system_tags       = (known after apply)
+      + time_created      = (known after apply)
+      + time_updated      = (known after apply)
+
+      + source {
+          + config_map                = (known after apply)
+          + kind                      = "logging"
+          + plugin_name               = (known after apply)
+          + private_endpoint_metadata = (known after apply)
+          + stream_id                 = (known after apply)
+
+          + cursor (known after apply)
+
+          + log_sources {
+              + compartment_id = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+              + log_group_id   = "_Audit_Include_Subcompartment"
+              + log_id         = (known after apply)
+            }
+
+          + monitoring_sources (known after apply)
+        }
+
+      + target {
+          + batch_rollover_size_in_mbs = (known after apply)
+          + batch_rollover_time_in_ms  = (known after apply)
+          + batch_size_in_kbs          = (known after apply)
+          + batch_size_in_num          = (known after apply)
+          + batch_time_in_sec          = (known after apply)
+          + bucket                     = (known after apply)
+          + compartment_id             = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+          + enable_formatted_messaging = (known after apply)
+          + function_id                = (known after apply)
+          + kind                       = "streaming"
+          + log_group_id               = (known after apply)
+          + log_source_identifier      = (known after apply)
+          + metric                     = (known after apply)
+          + metric_namespace           = (known after apply)
+          + namespace                  = (known after apply)
+          + object_name_prefix         = (known after apply)
+          + private_endpoint_metadata  = (known after apply)
+          + stream_id                  = (known after apply)
+          + topic_id                   = (known after apply)
+
+          + dimensions (known after apply)
+        }
+
+      + tasks (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_service_connectors[0].oci_streaming_stream.these["STM-LZ-SIEM-KEY"] will be created
+  + resource "oci_streaming_stream" "these" {
+      + compartment_id          = "ocid1.compartment.oc19..aaaaaaaaljtgrfd42d76gps36ryevoufbxk3cns7ri7zfwjvlauu4bq6r3na"
+      + defined_tags            = (known after apply)
+      + freeform_tags           = {
+          + "ocilz-terraform-module" = "service-connectors/0.2.6"
+        }
+      + id                      = (known after apply)
+      + lifecycle_state_details = (known after apply)
+      + messages_endpoint       = (known after apply)
+      + name                    = "o-p-om2-stm-siem-001"
+      + partitions              = 1
+      + retention_in_hours      = 24
+      + state                   = (known after apply)
+      + stream_pool_id          = (known after apply)
+      + time_created            = (known after apply)
+    }
+
+Plan: 14 to add, 0 to change, 0 to destroy.

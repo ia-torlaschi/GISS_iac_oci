@@ -1,0 +1,2 @@
+"resource_type","display_name","region","lifecycle_state","compartment_id","ocid","time_created","freeform_tags","defined_tags"
+"CloudGuardManagedList","Oracle Cloudguard CIDR Managed List",,"ACTIVE","ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba","ocid1.cloudguardmanagedlist.oc19.eu-madrid-2.amaaaaaapw27gbcqf4uqsldkrovcjfl47hbvqmxxhy3b47dtlqpe72ocwpjq","29/05/2026 9:38:43","{}","{}"

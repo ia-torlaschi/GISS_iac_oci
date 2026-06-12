@@ -1,0 +1,107 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.oci_lz_orchestrator.module.oci_lz_identity_domains[0].oci_identity_domains_setting.cert_public_access_setting["COMMON-DOMAIN"] will be created
+  + resource "oci_identity_domains_setting" "cert_public_access_setting" {
+      + account_always_trust_scope                                 = (known after apply)
+      + allowed_domains                                            = (known after apply)
+      + allowed_forgot_password_flow_return_urls                   = (sensitive value)
+      + allowed_notification_redirect_urls                         = (known after apply)
+      + audit_event_retention_period                               = (known after apply)
+      + cloud_account_name                                         = (known after apply)
+      + cloud_migration_custom_url                                 = (known after apply)
+      + cloud_migration_url_enabled                                = (known after apply)
+      + compartment_ocid                                           = (known after apply)
+      + contact_emails                                             = (known after apply)
+      + csr_access                                                 = "none"
+      + custom_branding                                            = (known after apply)
+      + custom_css_location                                        = (known after apply)
+      + custom_html_location                                       = (known after apply)
+      + custom_translation                                         = (known after apply)
+      + default_company_names                                      = (known after apply)
+      + default_images                                             = (known after apply)
+      + default_login_texts                                        = (known after apply)
+      + default_trust_scope                                        = (known after apply)
+      + delete_in_progress                                         = (known after apply)
+      + diagnostic_level                                           = (known after apply)
+      + diagnostic_record_for_search_identifies_returned_resources = (known after apply)
+      + diagnostic_tracing_upto                                    = (known after apply)
+      + domain_ocid                                                = (known after apply)
+      + enable_terms_of_use                                        = (known after apply)
+      + external_id                                                = (known after apply)
+      + iam_upst_session_expiry                                    = (known after apply)
+      + id                                                         = (known after apply)
+      + idcs_created_by                                            = (known after apply)
+      + idcs_endpoint                                              = "https://idcs-e0138a37daa84b4aacdb004b63eb5d75.eu-madrid-idcs-2.identity.oci.oraclecloud.eu:443"
+      + idcs_last_modified_by                                      = (known after apply)
+      + idcs_last_upgraded_in_release                              = (known after apply)
+      + idcs_prevented_operations                                  = (known after apply)
+      + is_hosted_page                                             = (known after apply)
+      + issuer                                                     = (known after apply)
+      + locale                                                     = (known after apply)
+      + max_no_of_app_cmva_to_return                               = (known after apply)
+      + max_no_of_app_role_members_to_return                       = (known after apply)
+      + meta                                                       = (known after apply)
+      + migration_status                                           = (known after apply)
+      + ocid                                                       = (known after apply)
+      + on_premises_provisioning                                   = (known after apply)
+      + preferred_language                                         = (known after apply)
+      + prev_issuer                                                = (known after apply)
+      + privacy_policy_url                                         = (known after apply)
+      + re_auth_factor                                             = (known after apply)
+      + re_auth_when_changing_my_authentication_factors            = (known after apply)
+      + schemas                                                    = [
+          + "urn:ietf:params:scim:schemas:oracle:idcs:Settings",
+        ]
+      + service_admin_cannot_list_other_users                      = (known after apply)
+      + setting_id                                                 = "Settings"
+      + signing_cert_public_access                                 = true
+      + sub_mapping_attr                                           = (known after apply)
+      + tenancy_ocid                                               = (known after apply)
+      + terms_of_use_url                                           = (known after apply)
+      + timezone                                                   = (known after apply)
+
+      + certificate_validation (known after apply)
+
+      + cloud_gate_cors_settings (known after apply)
+
+      + company_names (known after apply)
+
+      + images (known after apply)
+
+      + login_texts (known after apply)
+
+      + purge_configs (known after apply)
+
+      + tags (known after apply)
+
+      + tenant_custom_claims (known after apply)
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_region_subscriptions.these will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_identity_region_subscriptions" "these" {
+      + id                   = (known after apply)
+      + region_subscriptions = (known after apply)
+      + tenancy_id           = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+    }
+
+  # module.oci_lz_orchestrator.module.oci_lz_policies[0].data.oci_identity_tenancy.this will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "oci_identity_tenancy" "this" {
+      + defined_tags                          = (known after apply)
+      + description                           = (known after apply)
+      + freeform_tags                         = (known after apply)
+      + home_region_key                       = (known after apply)
+      + id                                    = (known after apply)
+      + name                                  = (known after apply)
+      + tenancy_id                            = "ocid1.tenancy.oc19..aaaaaaaa4ftkyx3ao73kndo3mbltj6gtbf27mxbgpu65a33ipgo2wqyj4zba"
+      + upi_idcs_compatibility_layer_endpoint = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
