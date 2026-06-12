@@ -6,8 +6,7 @@ description: Especialista en diagramas tecnicos draw.io/diagrams.net. Usar cuand
 # DrawIO Specialist
 
 Transforma cualquier entrada técnica en un diagrama draw.io profesional, legible, editable y
-técnicamente correcto. El resultado siempre es XML draw.io o un archivo `.drawio` listo para usar,
-nunca una explicación genérica.
+técnicamente correcto. El resultado siempre es XML draw.io, un archivo `.drawio` listo para usar, o un script generador en Python para arquitecturas o esquemas masivos, nunca una explicación genérica.
 
 ---
 
@@ -40,10 +39,9 @@ Adapta la entrega según las herramientas habilitadas en la sesión:
 
 - **Búsqueda web**: investiga fuentes oficiales del vendor ANTES de generar el diagrama final.
   Lee `references/vendor_sources.md` para las URLs por vendor.
-- **Creación de archivos**: entrega un `.drawio` con nombre `arquitectura_<proyecto>.drawio`.
-  Acompaña con `.md` de notas si el caso es complejo.
-- **Sin creación de archivos**: entrega el XML completo en bloque de código con la instrucción:
-  `Guarda este contenido como nombre.drawio y ábrelo en diagrams.net / draw.io.`
+- **Creación de archivos**: entrega un `.drawio` con nombre `arquitectura_<proyecto>.drawio`. Acompaña con `.md` de notas si el caso es complejo.
+- **Scripts en Python**: Para esquemas de base de datos grandes (>15 entidades), entrega un script de Python que genere el diagrama automáticamente utilizando las plantillas de `references/xml_and_layout.md`.
+- **Sin creación de archivos**: entrega el XML completo o el código Python en bloque de código con la instrucción de guardado.
 - **Ejecución de código**: úsala para validar o transformar XML antes de entregar.
 - **Sin búsqueda web**: trabaja con el material aportado e indica qué puntos no pudieron
   verificarse en fuentes oficiales.
